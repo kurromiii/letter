@@ -3,17 +3,17 @@ package com.mftplus.letter.model.entity;
 import com.github.mfathi91.time.PersianDate;
 import com.mftplus.letter.model.entity.enums.LetterAccessLevel;
 import com.mftplus.letter.model.entity.enums.LetterType;
+import com.mftplus.letter.model.entity.enums.TransferMethod;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.TermVector;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -25,12 +25,7 @@ import java.util.List;
 @Entity (name = "letterEntity")
 @Table (name = "letter_tbl")
 
-@NamedQueries({
-        @NamedQuery(name = "Letter.FindByTitle",query = "select oo from letterEntity oo where oo.title=:title"),
-        @NamedQuery(name = "Letter.FindByContext",query = "select oo from letterEntity oo where oo.context=:context"),
-        @NamedQuery(name = "Letter.FindByDate",query = "select oo from letterEntity oo where oo.date=:date")
-})
-public class Letter implements Serializable {
+public class Letter extends Base implements Serializable {
     @Id
     @SequenceGenerator(name = "letterSeq", sequenceName = "letter_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "letterSeq")
@@ -46,23 +41,19 @@ public class Letter implements Serializable {
     @Column (name = "l_date")
     private LocalDate date;
 
-    @Transient
-    private LocalDate faDate;
-
-    public String getFaDate() {
-        return PersianDate.fromGregorian(date).toString();
-    }
-
-    public void setFaDate(String faDate) {
-        this.date = PersianDate.parse(faDate).toGregorian();
-    }
-
-    @Column (name = "l_subject", length = 25)
-    private String subject;
+//    @Transient
+//    private LocalDate faDate;
+//
+//    public String getFaDate() {
+//        return PersianDate.fromGregorian(date).toString();
+//    }
+//
+//    public LocalDate setFaDate(String faDate) {
+//        this.date = PersianDate.parse(faDate).toGregorian();
+//        return null;
+//    }
 
     @Column (name = "l_context")
-    //for search
-    @Field(termVector = TermVector.YES)
     private String context;
 
     @Column (name = "l_receiver_name" , length = 25)
@@ -84,26 +75,40 @@ public class Letter implements Serializable {
     private LetterAccessLevel accessLevel;
 
     //todo rethink
-    @ManyToMany
+    @ManyToMany (cascade = {CascadeType.MERGE , CascadeType.PERSIST})
     private List<User> carbonCopies;
 
-    @ManyToOne
+    @ManyToOne (cascade = {CascadeType.MERGE , CascadeType.PERSIST})
     private User user;
 
-    @ManyToOne
+    @Enumerated (EnumType.ORDINAL)
     private TransferMethod transferMethod;
 
     @Enumerated (EnumType.ORDINAL)
     private LetterType letterType;
 
+    //todo
+//    @OneToOne
+//    private LetterRegister registerNumber;
+//
+//    @ManyToOne
+//    private Secretariat indicatorCode;
 
+    @Column (name = "l_register_date_and_time")
+    private LocalDateTime registerDateAndTime;
 
+//    @Transient
+//    private LocalDateTime faRegisterDateAndTime;
+//
+//    public String getFaRegisterDateAndTime() {
+//        return PersianDate.fromGregorian(LocalDate.from(registerDateAndTime)).toString();
+//    }
+//
+//    public void setFaRegisterDateAndTime(String faRegisterDateAndTime) {
+//        this.registerDateAndTime = LocalDateTime.from(PersianDate.parse(faRegisterDateAndTime).toGregorian());
+//    }
 
-
-
-
-
-
-
+    @ManyToMany (cascade = {CascadeType.MERGE , CascadeType.PERSIST})
+    private List<User> refReceivers;
 
 }

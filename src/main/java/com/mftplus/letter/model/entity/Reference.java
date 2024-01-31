@@ -23,27 +23,24 @@ import java.time.LocalDateTime;
 @Entity(name = "referenceEntity")
 @Table(name = "refrence_tbl")
 
-@NamedQueries({
-        @NamedQuery(name = "LetterRef.FindByLetter",query = "select oo from referenceEntity  oo where oo.letterId=:letterId")
-})
-public class Reference implements Serializable {
+public class Reference extends Base implements Serializable {
     @Id
     @SequenceGenerator(name = "letterSeq", sequenceName = "letter_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "letterSeq")
     @Column (name = "r_Id")
     private long id;
 
-    @ManyToOne
-    private Letter letterId;
+    @ManyToOne (cascade = {CascadeType.MERGE , CascadeType.PERSIST})
+    private Letter letter;
 
     @Enumerated (EnumType.ORDINAL)
     private ReferenceType refType;
 
-    @ManyToOne
-    private User refSenderId;
+    @ManyToOne (cascade = {CascadeType.MERGE , CascadeType.PERSIST})
+    private User referenceSenderId;
 
-    @ManyToOne
-    private User refReceiverId;
+    @ManyToOne (cascade = {CascadeType.MERGE , CascadeType.PERSIST})
+    private User referenceReceiverId;
 
     @Column (name = "r_date_and_time")
     private LocalDateTime refDateAndTime;
@@ -77,10 +74,13 @@ public class Reference implements Serializable {
     private String paraph;
 
     @Column (name = "r_comment" , length = 50)
-    private String comment;
+    private String explanation;
 
-    @Column(name = "r_state")
-    private boolean state;
+    @Column(name = "r_status")
+    private boolean status;
+
+    @Column(name = "r_validate")
+    private boolean validate;
 
     @Enumerated (EnumType.ORDINAL)
     private ReferencePriority priority;
