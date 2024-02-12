@@ -113,7 +113,7 @@ public class LetterServiceImpl implements LetterService, Serializable {
     @Transactional
     @Override
     public List<Letter> findBySectionId(Long sectionId) throws Exception {
-        TypedQuery<Letter> query = entityManager.createQuery("select oo from letterEntity oo where oo.user.sectionId=:sectionId", Letter.class);
+        TypedQuery<Letter> query = entityManager.createQuery("select oo from letterEntity oo where oo.user.section=:sectionId", Letter.class);
         query.setParameter(String.valueOf(sectionId),"sectionId");
         return query.getResultList();
     }

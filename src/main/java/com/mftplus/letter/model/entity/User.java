@@ -22,7 +22,8 @@ import java.util.List;
 @Table(name = "user_tbl")
 public class User extends Base{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "userSeq", sequenceName = "user_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userSeq")
     private long id;
 
     @Pattern(regexp = "^[a-zA-Z\\s]{5,15}$", message = "Invalid Username")
@@ -49,14 +50,6 @@ public class User extends Base{
 
     @ManyToOne
     private Section section;
-
-    //todo
-    @OneToOne(cascade = CascadeType.ALL)
-    private Person personId;
-
-    //todo
-    @ManyToOne
-    private Section sectionId;
 
     @Column(name="u_active")
     private boolean active;

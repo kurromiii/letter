@@ -8,19 +8,18 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @SuperBuilder
 @ToString
 
-@Entity (name = "secretariatEntity")
-@Table (name = "secretariat_tbl")
-//todo we need some instances
-public class Secretariat implements Serializable{
+@Entity(name = "sectionEntity")
+@Table(name = "section_tbl")
+public class Section implements Serializable {
     @Id
-    @Column(name = "s_Id")
-    private String indicatorCode;
-
+    @SequenceGenerator(name = "letterSeq", sequenceName = "letter_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "letterSeq")
+    @Column (name = "s_Id")
+    private long id;
 }

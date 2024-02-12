@@ -11,7 +11,10 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Type;
+
 import java.io.Serializable;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -35,23 +38,22 @@ public class Letter extends Base implements Serializable {
     @Column (name = "l_title" , length = 20)
     private String title;
 
-    @Column (name = "l_letter_number" , length = 30 , unique = true)
+    @Column (name = "l_letter_number" , length = 30)
     private String letterNumber;
 
     @Column (name = "l_date")
     private LocalDate date;
 
-//    @Transient
-//    private LocalDate faDate;
-//
-//    public String getFaDate() {
-//        return PersianDate.fromGregorian(date).toString();
-//    }
-//
-//    public LocalDate setFaDate(String faDate) {
-//        this.date = PersianDate.parse(faDate).toGregorian();
-//        return null;
-//    }
+    @Transient
+    private String faDate;
+
+    public String getFaDate() {
+        return String.valueOf(PersianDate.fromGregorian(date));
+    }
+
+    public void setFaDate(String faDate) {
+        this.date =PersianDate.parse(faDate).toGregorian();
+    }
 
     @Column (name = "l_context")
     private String context;
@@ -68,14 +70,15 @@ public class Letter extends Base implements Serializable {
     @Column (name = "l_sender_title", length = 25)
     private String senderTitle;
 
-    @Column (name = "l_image")
+    @Column (name = "l_file")
     private String image;
 
     @Enumerated (EnumType.ORDINAL)
     private LetterAccessLevel accessLevel;
 
-    //todo rethink
+  //todo rethink
     @ManyToMany (cascade = {CascadeType.MERGE , CascadeType.PERSIST})
+    @ToString.Exclude
     private List<User> carbonCopies;
 
     @ManyToOne (cascade = {CascadeType.MERGE , CascadeType.PERSIST})
@@ -107,8 +110,9 @@ public class Letter extends Base implements Serializable {
 //    public void setFaRegisterDateAndTime(String faRegisterDateAndTime) {
 //        this.registerDateAndTime = LocalDateTime.from(PersianDate.parse(faRegisterDateAndTime).toGregorian());
 //    }
-
+//
     @ManyToMany (cascade = {CascadeType.MERGE , CascadeType.PERSIST})
+    @ToString.Exclude
     private List<User> refReceivers;
 
 }
