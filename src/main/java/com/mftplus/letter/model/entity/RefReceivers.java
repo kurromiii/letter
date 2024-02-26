@@ -27,5 +27,5 @@ public class RefReceivers implements Serializable {
     private Letter letter;
 
     @ManyToOne
-    private  User refReceiver;
+    private User refReceiver;
 }

@@ -151,6 +151,7 @@
                 <button class="btn btn-danger" onclick="remove(${letter.id})"><i class="fa fa-remove"></i>
                     Remove
                 </button>
+
             </td>
         </tr>
     </c:forEach>

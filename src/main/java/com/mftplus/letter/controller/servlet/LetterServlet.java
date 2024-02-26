@@ -1,12 +1,10 @@
 package com.mftplus.letter.controller.servlet;
 
 import com.mftplus.letter.model.entity.Letter;
-import com.mftplus.letter.model.entity.User;
 import com.mftplus.letter.model.entity.enums.LetterAccessLevel;
 import com.mftplus.letter.model.entity.enums.LetterType;
 import com.mftplus.letter.model.entity.enums.TransferMethod;
 import com.mftplus.letter.model.service.impl.LetterServiceImpl;
-import com.mftplus.letter.model.service.impl.UserServiceImpl;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -18,10 +16,8 @@ import jakarta.servlet.http.Part;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.Optional;
 
 @Slf4j
 @WebServlet(urlPatterns = "/letter.do")
@@ -34,8 +30,8 @@ public class LetterServlet extends HttpServlet {
     @Inject
     private LetterServiceImpl letterService;
 
-    @Inject
-    private UserServiceImpl userService;
+//    @Inject
+//    private UserServiceImpl userService;
 
 
     @Override
@@ -119,6 +115,7 @@ public class LetterServlet extends HttpServlet {
             log.info("LetterServlet - Letter Saved");
             req.getSession().setAttribute("letterId",letter.getId());
             resp.sendRedirect("/letter.do?selectedLetter="+letter.getId());
+
 //                }
 //            }
         } catch (Exception e) {

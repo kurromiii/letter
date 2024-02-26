@@ -76,7 +76,7 @@ public class ReferenceServiceImpl implements ReferenceService, Serializable {
 
     @Override
     public List<Reference> findByLetterId(Long letterId) throws Exception {
-        TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.letter.id=:letterId", Reference.class);
+        TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.letterId.id=:letterId", Reference.class);
         query.setParameter(String.valueOf(letterId),"letterId");
         return query.getResultList();
     }

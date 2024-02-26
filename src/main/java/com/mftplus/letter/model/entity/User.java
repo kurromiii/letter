@@ -1,5 +1,7 @@
 package com.mftplus.letter.model.entity;
 
+import com.mftplus.letter.model.entity.enums.Role;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
@@ -8,42 +10,27 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
 
-
-@NoArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
 @SuperBuilder
 @ToString
 
 @Entity(name = "userEntity")
 @Table(name = "user_tbl")
-public class User extends Base{
+@RequestScoped
+public class User extends Base implements Serializable {
+    //id is set as username because username must be unique like id
     @Id
-    @SequenceGenerator(name = "userSeq", sequenceName = "user_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userSeq")
-    private long id;
-
     @Pattern(regexp = "^[a-zA-Z\\s]{5,15}$", message = "Invalid Username")
-    @Column(name = "u_name", length = 15)
+    @Column(name = "u_username")
     private String username;
 
     @Pattern(regexp = "^[a-zA-Z\\s]{8,20}$", message = "Invalid Password")
     @Column(name = "u_pass", length = 20)
     private String password;
-
-// todo
-    @OneToMany
-    private List<User> userList;
-    public List<User> getUserList() {
-        if (userList == null) {
-            userList = new ArrayList<>();
-        }
-        return userList;
-    }
-
 
     @OneToOne(cascade = CascadeType.ALL)
     private Person person;
@@ -54,6 +41,6 @@ public class User extends Base{
     @Column(name="u_active")
     private boolean active;
 
-//    @Enumerated(EnumType.ORDINAL)
-//    private Role role;
+    @Enumerated(EnumType.ORDINAL)
+    private Role role;
 }

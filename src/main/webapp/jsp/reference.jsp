@@ -56,7 +56,7 @@
 
             <div>
                 <label for="validate">Validation : </label>
-                <input type="checkbox" id="validate" name="validate" value="false" onchange="this.checked ?this.value=true:this.value=false">
+                <input type="checkbox" id="validate" name="validate">
             </div>
             <br><br>
 

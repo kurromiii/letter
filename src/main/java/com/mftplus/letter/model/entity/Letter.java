@@ -4,6 +4,7 @@ import com.github.mfathi91.time.PersianDate;
 import com.mftplus.letter.model.entity.enums.LetterAccessLevel;
 import com.mftplus.letter.model.entity.enums.LetterType;
 import com.mftplus.letter.model.entity.enums.TransferMethod;
+import jakarta.enterprise.context.RequestScoped;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,10 +12,8 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Type;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -27,7 +26,7 @@ import java.util.List;
 
 @Entity (name = "letterEntity")
 @Table (name = "letter_tbl")
-
+@RequestScoped
 public class Letter extends Base implements Serializable {
     @Id
     @SequenceGenerator(name = "letterSeq", sequenceName = "letter_seq")
