@@ -25,7 +25,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Reference extends Base implements Serializable {
     @Id
-    @SequenceGenerator(name = "letterSeq", sequenceName = "letter_seq")
+    @SequenceGenerator(name = "letterSeq", sequenceName = "letter_seq",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "letterSeq")
     @Column (name = "r_Id")
     private long id;

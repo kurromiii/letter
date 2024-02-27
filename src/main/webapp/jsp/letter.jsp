@@ -124,7 +124,7 @@
                 <th>Letter Type</th>
                 <th>Transfer Method</th>
                 <th>file</th>
-        <%--        <th>user</th>--%>
+                <th>user</th>
                 <th>operation</th>
             </tr>
         </thead>
@@ -143,7 +143,7 @@
             <td>${letter.letterType}</td>
             <td>${letter.transferMethod}</td>
             <td>${letter.image}</td>
-<%--            <td>${letter.user}</td>--%>
+            <td>${letter.user.username}</td>
             <td>
                 <button class="btn btn-warning" onclick="edit(${letter.id})"><i class="fa fa-edit"></i>
                     Edit

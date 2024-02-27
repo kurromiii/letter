@@ -49,8 +49,6 @@ public class UserServlet extends HttpServlet {
                    .role(Role.valueOf(role))
                    .deleted(false)
                    .build();
-
-
             userService.save(user);
             log.info("User Saved");
             resp.sendRedirect("/user.do");
@@ -70,7 +68,7 @@ public class UserServlet extends HttpServlet {
 //             System.out.println(e.getMessage());
 //             log.info("UserServlet - Error Delete User By Id");
 //             req.getSession().setAttribute("error", e.getMessage());
-//             req.getRequestDispatcher("/jsp/user.jsp").forward(req, resp);
+//             req.getRequestDispatcher("/jsp/login.jsp").forward(req, resp);
 //         }
 //
 //    }

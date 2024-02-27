@@ -29,11 +29,11 @@ public class Person extends Base implements Serializable {
     @Column(name = "p_id")
     private Long id;
 
-    @Pattern(regexp = "^[a-zA-Z\\s]{3,30}$", message = "Invalid Name")
+//    @Pattern(regexp = "^[a-zA-Z\\s]{3,30}$", message = "Invalid Name")
     @Column(name = "p_name", length = 30)
     private String name;
 
-    @Pattern(regexp = "^[a-zA-Z\\s]{3,30}$", message = "Invalid Family")
+//    @Pattern(regexp = "^[a-zA-Z\\s]{3,30}$", message = "Invalid Family")
     @Column(name = "p_family", length = 30)
     private String family;
 

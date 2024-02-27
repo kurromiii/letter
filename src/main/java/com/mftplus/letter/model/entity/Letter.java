@@ -29,7 +29,7 @@ import java.util.List;
 @RequestScoped
 public class Letter extends Base implements Serializable {
     @Id
-    @SequenceGenerator(name = "letterSeq", sequenceName = "letter_seq")
+    @SequenceGenerator(name = "letterSeq", sequenceName = "letter_seq",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "letterSeq")
     @Column (name = "l_Id")
     private long id;
@@ -80,7 +80,7 @@ public class Letter extends Base implements Serializable {
     @ToString.Exclude
     private List<User> carbonCopies;
 
-    @ManyToOne (cascade = {CascadeType.MERGE , CascadeType.PERSIST})
+    @ManyToOne (cascade = {CascadeType.MERGE})
     private User user;
 
     @Enumerated (EnumType.ORDINAL)

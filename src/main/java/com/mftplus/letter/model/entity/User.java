@@ -24,11 +24,11 @@ import java.io.Serializable;
 public class User extends Base implements Serializable {
     //id is set as username because username must be unique like id
     @Id
-    @Pattern(regexp = "^[a-zA-Z\\s]{5,15}$", message = "Invalid Username")
+//    @Pattern(regexp = "^[a-zA-Z\\s]{5,15}$", message = "Invalid Username")
     @Column(name = "u_username")
     private String username;
 
-    @Pattern(regexp = "^[a-zA-Z\\s]{8,20}$", message = "Invalid Password")
+//    @Pattern(regexp = "^[a-zA-Z\\s]{8,20}$", message = "Invalid Password")
     @Column(name = "u_pass", length = 20)
     private String password;
 

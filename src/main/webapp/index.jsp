@@ -12,6 +12,16 @@
 <br><br>
 <a href="reference.do">Reference</a>
 <br><br>
+<a href="login.do">login</a>
+<br><br>
+<a href="user.do">user</a>
+<br><br>
+<a href="person.do">person</a>
+<br><br>
+<a href="organisation.do">organisation</a>
+<br><br>
+<a href="profile.do">profile</a>
+<br><br>
 
 <br>
 </body>
