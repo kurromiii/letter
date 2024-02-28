@@ -38,11 +38,14 @@ public class LoginServlet extends HttpServlet {
                 log.info("User Logged in");
                 req.getSession().setAttribute("username", username);
                 resp.sendRedirect("/letter.do");
+                req.getSession().removeAttribute("wrongUser");
             }else{
-                throw  new AccessDeniedException("Cant Login");
+                resp.sendRedirect("/login.do");
+                String e = "Wrong Username or Password";
+                req.getSession().setAttribute("wrongUser",e);
+//                throw new AccessDeniedException("Cant Login");
             }
         } catch (Exception e) {
-            resp.sendRedirect("/login.do");
             log.error(e.getMessage());
             throw new RuntimeException(e);
         }

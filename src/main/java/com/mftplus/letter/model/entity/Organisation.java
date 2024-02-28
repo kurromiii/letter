@@ -50,7 +50,7 @@ public class Organisation extends Base implements Serializable {
 
 
     @OneToMany
-    private List<Section>sectionList;
+    private List<Section> sectionList;
 
     public void addSection(Section section){
         if (sectionList==null){

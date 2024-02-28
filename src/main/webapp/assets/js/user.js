@@ -1,5 +1,5 @@
-function edit(id) {
-    alert(id);
+function edit(username) {
+    alert(username);
 }
 
 async function remove(username) {

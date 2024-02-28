@@ -33,12 +33,12 @@
 
             <div class="row  mb-4">
                 <label class="col form-label" for="l_receiver_title">Username</label>
-                <input id="l_receiver_title" class="col form-control" type="text" name="username">
+                <input id="l_receiver_title" class="col form-control" type="text" name="username" required>
             </div>
 
             <div class="row  mb-4">
                 <label class="col form-label" for="l_sender_name">Password</label>
-                <input id="l_sender_name" class="col form-control" type="text" name="password">
+                <input id="l_sender_name" class="col form-control" type="text" name="password" required>
             </div>
 
             <br><br><br>
@@ -88,15 +88,15 @@
                     <td>${profile.nationalCode}</td>
                     <td>${profile.gender}</td>
                     <td>${profile.role}</td>
-                    <td>
-                        <button class="btn btn-warning" onclick="edit(${letter.id})"><i class="fa fa-edit"></i>
-                            Edit
-                        </button>
-                        <button class="btn btn-danger" onclick="remove(${letter.id})"><i class="fa fa-remove"></i>
-                            Remove
-                        </button>
+<%--                    <td>--%>
+<%--                        <button class="btn btn-warning" onclick="edit(${letter.id})"><i class="fa fa-edit"></i>--%>
+<%--                            Edit--%>
+<%--                        </button>--%>
+<%--                        <button class="btn btn-danger" onclick="remove(${letter.id})"><i class="fa fa-remove"></i>--%>
+<%--                            Remove--%>
+<%--                        </button>--%>
 
-                    </td>
+<%--                    </td>--%>
                 </tr>
             </c:forEach>
             </tbody>

@@ -1,10 +1,12 @@
 package com.mftplus.letter.controller.servlet;
 
+import com.mftplus.letter.controller.exception.DuplicateUsernameException;
 import com.mftplus.letter.model.entity.Person;
 import com.mftplus.letter.model.entity.User;
 import com.mftplus.letter.model.entity.enums.Gender;
 import com.mftplus.letter.model.entity.enums.Role;
 import com.mftplus.letter.model.service.impl.PersonServiceImpl;
+import com.mftplus.letter.model.service.impl.ProfileDTOServiceImpl;
 import com.mftplus.letter.model.service.impl.UserServiceImpl;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
@@ -23,17 +25,15 @@ public class ProfileDTOServlet extends HttpServlet {
     @Inject
     private UserServiceImpl userService;
     @Inject
-    private User user;
-    @Inject
     private PersonServiceImpl personService;
-    @Inject
-    private Person person;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
+//            ProfileDTOServiceImpl profileDTOService = new ProfileDTOServiceImpl();
             req.getSession().setAttribute("genders", Arrays.asList(Gender.values()));
             req.getSession().setAttribute("roles", Arrays.asList(Role.values()));
+//            req.getSession().setAttribute("profileList", profileDTOService.findAll());
             req.getRequestDispatcher("/jsp/profile.jsp").forward(req, resp);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -51,7 +51,7 @@ public class ProfileDTOServlet extends HttpServlet {
             String password = req.getParameter("password");
             String role = req.getParameter("role");
 
-            person = Person
+            Person person = Person
                     .builder()
                     .name(name)
                     .family(family)
@@ -62,7 +62,7 @@ public class ProfileDTOServlet extends HttpServlet {
             personService.save(person);
             log.info("Person Saved");
 
-            user = User
+            User user = User
                     .builder()
                     .username(username)
                     .password(password)
@@ -73,7 +73,10 @@ public class ProfileDTOServlet extends HttpServlet {
             log.info("User Saved");
             resp.sendRedirect("/login.do");
 
-        } catch (Exception e) {
+        } catch (DuplicateUsernameException e){
+            resp.sendRedirect("jsp/duplicate.html");
+        }
+        catch (Exception e) {
             throw new RuntimeException(e);
         }
     }

@@ -17,12 +17,13 @@
 <form id="user_form" action="user.do" method="post">
     <div class="row  mb-4">
         <label class="col form-label" for="username">Username: </label>
-        <input id="username" class="col form-label" type="text" name="username">
+        <input id="username" class="col form-label" type="text" name="username" required>
+        <p style="color: red">${sessionScope.duplicateUsername}</p>
     </div>
 
     <div class="row  mb-4">
         <label class="col form-label" for="password">Password: </label>
-        <input id="password" class="col form-label" type="password" name="password">
+        <input id="password" class="col form-label" type="password" name="password" required>
     </div>
 
     <label for="role">Select Role: </label>
@@ -36,6 +37,7 @@
     <div class="row mb-4">
         <input type="submit" class="btn btn-primary" value="Save">
     </div>
+    <a href="login.do">Login</a>
 </form>
 </div>
 
@@ -56,8 +58,8 @@
             <td>${user.password}</td>
             <td>${user.role}</td>
             <td>
-                <button class="btn btn-warning" onclick="edit(${user.username})"><i class="fa fa-edit"></i>Edit</button>
-                <button class="btn btn-danger" onclick="remove(${user.username})"><i class="fa fa-remove"></i>Remove</button>
+                <button class="btn btn-warning" onclick="edit('${user.username}')"><i class="fa fa-edit"></i>Edit</button>
+                <button class="btn btn-danger" onclick="remove('${user.username}')"><i class="fa fa-remove"></i>Remove</button>
             </td>
         </tr>
     </c:forEach>
@@ -66,6 +68,8 @@
 </div>
 
 <jsp:include page="js-import.jsp"></jsp:include>
-<script src="../assets/js/user.js"></script>
+    <script src="../assets/js/user.js"></script>
+
+
 </body>
 </html>

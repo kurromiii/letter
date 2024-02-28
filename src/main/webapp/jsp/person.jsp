@@ -14,7 +14,7 @@
 <body>
 <div class="container-fluid">
     <div id="org-form">
-        <form id="person_form" action="/person.do" method="post">
+        <form id="person_form" action="person.do" method="post">
             <div class="row  mb-4">
                 <label class="col form-label" for="name">Name: </label>
                 <input id="name" class="col form-label" type="text" name="name">

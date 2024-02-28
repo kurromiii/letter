@@ -29,6 +29,8 @@
     <div class="row mb-4">
         <input type="submit" class="btn btn-primary" value="Login">
     </div>
+    <p style="color: red">${sessionScope.wrongUser}</p>
+    <a href="user.do">Register User</a>
 </form>
 </div>
 

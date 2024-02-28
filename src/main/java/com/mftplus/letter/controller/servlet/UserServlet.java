@@ -1,5 +1,6 @@
 package com.mftplus.letter.controller.servlet;
 
+import com.mftplus.letter.controller.exception.DuplicateUsernameException;
 import com.mftplus.letter.model.entity.User;
 import com.mftplus.letter.model.entity.enums.Role;
 import com.mftplus.letter.model.service.impl.UserServiceImpl;
@@ -49,10 +50,19 @@ public class UserServlet extends HttpServlet {
                    .role(Role.valueOf(role))
                    .deleted(false)
                    .build();
-            userService.save(user);
-            log.info("User Saved");
-            resp.sendRedirect("/user.do");
-        }catch (Exception e){
+           if (userService.findByUsername(username).isEmpty()){
+               userService.save(user);
+               log.info("User Saved");
+               resp.sendRedirect("/user.do");
+               req.getSession().removeAttribute("duplicateUsername");
+           }else {
+               resp.sendRedirect("/user.do");
+               String e = "Duplicate Username";
+               req.getSession().setAttribute("duplicateUsername",e);
+//               throw new DuplicateUsernameException("Duplicate Username");
+           }
+        }
+        catch (Exception e){
             log.info("User - POST : " + e.getMessage());
         }
     }

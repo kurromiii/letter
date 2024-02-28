@@ -32,7 +32,7 @@ public class User extends Base implements Serializable {
     @Column(name = "u_pass", length = 20)
     private String password;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Person person;
 
     @ManyToOne
