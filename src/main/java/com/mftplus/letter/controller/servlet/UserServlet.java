@@ -53,7 +53,7 @@ public class UserServlet extends HttpServlet {
            if (userService.findByUsername(username).isEmpty()){
                userService.save(user);
                log.info("User Saved");
-               resp.sendRedirect("/user.do");
+               resp.sendRedirect("/login.do");
                req.getSession().removeAttribute("duplicateUsername");
            }else {
                resp.sendRedirect("/user.do");

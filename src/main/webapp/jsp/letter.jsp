@@ -91,7 +91,7 @@
 
         <div class="row  mb-4">
             <label for="l_date">Date : </label>
-            <input type="text" id="l_date" name="l_date">
+            <input type="text" id="l_date" name="l_date" required>
         </div>
 <%--        <label for="user">bbbb</label><input type="text" name="user" id="user">--%>
 <%--        <input type="text" name="user" id="user">--%>
@@ -106,7 +106,7 @@
         </div>
 
     </form>
-    </div>dfhgfh
+    </div>
 
     <div id="org-table">
         <table class="table table-hover table-primary">

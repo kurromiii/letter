@@ -64,7 +64,7 @@ public class PersonServlet extends HttpServlet {
 
             personService.save(person);
             log.info("Person Saved");
-            resp.sendRedirect("person.do");
+            resp.sendRedirect("/user.do");
         } catch (Exception e) {
             log.info("Person - POST : " + e.getMessage());
         }

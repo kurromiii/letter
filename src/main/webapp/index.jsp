@@ -8,6 +8,8 @@
 <body>
 <h1>Home Page</h1>
 <br>
+<a href="organisation.do">organisation</a>
+<br><br>
 <a href="letter.do">Letter</a>
 <br><br>
 <a href="reference.do">Reference</a>
@@ -17,8 +19,6 @@
 <a href="user.do">user</a>
 <br><br>
 <a href="person.do">person</a>
-<br><br>
-<a href="organisation.do">organisation</a>
 <br><br>
 <a href="profile.do">profile</a>
 <br><br>

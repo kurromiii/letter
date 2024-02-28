@@ -53,7 +53,7 @@ public class OrganisationServlet extends HttpServlet {
 
             service.save(organisation);
             log.info("Organisation Save");
-            resp.sendRedirect("/organisation.do");
+            resp.sendRedirect("/person.do");
         } catch (Exception e) {
             log.info(e.getMessage());
             throw new RuntimeException(e);
