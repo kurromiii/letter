@@ -42,11 +42,11 @@ public class LetterServlet extends HttpServlet {
         log.info("LetterServlet - GET");
 
         try {
-            req.getSession().setAttribute("accessLevels", Arrays.asList(LetterAccessLevel.values()));
-            req.getSession().setAttribute("transferMethods", Arrays.asList(TransferMethod.values()));
-            req.getSession().setAttribute("letterTypes", Arrays.asList(LetterType.values()));
-            req.getSession().setAttribute("letterList", letterService.findAll());
-            req.getRequestDispatcher("/jsp/letter.jsp").forward(req, resp);
+                req.getSession().setAttribute("accessLevels", Arrays.asList(LetterAccessLevel.values()));
+                req.getSession().setAttribute("transferMethods", Arrays.asList(TransferMethod.values()));
+                req.getSession().setAttribute("letterTypes", Arrays.asList(LetterType.values()));
+                req.getSession().setAttribute("letterList", letterService.findAll());
+                req.getRequestDispatcher("/jsp/letter.jsp").forward(req, resp);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -89,9 +89,6 @@ public class LetterServlet extends HttpServlet {
                 Optional<User> user = userService.findByUsername(username);
                 if (user.isPresent()) {
 
-            //for register time
-//                    LocalDateTime localDateTime = LocalDateTime.now();
-
              Letter letter =
                     Letter
                             .builder()
@@ -116,7 +113,6 @@ public class LetterServlet extends HttpServlet {
             log.info("LetterServlet - Letter Saved");
             req.getSession().setAttribute("letterId",letter.getId());
             resp.sendRedirect("/letter.do?selectedLetter="+letter.getId());
-
                 }
 //            }
         } catch (Exception e) {
@@ -124,8 +120,6 @@ public class LetterServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
-
-
 }
 
 //todo indicator code

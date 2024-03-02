@@ -14,9 +14,9 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 public class Base {
-    @Version
-    @JsonbTransient
-    private  Long versionId;
+//    @Version
+//    @JsonbTransient
+//    private  Long versionId;
     @JsonbTransient
     private boolean deleted;
 }

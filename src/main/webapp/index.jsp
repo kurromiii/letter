@@ -4,24 +4,25 @@
 <html>
 <head>
   <title>Home</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/all.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/sidebar.css">
 </head>
 <body>
-<h1>Home Page</h1>
-<br>
-<a href="organisation.do">organisation</a>
-<br><br>
-<a href="letter.do">Letter</a>
-<br><br>
-<a href="reference.do">Reference</a>
-<br><br>
-<a href="login.do">login</a>
-<br><br>
-<a href="user.do">user</a>
-<br><br>
-<a href="person.do">person</a>
-<br><br>
-<a href="profile.do">profile</a>
-<br><br>
+<jsp:include page="./jsp/navbar.jsp"></jsp:include>
+
+<!-- Page content -->
+<div class="content">
+  <h2>Main Content</h2>
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci dicta fuga, maxime nisi officiis placeat quia quidem, repellat repellendus sapiente soluta vel velit. Aspernatur culpa est nesciunt quidem voluptatem!
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci dicta fuga, maxime nisi officiis placeat quia quidem, repellat repellendus sapiente soluta vel velit. Aspernatur culpa est nesciunt quidem voluptatem!
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci dicta fuga, maxime nisi officiis placeat quia quidem, repellat repellendus sapiente soluta vel velit. Aspernatur culpa est nesciunt quidem voluptatem!
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci dicta fuga, maxime nisi officiis placeat quia quidem, repellat repellendus sapiente soluta vel velit. Aspernatur culpa est nesciunt quidem voluptatem!
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci dicta fuga, maxime nisi officiis placeat quia quidem, repellat repellendus sapiente soluta vel velit. Aspernatur culpa est nesciunt quidem voluptatem!
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci dicta fuga, maxime nisi officiis placeat quia quidem, repellat repellendus sapiente soluta vel velit. Aspernatur culpa est nesciunt quidem voluptatem!
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci dicta fuga, maxime nisi officiis placeat quia quidem, repellat repellendus sapiente soluta vel velit. Aspernatur culpa est nesciunt quidem voluptatem!
+</div>
 
 <br>
 </body>

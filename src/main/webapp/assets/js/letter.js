@@ -1,6 +1,6 @@
-function edit(id) {
-    alert(id);
-}
+// function edit(id) {
+//     document.location.replace("/letterEdit.do?id=" + id);
+// }
 
 async function remove(id) {
     alert(id);
