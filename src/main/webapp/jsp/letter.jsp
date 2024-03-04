@@ -23,6 +23,12 @@
         <h1>Write Letter</h1>
         <br>
         <div class="row  mb-4 w-100">
+            <label class="col form-label" for="username">username</label>
+            <input id="username" class="col form-control" type="text" name="username" value="${sessionScope.username}">
+        </div>
+        <p style="color: red">${sessionScope.notLoggedIn}</p>
+
+        <div class="row  mb-4 w-100">
             <label class="col form-label" for="l_title">Title</label>
             <input id="l_title" class="col form-control" type="text" name="l_title">
         </div>
@@ -102,6 +108,7 @@
         <div class="row mb-4">
         <a href="reference.do?letterIdRef=${param.selectedLetter}">Reference</a>
         </div>
+        <a href="letterFind.do">find</a>
 
     </form>
     </div>
