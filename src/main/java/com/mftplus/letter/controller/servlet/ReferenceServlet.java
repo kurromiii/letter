@@ -29,8 +29,7 @@ public class ReferenceServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        log.info("ReferenceServlet - GET");
-
+        log.info("ReferenceServlet - Get");
         try {
             req.getSession().setAttribute("refTypes", Arrays.asList(ReferenceType.values()));
             req.getSession().setAttribute("priorities", Arrays.asList(ReferencePriority.values()));
@@ -38,6 +37,7 @@ public class ReferenceServlet extends HttpServlet {
             req.getSession().setAttribute("letterIdRef",req.getParameter("letterIdRef"));
             req.getRequestDispatcher("/jsp/reference.jsp").forward(req, resp);
         } catch (Exception e) {
+            log.error(e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -80,9 +80,8 @@ public class ReferenceServlet extends HttpServlet {
                 resp.sendRedirect("/reference.do");
                 }
             }
-
         } catch (Exception e) {
-            log.info(e.getMessage());
+            log.error(e.getMessage());
             throw new RuntimeException(e);
         }
     }

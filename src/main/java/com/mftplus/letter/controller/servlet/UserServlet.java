@@ -27,17 +27,20 @@ public class UserServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        log.info("UserServlet - Get");
         try {
             req.getSession().setAttribute("roles", Arrays.asList(Role.values()));
             req.getSession().setAttribute("userList", userService.findAll());
             req.getRequestDispatcher("/jsp/user.jsp").forward(req, resp);
         } catch (Exception e) {
-            log.info("User - Get : " + e.getMessage());
+            log.error("User - Get : " + e.getMessage());
+            throw new RuntimeException(e);
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        log.info("UserServlet - Post");
         try {
             String username = req.getParameter("username");
             String password = req.getParameter("password");
@@ -63,7 +66,8 @@ public class UserServlet extends HttpServlet {
            }
         }
         catch (Exception e){
-            log.info("User - POST : " + e.getMessage());
+            log.error("User - POST : " + e.getMessage());
+            throw new RuntimeException(e);
         }
     }
 

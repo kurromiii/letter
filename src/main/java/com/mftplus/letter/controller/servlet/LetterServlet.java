@@ -48,6 +48,7 @@ public class LetterServlet extends HttpServlet {
                 req.getSession().setAttribute("letterList", letterService.findAll());
                 req.getRequestDispatcher("/jsp/letter.jsp").forward(req, resp);
         } catch (Exception e) {
+            log.error(e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -84,11 +85,10 @@ public class LetterServlet extends HttpServlet {
                 resp.getWriter().print("The file uploaded successfully.");
             }
             //verify
-//            if (context != null){
+            if (username != null){
 //            using username session to find user
                 Optional<User> user = userService.findByUsername(username);
                 if (user.isPresent()) {
-
              Letter letter =
                     Letter
                             .builder()
@@ -114,7 +114,11 @@ public class LetterServlet extends HttpServlet {
             req.getSession().setAttribute("letterId",letter.getId());
             resp.sendRedirect("/letter.do?selectedLetter="+letter.getId());
                 }
-//            }
+            }else {
+                resp.sendRedirect("/letter.do");
+                String e = "Not Logged In";
+                req.getSession().setAttribute("notLoggedIn",e);
+            }
         } catch (Exception e) {
             log.error(e.getMessage());
             throw new RuntimeException(e);

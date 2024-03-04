@@ -37,6 +37,7 @@ public class LetterEditServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        log.info("LetterEditServlet - Get");
         try {
             if (req.getParameter("id") == null) {
                 resp.sendRedirect("/letter.do");
@@ -46,7 +47,7 @@ public class LetterEditServlet extends HttpServlet {
                 if (letter.isPresent()) {
                     req.getSession().setAttribute("letter", letter.get());
                 }else {
-                    System.out.println("error");
+                    log.error("letter not present");
                 }
                 req.getSession().setAttribute("accessLevels", Arrays.asList(LetterAccessLevel.values()));
                 req.getSession().setAttribute("transferMethods", Arrays.asList(TransferMethod.values()));
@@ -54,14 +55,15 @@ public class LetterEditServlet extends HttpServlet {
                 req.getRequestDispatcher("/jsp/editLetter.jsp").forward(req,resp);
             }
         } catch (Exception e) {
+            log.error(e.getMessage());
             throw new RuntimeException(e);
         }
     }
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        log.info("LetterEditServlet - put");
         try {
-            log.info("letterEditServlet - put");
             long id = Integer.parseInt(req.getParameter("id"));
             System.out.println("id" + id);
             String title = req.getParameter("l_title");

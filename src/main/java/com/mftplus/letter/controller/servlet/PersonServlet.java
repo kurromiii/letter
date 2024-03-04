@@ -30,12 +30,14 @@ public class PersonServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        log.info("PersonServlet - Get");
         try {
             req.getSession().setAttribute("genders", Arrays.asList(Gender.values()));
             req.getSession().setAttribute("personList", personService.findAll());
             req.getRequestDispatcher("/jsp/person.jsp").forward(req, resp);
         } catch (Exception e) {
-            log.info("Person - GET : " + e.getMessage());
+            log.error("Person - GET : " + e.getMessage());
+            throw new RuntimeException(e);
         }
     }
 
@@ -66,7 +68,8 @@ public class PersonServlet extends HttpServlet {
             log.info("Person Saved");
             resp.sendRedirect("/user.do");
         } catch (Exception e) {
-            log.info("Person - POST : " + e.getMessage());
+            log.error("Person - POST : " + e.getMessage());
+            throw new RuntimeException(e);
         }
     }
 

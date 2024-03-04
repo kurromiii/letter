@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.nio.file.AccessDeniedException;
 
 @Slf4j
 @WebServlet(urlPatterns = "/login.do")
@@ -21,15 +20,18 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        log.info("LoginServlet - Get");
         try {
             req.getRequestDispatcher("/jsp/login.jsp").forward(req, resp);
         } catch (Exception e) {
+            log.error(e.getMessage());
             throw new RuntimeException(e);
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        log.info("LoginServlet - Post");
         try {
             String username = req.getParameter("username");
             String password = req.getParameter("password");

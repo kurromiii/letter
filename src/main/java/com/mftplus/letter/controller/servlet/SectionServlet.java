@@ -25,12 +25,14 @@ public class SectionServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        log.info("SectionServlet - Get");
         try {
             /*req.getSession().setAttribute("org", organisationService.findByName());*/
             req.getSession().setAttribute("sectionList", service.findAll());
             req.getRequestDispatcher("/jsp/section.jsp").forward(req,resp);
 
         } catch (Exception e) {
+            log.error(e.getMessage());
             throw new RuntimeException(e);
         }
     }
