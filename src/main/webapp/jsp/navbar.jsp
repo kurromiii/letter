@@ -29,7 +29,7 @@
     <a href="letter.do">Letter</a>
     <a href="reference.do">Reference</a>
 
-    <a href="#">Attach</a>
+    <a href="attach.do">Attach</a>
     <a href="#">Bank</a>
     <a href="#">CardPayment</a>
     <a href="#">CashDesk</a>
