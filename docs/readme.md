@@ -2,8 +2,6 @@
 
 - copy ojdbc11 driver in webapp/WEB-INF/lib @ {tomee_dir}/lib
 
-- create uer_tbl & user_rol tables in database
-
 - setup resource in {tomee_dir}/conf/tomee.xml (jta)
 
         <Resource id = "jdbc/JtaDataSource" type = "javax.sql.DataSource">
