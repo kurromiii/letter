@@ -17,11 +17,13 @@ import java.io.Serializable;
 
 @Entity(name = "userRolesEntity")
 @Table(name = "user_roles")
+@IdClass(CompositeKey.class)
 public class Roles extends Base implements Serializable {
     @Id
     @Column(name = "role_name")
     private String roleName;
 
+    @Id
     @ManyToOne
     @JoinColumn(name = "u_username")
     private User user;
