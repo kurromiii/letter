@@ -21,12 +21,12 @@ import java.time.format.DateTimeFormatter;
 @ToString
 
 @Entity(name = "referenceEntity")
-@Table(name = "refrence_tbl")
+@Table(name = "reference_tbl")
 
 public class Reference extends Base implements Serializable {
     @Id
-    @SequenceGenerator(name = "letterSeq", sequenceName = "letter_seq",allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "letterSeq")
+    @SequenceGenerator(name = "referenceSeq", sequenceName = "reference_seq",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "referenceSeq")
     @Column (name = "r_Id")
     private long id;
 
@@ -39,10 +39,12 @@ public class Reference extends Base implements Serializable {
     @Enumerated (EnumType.ORDINAL)
     private ReferencePriority priority;
 
-    @ManyToOne (cascade = {CascadeType.MERGE , CascadeType.PERSIST})
+    @ManyToOne
+    @JoinColumn(name = "reference_sender")
     private User referenceSenderId;
 
-    @ManyToOne (cascade = {CascadeType.MERGE , CascadeType.PERSIST})
+    @ManyToOne
+    @JoinColumn(name = "reference_receiver")
     private User referenceReceiverId;
 
     @Column (name = "r_date_and_time")

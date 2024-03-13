@@ -8,3 +8,13 @@
     width: 60%;
     margin: auto;
 }
+.person-ref:hover{
+    background-color: #ababab;
+
+}
+#person-ref-list{
+    max-height:200px;
+    overflow: hidden;
+    overflow-y: scroll;
+    z-index: 10;
+}

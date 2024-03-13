@@ -22,11 +22,11 @@
     <form id="letter_form" method="post" action="letter.do" enctype="multipart/form-data">
         <h1>Write Letter</h1>
         <br>
-        <div class="row  mb-4 w-100">
-            <label class="col form-label" for="username">username</label>
-            <input id="username" class="col form-control" type="text" name="username" value="${sessionScope.username}">
-        </div>
-        <p style="color: red">${sessionScope.notLoggedIn}</p>
+<%--        <div class="row  mb-4 w-100">--%>
+<%--            <label class="col form-label" for="username">username</label>--%>
+<%--            <input id="username" class="col form-control" type="text" name="username" value="${sessionScope.username}">--%>
+<%--        </div>--%>
+<%--        <p style="color: red">${sessionScope.notLoggedIn}</p>--%>
 
         <div class="row  mb-4 w-100">
             <label class="col form-label" for="l_title">Title</label>
@@ -71,7 +71,7 @@
             <div id="file-msg error">${sessionScope.error}</div>
         </div>
         <br><br><br>
-        <div class="row  mb-4">
+        <div class="row  mb-3">
             <label for="accessLevel">Select AccessLevel: </label>
             <select name="accessLevel" id="accessLevel">
                 <c:forEach var="accessLevel" items="${sessionScope.accessLevels}">
@@ -79,7 +79,7 @@
                 </c:forEach>
             </select>
         </div>
-        <div class="row  mb-4">
+        <div class="row  mb-3">
             <label for="transferMethod">Select Transfer Method: </label>
             <select name="transferMethod" id="transferMethod">
                 <c:forEach var="transferMethod" items="${sessionScope.transferMethods}">
@@ -87,7 +87,7 @@
                 </c:forEach>
             </select>
         </div>
-        <div class="row  mb-4">
+        <div class="row  mb-3">
             <label for="letterType">Select Letter Type: </label>
             <select name="letterType" id="letterType">
                 <c:forEach var="letterType" items="${sessionScope.letterTypes}">
@@ -101,7 +101,7 @@
             <input type="text" id="l_date" name="l_date" required>
         </div>
 
-        <div class="row mb-4">
+        <div class="row mb-3">
             <input type="submit" class="btn btn-primary" value="Save">
         </div>
 

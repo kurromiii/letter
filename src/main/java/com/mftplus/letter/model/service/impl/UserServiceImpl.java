@@ -103,4 +103,12 @@ public class UserServiceImpl implements UserService, Serializable {
         TypedQuery<User> query = entityManager.createQuery("select u from userEntity u", User.class);
         return query.getResultList();
     }
+
+    @Transactional
+    @Override
+    public List<User> findUserByIds(List<String> userList) throws Exception {
+        TypedQuery<User> query = entityManager.createQuery("select oo from userEntity oo where oo.username in (:userList)", User.class);
+        query.setParameter(userList.toString(),"userList");
+        return query.getResultList();
+    }
 }

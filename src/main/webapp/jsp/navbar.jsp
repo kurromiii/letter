@@ -12,10 +12,13 @@
                     <a class="nav-link" href="../index.jsp">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.do">Login</a>
+                    <a class="nav-link" href="../login.jsp">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../index.jsp">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../logout.jsp">Log Out</a>
                 </li>
             </ul>
         </div>

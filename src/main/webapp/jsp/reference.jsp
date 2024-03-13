@@ -76,6 +76,22 @@
                 <input type="text" id="r_expiration" name="r_expiration">
             </div>
             <br><br>
+
+<%--            RefReceivers--%>
+            <div class=" row ">
+                <label>references: </label>
+                <div class="position-relative">
+                    <div class="col-12 position-relative">
+                        <input class="col-12" oninput="getReferences()" type="text"/>
+                        <div   id="person-ref-list" class="border col-12" style="position: absolute;">
+
+                        </div>
+                    </div>
+                </div>
+                <div id="selected-list" class="col-5 row ">
+                </div>
+            </div>
+
             <div class="row mb-4">
                 <input type="submit" class="btn btn-primary" value="Save">
             </div>
@@ -128,6 +144,7 @@
 <jsp:include page="js-import.jsp"></jsp:include>
 
 <script src="../assets/js/reference.js"></script>
+<script src="../assets/js/referenceInput.js"></script>
 
 <script src="../assets/js/jquery-3.2.1.min.js"></script>
 <script src="../assets/js/persian-date.min.js"></script>

@@ -1,7 +1,6 @@
 package com.mftplus.letter.controller.servlet;
 
 import com.mftplus.letter.model.entity.Letter;
-import com.mftplus.letter.model.entity.User;
 import com.mftplus.letter.model.entity.enums.LetterAccessLevel;
 import com.mftplus.letter.model.entity.enums.LetterType;
 import com.mftplus.letter.model.entity.enums.TransferMethod;
@@ -14,7 +13,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.Part;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -52,7 +50,7 @@ public class LetterEditServlet extends HttpServlet {
                 req.getSession().setAttribute("accessLevels", Arrays.asList(LetterAccessLevel.values()));
                 req.getSession().setAttribute("transferMethods", Arrays.asList(TransferMethod.values()));
                 req.getSession().setAttribute("letterTypes", Arrays.asList(LetterType.values()));
-                req.getRequestDispatcher("/jsp/editLetter.jsp").forward(req,resp);
+                req.getRequestDispatcher("/jsp/edit-letter.jsp").forward(req,resp);
             }
         } catch (Exception e) {
             log.error(e.getMessage());
@@ -79,7 +77,7 @@ public class LetterEditServlet extends HttpServlet {
             String letterType = req.getParameter("letterType");
 
             //getting username from session
-            String username = req.getSession().getAttribute("username").toString();
+//            String username = req.getSession().getAttribute("username").toString();
 
             //for uploading letter image
 //            String fileName = null;
@@ -94,13 +92,13 @@ public class LetterEditServlet extends HttpServlet {
 
 
             //using username session to find user
-            Optional<User> user = userService.findByUsername(username);
-            if (user.isPresent()) {
+//            Optional<User> user = userService.findByUsername(username);
+//            if (user.isPresent()) {
                 Letter letter =
                         Letter
                                 .builder()
                                 .id(id)
-                                .user(user.get())
+//                                .user(user.get())
                                 .title(title)
                                 .letterNumber(letterNumber)
                                 .context(context)
@@ -121,7 +119,7 @@ public class LetterEditServlet extends HttpServlet {
                 letterService.edit(letter);
                 log.info("LetterEditServlet - Letter Edited");
                 resp.sendRedirect("/letter.do");
-            }
+//            }
         } catch (Exception e) {
             log.error(e.getMessage());
             throw new RuntimeException(e);

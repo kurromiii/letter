@@ -77,6 +77,15 @@ public class PersonServiceImpl implements PersonService, Serializable {
 
     @Transactional
     @Override
+    public List<Person> findByNameAndFamily(String name, String family) throws Exception {
+        TypedQuery<Person> query = entityManager.createQuery("select oo from personEntity oo where oo.name=:name and oo.family=:family", Person.class);
+        query.setParameter(name,"name");
+        query.setParameter(family,"family");
+        return query.getResultList();
+    }
+
+    @Transactional
+    @Override
     public Optional<Person> findByNationalCode(String code) throws Exception {
         return Optional.ofNullable(entityManager.find(Person.class, code));
     }

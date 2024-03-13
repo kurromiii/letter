@@ -8,8 +8,9 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.poi.xwpf.usermodel.*;
 
-import java.io.Serializable;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -24,7 +25,7 @@ public class LetterServiceImpl implements LetterService, Serializable {
     @Transactional
     @Override
     public void save(Letter letter) throws Exception {
-        log.info("letter saved");
+        log.info("LetterService - save");
         entityManager.persist(letter);
     }
 
@@ -116,6 +117,30 @@ public class LetterServiceImpl implements LetterService, Serializable {
         TypedQuery<Letter> query = entityManager.createQuery("select oo from letterEntity oo where oo.user.section=:sectionId", Letter.class);
         query.setParameter(String.valueOf(sectionId),"sectionId");
         return query.getResultList();
+    }
+
+    public void pdfText() throws IOException {
+        XWPFDocument xwpfDocument = new XWPFDocument(new FileInputStream(
+                new File("/")
+        ));
+        xwpfDocument.getBodyElements();
+        for (IBodyElement bodyElement : xwpfDocument.getBodyElements()) {
+            if(bodyElement instanceof XWPFParagraph){
+                XWPFParagraph para=(XWPFParagraph) bodyElement;
+                System.out.println(para.getText());
+            } else if (bodyElement instanceof XWPFTable) {
+                XWPFTable table=(XWPFTable) bodyElement;
+                System.out.println(table.getText());
+                List<XWPFTableRow> rowList = table.getRows();
+                for (XWPFTableRow row:
+                        rowList
+                ) {
+
+
+                }
+
+            }
+        }
     }
 
 }

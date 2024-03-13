@@ -3,7 +3,6 @@ package com.mftplus.letter.model.entity;
 import com.mftplus.letter.model.entity.enums.Role;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +10,7 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Getter
 @Setter
@@ -25,11 +25,11 @@ public class User extends Base implements Serializable {
     //id is set as username because username must be unique like id
     @Id
 //    @Pattern(regexp = "^[a-zA-Z\\s]{5,15}$", message = "Invalid Username")
-    @Column(name = "u_username")
+    @Column(name = "u_username", length = 15)
     private String username;
 
 //    @Pattern(regexp = "^[a-zA-Z\\s]{8,20}$", message = "Invalid Password")
-    @Column(name = "u_pass", length = 20)
+    @Column(name = "u_password", length = 20)
     private String password;
 
     @OneToOne
@@ -43,4 +43,7 @@ public class User extends Base implements Serializable {
 
     @Enumerated(EnumType.ORDINAL)
     private Role role;
+
+    @OneToMany(mappedBy = "user")
+    private List<Roles> roles;
 }
