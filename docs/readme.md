@@ -9,8 +9,8 @@
         <Resource id = "jdbc/JtaDataSource" type = "javax.sql.DataSource">
         jdbcDriver = oracle.jdbc.driver.OracleDriver
         jdbcUrl = jdbc:oracle:thin:@localhost:1521:xe
-        username = login
-        password = login
+        username =
+        password = 
         jtaManaged = true
         maxIdle = 20
         minIdle = 5
@@ -19,8 +19,8 @@
         <Resource id = "jdbc/NonJtaDataSource" type = "javax.sql.DataSource">
         jdbcDriver = oracle.jdbc.driver.OracleDriver
         jdbcUrl = jdbc:oracle:thin:@localhost:1521:xe
-        username = login
-        password = login
+        username =
+        password = 
         jtaManaged = false
         maxIdle = 20
         minIdle = 5
