@@ -20,6 +20,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../logout.jsp">Log Out</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../roles.jsp">Roles</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -31,6 +34,7 @@
     <a href="user.do">User</a>
     <a href="letter.do">Letter</a>
     <a href="reference.do">Reference</a>
+    <a href="roles.do">Roles</a>
 
     <a href="attach.do">Attach</a>
     <a href="#">Bank</a>

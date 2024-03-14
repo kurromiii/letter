@@ -17,14 +17,21 @@ import java.io.Serializable;
 
 @Entity(name = "userRolesEntity")
 @Table(name = "user_roles")
-@IdClass(CompositeKey.class)
-public class Roles extends Base implements Serializable {
-    @Id
-    @Column(name = "role_name")
-    private String roleName;
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "u_username")
-    private User user;
+public class Roles extends Base implements Serializable {
+//    @Id
+//    @SequenceGenerator(name = "roleSeq", sequenceName = "role_seq",allocationSize = 1)
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "roleSeq")
+//    @Column (name = "r_Id")
+//    private long id;
+//    @Id
+//    @Column(name = "role_name")
+//    private String roleName;
+//
+//    @Id
+//    @ManyToOne
+//    @JoinColumn(name = "u_username")
+//    private User user;
+    @EmbeddedId
+    private CompositeKey compositeKey;
 }

@@ -44,6 +44,7 @@ public class User extends Base implements Serializable {
     @Enumerated(EnumType.ORDINAL)
     private Role role;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(cascade = CascadeType.PERSIST)
+    @ToString.Exclude
     private List<Roles> roles;
 }

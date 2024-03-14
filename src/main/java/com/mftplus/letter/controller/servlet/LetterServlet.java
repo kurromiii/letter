@@ -87,7 +87,6 @@ public class LetterServlet extends HttpServlet {
             }
 //            verify
             if (username != null){
-//            using username session to find user
                 Optional<User> user = userService.findByUsername(username);
                 if (user.isPresent()) {
              Letter letter =

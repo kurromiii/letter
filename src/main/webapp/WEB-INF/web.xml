@@ -7,7 +7,7 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>admin</web-resource-name>
-            <url-pattern>/organization.do</url-pattern>
+            <url-pattern>/organisation.do</url-pattern>
             <url-pattern>/user.do</url-pattern>
             <http-method>GET</http-method>
             <http-method>POST</http-method>
@@ -22,7 +22,7 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>manager</web-resource-name>
-            <url-pattern>/organization.do</url-pattern>
+            <url-pattern>/organisation.do</url-pattern>
             <url-pattern>/user.do</url-pattern>
             <http-method>GET</http-method>
             <http-method>POST</http-method>
