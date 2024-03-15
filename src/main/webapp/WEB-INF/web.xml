@@ -4,11 +4,16 @@
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
 
+    <welcome-file-list>
+        <welcome-file>/</welcome-file>
+    </welcome-file-list>
+
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>admin</web-resource-name>
             <url-pattern>/organisation.do</url-pattern>
             <url-pattern>/user.do</url-pattern>
+            <url-pattern>/letter.do</url-pattern>
             <http-method>GET</http-method>
             <http-method>POST</http-method>
             <http-method>PUT</http-method>

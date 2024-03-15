@@ -4,13 +4,13 @@
 <html>
 <head>
   <title>Home</title>
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/all.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/sidebar.css">
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/all.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/sidebar.css">
 </head>
 <body>
-<jsp:include page="./jsp/navbar.jsp"></jsp:include>
+<jsp:include page="../jsp/navbar.jsp"></jsp:include>
 
 <!-- Page content -->
 <div class="content">
