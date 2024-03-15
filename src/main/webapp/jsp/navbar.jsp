@@ -9,13 +9,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="../jsp/index.jsp">Home</a>
+                    <a class="nav-link" href="../">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../login.jsp">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../jsp/index.jsp">About Us</a>
+                    <a class="nav-link" href="../">About Us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../logout.jsp">Log Out</a>
