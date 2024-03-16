@@ -28,6 +28,8 @@ public class RolesServlet extends HttpServlet {
         log.info("RolesServlet - Get");
 
         try {
+            //todo
+//            req.getSession().setAttribute("roleTypes", Arrays.asList(Role.values()));
             req.getSession().setAttribute("rolesList", rolesService.findAll());
             req.getRequestDispatcher("/roles.jsp").forward(req, resp);
         } catch (Exception e) {
@@ -54,7 +56,7 @@ public class RolesServlet extends HttpServlet {
                                     .roleName(roleName)
                                     .user(user.get())
                                     .build();
-
+                    System.out.println(compositeKey);
                     Roles role =
                             Roles
                                     .builder()

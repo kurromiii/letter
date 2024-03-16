@@ -1,7 +1,6 @@
 #org-form{
-    width: 20%;
-    margin: auto;
-    margin-bottom: 50px;
+    width: 25%;
+    margin: auto auto 50px;
 }
 
 #org-table{
@@ -16,5 +15,4 @@
     max-height:200px;
     overflow: hidden;
     overflow-y: scroll;
-    z-index: 10;
 }
