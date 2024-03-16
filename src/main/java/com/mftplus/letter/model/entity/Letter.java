@@ -72,9 +72,6 @@ public class Letter extends Base implements Serializable {
     @Column (name = "l_file")
     private String image;
 
-//    @OneToMany
-//    private List<Attach> attach;
-
     @Enumerated (EnumType.ORDINAL)
     private LetterAccessLevel accessLevel;
 
