@@ -9,10 +9,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <jsp:include page="jsp/css-import.jsp"></jsp:include>
     <link rel="stylesheet" href="assets/css/user.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/all.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/sidebar.css">
 </head>
 <body>
 <jsp:include page="jsp/navbar.jsp"></jsp:include>
@@ -26,6 +22,14 @@
                 <label class="col form-label" for="roleName">Role Name: </label>
                 <input id="roleName" class="col form-label" type="text" name="roleName">
             </div>
+
+<%--            <label for="role">Select Role: </label>--%>
+<%--            <select name="role" id="role">--%>
+<%--                <c:forEach var="role" items="${sessionScope.roleTypes}">--%>
+<%--                    <option value="${role}">${role}</option>--%>
+<%--                </c:forEach>--%>
+<%--            </select>--%>
+<%--            <br><br>--%>
 
             <div class="row  mb-4">
                 <label class="col form-label" for="username">Username: </label>

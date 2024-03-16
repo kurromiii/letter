@@ -10,9 +10,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <jsp:include page="css-import.jsp"></jsp:include>
     <link rel="stylesheet" href="../assets/css/reference.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/all.css">
-    <link rel="stylesheet" href="../assets/css/sidebar.css">
 </head>
 <body>
 <jsp:include page="../jsp/navbar.jsp"></jsp:include>
@@ -84,7 +81,6 @@
                     <div class="col-12 position-relative">
                         <input class="col-12" oninput="getReferences()" type="text"/>
                         <div   id="person-ref-list" class="border col-12" style="position: absolute;">
-
                         </div>
                     </div>
                 </div>

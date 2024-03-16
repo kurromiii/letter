@@ -10,9 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <jsp:include page="css-import.jsp"></jsp:include>
     <link rel="stylesheet" href="../assets/css/letter.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/all.css">
-    <link rel="stylesheet" href="../assets/css/sidebar.css">
+
 </head>
 <body>
 <jsp:include page="../jsp/navbar.jsp"></jsp:include>
@@ -24,9 +22,8 @@
         <br>
 <%--        <div class="row  mb-4 w-100">--%>
 <%--            <label class="col form-label" for="username">username</label>--%>
-<%--            <input id="username" class="col form-control" type="text" name="username" value="${sessionScope.username}">--%>
+<%--            <input id="username" class="col form-control" type="text" name="username" value="${}">--%>
 <%--        </div>--%>
-<%--        <p style="color: red">${sessionScope.notLoggedIn}</p>--%>
 
         <div class="row  mb-4 w-100">
             <label class="col form-label" for="l_title">Title</label>
@@ -105,6 +102,8 @@
             <input type="submit" class="btn btn-primary" value="Save">
         </div>
 
+<%--        <a href="attach.do">File Upload</a>--%>
+
         <div class="row mb-4">
         <a href="reference.do?letterIdRef=${param.selectedLetter}">Reference</a>
         </div>
@@ -130,6 +129,7 @@
                 <th>Transfer Method</th>
                 <th>file</th>
                 <th>user</th>
+<%--                <th>attach</th>--%>
                 <th>operation</th>
             </tr>
         </thead>
@@ -149,6 +149,7 @@
             <td>${letter.transferMethod}</td>
             <td>${letter.image}</td>
             <td>${letter.user.username}</td>
+<%--            <td>${letter.attach.letter}</td>--%>
             <td>
                 <button class="btn btn-warning" onclick="edit(${letter.id})"><i class="fa fa-edit"></i>
                     Edit
