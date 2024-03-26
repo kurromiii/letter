@@ -20,10 +20,10 @@
     <form id="letter_form" method="post" action="letter.do" enctype="multipart/form-data">
         <h1>Write Letter</h1>
         <br>
-<%--        <div class="row  mb-4 w-100">--%>
-<%--            <label class="col form-label" for="username">username</label>--%>
-<%--            <input id="username" class="col form-control" type="text" name="username" value="${}">--%>
-<%--        </div>--%>
+        <div class="row  mb-4 w-100">
+            <label class="col form-label" for="username">username</label>
+            <input id="username" class="col form-control" type="text" name="username" value="${sessionScope.user}" readonly required>
+        </div>
 
         <div class="row  mb-4 w-100">
             <label class="col form-label" for="l_title">Title</label>

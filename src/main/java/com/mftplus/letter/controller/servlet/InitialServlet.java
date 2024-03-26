@@ -3,12 +3,10 @@ package com.mftplus.letter.controller.servlet;
 import com.mftplus.letter.model.entity.CompositeKey;
 import com.mftplus.letter.model.entity.Roles;
 import com.mftplus.letter.model.entity.User;
-import com.mftplus.letter.model.entity.enums.Role;
 import com.mftplus.letter.model.service.impl.RolesServiceImpl;
 import com.mftplus.letter.model.service.impl.UserServiceImpl;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -47,6 +45,7 @@ public class InitialServlet extends HttpServlet {
                             .builder()
                             .username("admin")
                             .password("admin123")
+                            .deleted(false)
                             .build();
             if (userService.findByUsername("admin").isEmpty()){
             userService.save(user);
@@ -62,10 +61,39 @@ public class InitialServlet extends HttpServlet {
                     Roles
                             .builder()
                             .compositeKey(compositeKey)
+                            .deleted(false)
                             .build();
             if (rolesService.findById(compositeKey).isEmpty()){
                rolesService.save(role);
                log.info("admin role saved");
+            }
+
+            User user1 =
+                    User
+                            .builder()
+                            .username("user")
+                            .password("user123")
+                            .deleted(false)
+                            .build();
+            if (userService.findByUsername("user").isEmpty()){
+                userService.save(user1);
+                log.info("user saved");
+            }
+            CompositeKey compositeKey1 =
+                    CompositeKey
+                            .builder()
+                            .roleName("user")
+                            .user(user1)
+                            .build();
+            Roles role1 =
+                    Roles
+                            .builder()
+                            .compositeKey(compositeKey1)
+                            .deleted(false)
+                            .build();
+            if (rolesService.findById(compositeKey1).isEmpty()){
+                rolesService.save(role1);
+                log.info("user role saved");
             }
 
         } catch (Exception e) {
@@ -73,51 +101,4 @@ public class InitialServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
-
-
-//    @Override
-//    public void contextInitialized(ServletContextEvent sce) {
-//
-//        log.info("start");
-//        try {
-//            log.info("kos shere sathe bala");
-//            User user =
-//                    User
-//                            .builder()
-//                            .username("admin")
-//                            .password("admin123")
-//                            .build();
-//            log.info("part2");
-//            UserServiceImpl userService = new UserServiceImpl();
-//            log.info("part3");
-//            if (userService.findByUsername("admin").isEmpty()) {
-//                userService.save(user);
-//                log.info("admin user saved");
-//            }
-//            log.info("part4");
-//            CompositeKey compositeKey =
-//                    CompositeKey
-//                            .builder()
-//                            .roleName("admin")
-//                            .user(user)
-//                            .build();
-//            log.info("part5");
-//            Roles role =
-//                    Roles
-//                            .builder()
-//                            .compositeKey(compositeKey)
-//                            .build();
-//            RolesServiceImpl rolesService = new RolesServiceImpl();
-//            if (rolesService.findById(compositeKey).isEmpty()) {
-//                rolesService.save(role);
-//                log.info("admin role saved");
-//            }
-//
-//        } catch (Exception e) {
-//            log.error(e.getMessage());
-//            System.out.println(e);
-//            throw new RuntimeException(e);
-//        }
-//        ServletContextListener.super.contextInitialized(sce);
-//    }
 }

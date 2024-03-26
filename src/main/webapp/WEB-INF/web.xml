@@ -34,6 +34,7 @@
             <url-pattern>/organisation.do</url-pattern>
             <url-pattern>/user.do</url-pattern>
             <url-pattern>/letter.do</url-pattern>
+            <url-pattern>/reference.do</url-pattern>
             <http-method>GET</http-method>
             <http-method>POST</http-method>
             <http-method>PUT</http-method>
@@ -63,8 +64,9 @@
         <web-resource-collection>
             <web-resource-name>user</web-resource-name>
             <url-pattern>/letter.do</url-pattern>
-<!--            <url-pattern>/reference.do</url-pattern>-->
+            <url-pattern>/reference.do</url-pattern>
             <url-pattern>/person.do</url-pattern>
+            <url-pattern>/user.do</url-pattern>
             <http-method>GET</http-method>
             <http-method>POST</http-method>
             <http-method>PUT</http-method>

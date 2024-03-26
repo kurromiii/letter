@@ -12,9 +12,6 @@
                     <a class="nav-link" href="../">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../login.jsp">Login</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="../">About Us</a>
                 </li>
                 <li class="nav-item">
@@ -34,7 +31,6 @@
     <a href="user.do">User</a>
     <a href="letter.do">Letter</a>
     <a href="reference.do">Reference</a>
-    <a href="roles.do">Roles</a>
 
     <a href="attach.do">Attach</a>
     <a href="#">Bank</a>
@@ -47,4 +43,7 @@
     <a href="#">StuffStorage</a>
     <a href="#">StuffTransaction</a>
 </div>
-
+<%--footer--%>
+<div class="footer">
+    <p>About Us</p>
+</div>

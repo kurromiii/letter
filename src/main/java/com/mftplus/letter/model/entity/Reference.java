@@ -40,11 +40,11 @@ public class Reference extends Base implements Serializable {
     private ReferencePriority priority;
 
     @ManyToOne
-    @JoinColumn(name = "reference_sender")
+    @JoinColumn(name = "reference_sender",nullable = false)
     private User referenceSenderId;
 
     @ManyToOne
-    @JoinColumn(name = "reference_receiver")
+    @JoinColumn(name = "reference_receiver",nullable = false)
     private User referenceReceiverId;
 
     @Column (name = "r_date_and_time")

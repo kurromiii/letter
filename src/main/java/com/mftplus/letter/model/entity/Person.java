@@ -3,7 +3,6 @@ package com.mftplus.letter.model.entity;
 import com.mftplus.letter.model.entity.enums.Gender;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -42,5 +41,10 @@ public class Person extends Base implements Serializable {
 
     @Enumerated(EnumType.ORDINAL)
     private Gender gender;
+
+    @ToString.Exclude
+    @OneToOne(optional = false, orphanRemoval = true)
+    @JoinColumn(name = "user_username", nullable = false, unique = true)
+    private User user;
 
 }

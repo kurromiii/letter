@@ -32,9 +32,6 @@ public class User extends Base implements Serializable {
     @Column(name = "u_password", length = 20)
     private String password;
 
-    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    private Person person;
-
     @ManyToOne
     private Section section;
 
@@ -47,4 +44,8 @@ public class User extends Base implements Serializable {
     @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @ToString.Exclude
     private List<Roles> roles;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private Person person;
+
 }

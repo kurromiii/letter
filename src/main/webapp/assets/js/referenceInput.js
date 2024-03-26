@@ -45,9 +45,11 @@ const setSelectedRefPerson=(e,userId,userName,userFamily)=>{
 
 }
 const removeUser=(e,userId)=>{
-    console.log()
-    e.target.parentNode.innerHTML=""
-    e.target.parentNode.remove()
+    console.log(e.target.parentNode)
+    const target = e.target
+
+    target.parentNode.innerHTML=""
+    target.parentNode.remove()
     selectedListO.splice(selectedListO.indexOf(userId),1)
 
 }

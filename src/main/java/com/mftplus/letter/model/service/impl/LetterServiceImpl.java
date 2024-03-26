@@ -8,7 +8,6 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.poi.xwpf.usermodel.*;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -119,28 +118,28 @@ public class LetterServiceImpl implements LetterService, Serializable {
         return query.getResultList();
     }
 
-    public void pdfText() throws IOException {
-        XWPFDocument xwpfDocument = new XWPFDocument(new FileInputStream(
-                new File("/")
-        ));
-        xwpfDocument.getBodyElements();
-        for (IBodyElement bodyElement : xwpfDocument.getBodyElements()) {
-            if(bodyElement instanceof XWPFParagraph){
-                XWPFParagraph para=(XWPFParagraph) bodyElement;
-                System.out.println(para.getText());
-            } else if (bodyElement instanceof XWPFTable) {
-                XWPFTable table=(XWPFTable) bodyElement;
-                System.out.println(table.getText());
-                List<XWPFTableRow> rowList = table.getRows();
-                for (XWPFTableRow row:
-                        rowList
-                ) {
-
-
-                }
-
-            }
-        }
-    }
+//    public void pdfText() throws IOException {
+//        XWPFDocument xwpfDocument = new XWPFDocument(new FileInputStream(
+//                new File("/")
+//        ));
+//        xwpfDocument.getBodyElements();
+//        for (IBodyElement bodyElement : xwpfDocument.getBodyElements()) {
+//            if(bodyElement instanceof XWPFParagraph){
+//                XWPFParagraph para=(XWPFParagraph) bodyElement;
+//                System.out.println(para.getText());
+//            } else if (bodyElement instanceof XWPFTable) {
+//                XWPFTable table=(XWPFTable) bodyElement;
+//                System.out.println(table.getText());
+//                List<XWPFTableRow> rowList = table.getRows();
+//                for (XWPFTableRow row:
+//                        rowList
+//                ) {
+//
+//
+//                }
+//
+//            }
+//        }
+//    }
 
 }

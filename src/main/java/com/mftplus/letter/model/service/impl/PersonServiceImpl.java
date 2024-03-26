@@ -22,7 +22,9 @@ public class PersonServiceImpl implements PersonService, Serializable {
     @Transactional
     @Override
     public void save(Person person) throws Exception {
-        log.info("Person Saved");
+//        if (findByUsername(person.getUser().getUsername().toString()).isPresent()){
+//            throw new PersonalInfoAlreadyExists();
+//        }
         entityManager.persist(person);
     }
 
@@ -59,6 +61,14 @@ public class PersonServiceImpl implements PersonService, Serializable {
     @Override
     public Optional<Person> findById(Long id) throws Exception {
         return Optional.ofNullable(entityManager.find(Person.class, id));
+    }
+
+    @Transactional
+    @Override
+    public Optional<Person> findByUsername(String username) throws Exception {
+        TypedQuery<Person> query = entityManager.createQuery("select p from personEntity p where p.user=:username", Person.class);
+        query.setParameter("username", username);
+        return Optional.ofNullable(entityManager.find(Person.class, username));
     }
 
     @Transactional

@@ -13,6 +13,7 @@ public interface PersonService {
 
     List<Person> findAll() throws Exception;
     Optional<Person> findById(Long id) throws Exception;
+    Optional<Person> findByUsername(String username) throws Exception;
     List<Person> findByName(String name) throws Exception;
     List<Person> findByFamily(String family) throws Exception;
     List<Person> findByNameAndFamily(String name,String family) throws Exception;
