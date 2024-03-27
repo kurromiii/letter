@@ -41,7 +41,7 @@
     <div class="row mb-4">
         <input type="submit" class="btn btn-primary" value="Save">
     </div>
-    <a href="../login.jsp">Login</a>
+    <a href="login.jsp">Login</a>
 </form>
 </div>
 

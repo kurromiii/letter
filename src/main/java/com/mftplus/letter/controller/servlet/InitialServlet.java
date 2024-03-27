@@ -16,7 +16,7 @@ import java.io.IOException;
 
 
 @Slf4j
-//@WebServlet(urlPatterns = "")
+//@WebServlet(urlPatterns = " ")
 public class InitialServlet extends HttpServlet {
     @Inject
     private UserServiceImpl userService;
@@ -27,7 +27,7 @@ public class InitialServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             log.info("InitialServlet - Get");
-            req.getRequestDispatcher("/index.jsp").forward(req,resp);
+            req.getRequestDispatcher("/jsp/index.jsp").forward(req,resp);
         } catch (Exception e) {
             log.error(e.getMessage());
             throw new RuntimeException(e);
@@ -38,7 +38,6 @@ public class InitialServlet extends HttpServlet {
     public void init() throws ServletException {
         log.info("InitialServlet - Init");
         super.init();
-
         try {
             User user =
                     User

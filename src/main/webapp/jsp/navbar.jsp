@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-light position-fixed w-100">
         <a class="navbar-brand" href="#">Project</a>
@@ -15,11 +16,13 @@
                     <a class="nav-link" href="../">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../logout.jsp">Log Out</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="roles.do">Roles</a>
                 </li>
+                <c:if test="${not empty pageContext.request.userPrincipal}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.do">Log Out</a>
+                    </li>
+                </c:if>
             </ul>
         </div>
     </nav>

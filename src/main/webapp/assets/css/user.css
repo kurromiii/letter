@@ -1,7 +1,6 @@
 #org-form{
     width: 20%;
-    margin: auto;
-    margin-bottom: 50px;
+    margin: auto auto 50px;
 }
 
 #org-table{
