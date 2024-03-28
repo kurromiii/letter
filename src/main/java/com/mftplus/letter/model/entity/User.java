@@ -32,7 +32,8 @@ public class User extends Base implements Serializable {
     @Column(name = "u_password", length = 20)
     private String password;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
+    @ToString.Exclude
     private Section section;
 
     @Column(name="u_active")
@@ -41,7 +42,7 @@ public class User extends Base implements Serializable {
     @Enumerated(EnumType.ORDINAL)
     private Role role;
 
-    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE} , fetch = FetchType.LAZY)
     @ToString.Exclude
     private List<Roles> roles;
 

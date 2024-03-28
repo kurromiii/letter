@@ -33,7 +33,8 @@ public class Section extends Base implements Serializable {
     @Pattern(regexp = "^[a-zA-Z\\s]{0,40}$", message = "Invalid Role")
     private String title;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
+    @ToString.Exclude
     private Organisation organisation;
 
     @Column(name = "s_duty", length = 100)
@@ -42,10 +43,12 @@ public class Section extends Base implements Serializable {
     @Column(name = "s_phoneNnumber", length = 11)
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "section")
+    @OneToMany(mappedBy = "section" , fetch = FetchType.LAZY)
+    @ToString.Exclude
     private List<User> users;
 
-    @OneToMany
+    @OneToMany (fetch = FetchType.LAZY)
+    @ToString.Exclude
     private List<Section> sectionsPart;
 
     public List<Section> getSectionsPart() {
@@ -63,7 +66,8 @@ public class Section extends Base implements Serializable {
         return users;
     }
 
-    @OneToOne
+    @OneToOne (fetch = FetchType.LAZY)
+    @ToString.Exclude
     private Attach attach;
 
 

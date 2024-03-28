@@ -49,7 +49,8 @@ public class Organisation extends Base implements Serializable {
     private String description;
 
 
-    @OneToMany
+    @OneToMany (fetch = FetchType.LAZY)
+    @ToString.Exclude
     private List<Section> sectionList;
 
     public void addSection(Section section){

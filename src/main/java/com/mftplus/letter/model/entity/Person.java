@@ -43,7 +43,7 @@ public class Person extends Base implements Serializable {
     private Gender gender;
 
     @ToString.Exclude
-    @OneToOne(optional = false, orphanRemoval = true)
+    @OneToOne(optional = false, orphanRemoval = true , fetch = FetchType.LAZY)
     @JoinColumn(name = "user_username", nullable = false, unique = true)
     private User user;
 

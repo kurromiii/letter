@@ -30,7 +30,8 @@ public class Reference extends Base implements Serializable {
     @Column (name = "r_Id")
     private long id;
 
-    @ManyToOne (fetch = FetchType.EAGER,cascade = {CascadeType.MERGE})
+    @ManyToOne (fetch = FetchType.LAZY , cascade = {CascadeType.MERGE})
+    @ToString.Exclude
     private Letter letterId;
 
     @Enumerated (EnumType.ORDINAL)
@@ -39,12 +40,14 @@ public class Reference extends Base implements Serializable {
     @Enumerated (EnumType.ORDINAL)
     private ReferencePriority priority;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "reference_sender",nullable = false)
+    @ToString.Exclude
     private User referenceSenderId;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "reference_receiver",nullable = false)
+    @ToString.Exclude
     private User referenceReceiverId;
 
     @Column (name = "r_date_and_time")

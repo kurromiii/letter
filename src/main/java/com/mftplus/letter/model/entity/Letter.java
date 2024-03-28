@@ -76,11 +76,12 @@ public class Letter extends Base implements Serializable {
     private LetterAccessLevel accessLevel;
 
   //todo rethink
-    @ManyToMany (cascade = {CascadeType.MERGE , CascadeType.PERSIST})
+    @ManyToMany (cascade = {CascadeType.MERGE , CascadeType.PERSIST} , fetch = FetchType.LAZY)
     @ToString.Exclude
     private List<User> carbonCopies;
 
-    @ManyToOne (cascade = {CascadeType.MERGE})
+    @ManyToOne (cascade = {CascadeType.MERGE} , fetch = FetchType.LAZY)
+    @ToString.Exclude
     private User user;
 
     @Enumerated (EnumType.ORDINAL)
@@ -110,7 +111,7 @@ public class Letter extends Base implements Serializable {
 //        this.registerDateAndTime = LocalDateTime.from(PersianDate.parse(faRegisterDateAndTime).toGregorian());
 //    }
 //
-    @ManyToMany (cascade = {CascadeType.MERGE , CascadeType.PERSIST})
+    @ManyToMany (cascade = {CascadeType.MERGE , CascadeType.PERSIST} , fetch = FetchType.LAZY)
     @ToString.Exclude
     private List<User> refReceivers;
 
