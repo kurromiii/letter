@@ -19,7 +19,7 @@ public class LogoutServlet extends HttpServlet {
         try {
             String user = req.getUserPrincipal().getName();
             req.getSession().invalidate();
-            resp.sendRedirect("/login.do");
+            resp.sendRedirect("/");
             log.info(user + " logged out");
         } catch (Exception e) {
             log.error(e.getMessage());
