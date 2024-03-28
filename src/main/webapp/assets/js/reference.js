@@ -1,6 +1,6 @@
-function edit(id) {
-    alert(id);
-}
+// function edit(id) {
+//     alert(id);
+// }
 
 async function remove(id) {
     alert(id);

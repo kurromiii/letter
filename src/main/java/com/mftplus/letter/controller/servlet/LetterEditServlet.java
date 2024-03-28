@@ -65,7 +65,6 @@ public class LetterEditServlet extends HttpServlet {
         log.info("LetterEditServlet - put");
         try {
             long id = Integer.parseInt(req.getParameter("id"));
-            System.out.println("id" + id);
             String title = req.getParameter("l_title");
             String letterNumber = req.getParameter("l_letter_number");
             String faDate = req.getParameter("l_date").replace("/", "-");

@@ -164,11 +164,10 @@
 <script src="../assets/js/persian-datepicker.min.js"></script>
 <script src="../assets/js/app.js"></script>
 
-<%--<script>--%>
-<%--    let myElement = document.querySelector('');--%>
-<%--    kamaDatepicker(myElement);--%>
-
-<%--    kamaDatepicker('l_date', { buttonsColor: "red", forceFarsiDigits: true });--%>
-<%--</script>--%>
+<script>
+    function edit(id) {
+        document.location.replace("/referenceEdit.do?id=" + id);
+    }
+</script>
 </body>
 </html>

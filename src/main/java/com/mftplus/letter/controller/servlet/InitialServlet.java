@@ -48,7 +48,7 @@ public class InitialServlet extends HttpServlet {
                             .build();
             if (userService.findByUsername("admin").isEmpty()){
             userService.save(user);
-            log.info("admin user saved");
+            log.info("admin username saved");
             }
             CompositeKey compositeKey =
                     CompositeKey
@@ -76,7 +76,7 @@ public class InitialServlet extends HttpServlet {
                             .build();
             if (userService.findByUsername("user").isEmpty()){
                 userService.save(user1);
-                log.info("user saved");
+                log.info("user username saved");
             }
             CompositeKey compositeKey1 =
                     CompositeKey
