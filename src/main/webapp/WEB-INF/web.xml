@@ -4,6 +4,7 @@
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
     
+<!--  initial servlet  -->
     <welcome-file-list>
         <welcome-file> </welcome-file>
     </welcome-file-list>
@@ -17,6 +18,7 @@
         <url-pattern> </url-pattern>
     </servlet-mapping>
 
+<!--    error pages-->
     <error-page>
         <error-code>403</error-code>
         <location>/error-jsp/403.jsp</location>
@@ -32,11 +34,13 @@
 <!--        <location>/error-jsp/500.jsp</location>-->
 <!--    </error-page>-->
 
+<!--    roles-->
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>admin</web-resource-name>
             <url-pattern>/organisation.do</url-pattern>
             <url-pattern>/user.do</url-pattern>
+            <url-pattern>/person.do</url-pattern>
             <url-pattern>/letter.do</url-pattern>
             <url-pattern>/reference.do</url-pattern>
             <http-method>GET</http-method>
@@ -81,7 +85,7 @@
         </auth-constraint>
     </security-constraint>
 
-
+<!--    security login form-->
     <login-config>
         <auth-method>FORM</auth-method>
         <form-login-config>
@@ -89,4 +93,9 @@
             <form-error-page>/error-jsp/login-error.jsp</form-error-page>
         </form-login-config>
     </login-config>
+    
+<!--    session listener-->
+    <listener>
+        <listener-class>com.mftplus.letter.controller.session.SessionListener</listener-class>
+    </listener>
 </web-app>
