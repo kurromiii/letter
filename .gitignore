@@ -30,8 +30,8 @@ target/
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
-/src/main/webapp/assets/fontawesome-free-6.5.2-web
-/src/main/webapp/vazir-font-v29.1.0
+src/main/webapp/assets/fontawesome-free-6.5.2-web
+src/main/webapp/vazir-font-v29.1.0
 ### VS Code ###
 .vscode/
 
