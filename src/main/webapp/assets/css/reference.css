@@ -15,4 +15,6 @@
     max-height:200px;
     overflow: hidden;
     overflow-y: scroll;
+    z-index: 3;
+    background-color: white;
 }

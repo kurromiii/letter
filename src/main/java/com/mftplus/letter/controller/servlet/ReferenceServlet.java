@@ -103,7 +103,6 @@ public class ReferenceServlet extends HttpServlet {
         }
     }
 }
-//todo letterId
 //todo referenceSenderId
 //todo referenceReceiverId
 //todo status and validate

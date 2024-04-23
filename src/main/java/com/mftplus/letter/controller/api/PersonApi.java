@@ -1,6 +1,6 @@
 package com.mftplus.letter.controller.api;
 
-import com.mftplus.letter.model.entity.Person;
+import  com.mftplus.letter.model.entity.Person;
 import com.mftplus.letter.model.service.impl.PersonServiceImpl;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -38,25 +38,25 @@ public class PersonApi {
         }
     }
 
-    @GET
-    @Path("/{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response findById(@PathParam("id") Long id) throws Exception {
-        try {
-            return Response.ok().entity(personService.findById(id)).build();
-        } catch (Exception e) {
-            return Response.status(204).entity("{\"message\": \"" + e.getMessage() + "\"}").build();
-        }
-    }
+//    @GET
+//    @Path("/{id}")
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public Response findById(@PathParam("id") Long id) throws Exception {
+//        try {
+//            return Response.ok().entity(personService.findById(id)).build();
+//        } catch (Exception e) {
+//            return Response.status(204).entity("{\"message\": \"" + e.getMessage() + "\"}").build();
+//        }
+//    }
 
     @GET
-    @Path("/findByName/{name}")
+    @Path("/findbynameandfamily")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findByName(@PathParam("name") String name) throws Exception{
+    public Response findByName(@QueryParam("name") String name,@QueryParam("family") String family) throws Exception{
         try {
-            return Response.ok().entity(personService.findByName(String.valueOf(name))).build();
+            return Response.ok().entity(personService.findByNameAndFamily(name,family)).build();
         } catch (Exception e) {
             return Response.status(204).entity("{\"message\": \"" + e.getMessage() + "\"}").build();
         }

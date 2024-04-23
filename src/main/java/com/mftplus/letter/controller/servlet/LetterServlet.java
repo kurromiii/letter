@@ -45,7 +45,7 @@ public class LetterServlet extends HttpServlet {
                 req.getSession().setAttribute("transferMethods", Arrays.asList(TransferMethod.values()));
                 req.getSession().setAttribute("letterTypes", Arrays.asList(LetterType.values()));
                 req.getSession().setAttribute("letterList", letterService.findAll());
-                req.getSession().setAttribute("user",req.getUserPrincipal().getName());
+                req.getSession().setAttribute("username",req.getUserPrincipal().getName());
                 req.getRequestDispatcher("/jsp/letter.jsp").forward(req, resp);
         } catch (Exception e) {
             log.error(e.getMessage());

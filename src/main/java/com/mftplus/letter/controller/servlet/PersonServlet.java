@@ -64,9 +64,12 @@ public class PersonServlet extends HttpServlet {
 
             String username = req.getUserPrincipal().getName();
 
+//todo personService.findByUsername has error
+
             if (username != null) {
                 Optional<User> user = userService.findByUsername(username);
-                if (user.isPresent()) {
+                Optional<Person> p = personService.findByUsername(username);
+                if (user.isPresent() && p.isEmpty()) {
                     person = Person
                             .builder()
                             .name(name)
@@ -74,12 +77,14 @@ public class PersonServlet extends HttpServlet {
                             .nationalCode(nationalCode)
                             .gender(Gender.valueOf(gender))
                             .user(user.get())
-                            .deleted(false)
+//                            .deleted(false)
                             .build();
-
+                    person.setDeleted(false);
                     personService.save(person);
                     log.info("Person Saved");
-                    resp.sendRedirect("/user.do");
+                    resp.sendRedirect("/person.do");
+                }else {
+                    resp.sendRedirect("");
                 }
             }
         } catch (Exception e) {

@@ -1,17 +1,36 @@
 let selectedListO=[]
 const personRefEl=document.getElementById('person-ref-list')
-const getReferences=async(e)=>{
-    console.log('gg')
-    const list=[
-        {name:'parsa',family:'rajabi',user:1},
-        {name:'parninan',family:'ahadzadeh',user:3},
-        {name:'parninan',family:'ahadzadeh',user:2},
-        {name:'parninan',family:'ahadzadeh',user:2},
-        {name:'parninan',family:'ahadzadeh',user:2},
-        {name:'parninan',family:'ahadzadeh',user:2},
-        {name:'parninan',family:'ahadzadeh',user:2},
-        
-    ]
+const getReferences=async(event)=>{
+    console.log(event)
+    console.log(event.target)
+    const nameandfamilyList=event.target.value.split(" ")
+    const name=nameandfamilyList[0]
+    let family=''
+    if(nameandfamilyList.length>=2){
+        family=nameandfamilyList[1]
+    }
+
+    const res=await fetch("http://localhost"+'/api/person/findByNameAndFamily',{
+        method:"Post",
+
+        body:JSON.stringify({name:name,family:family})
+    })
+    if(res.status===200){
+
+        const list=res.json()
+        console.log(list)
+
+    }
+    // const list=[
+    //     {name:'parsa',family:'rajabi',user:1},
+    //     {name:'parninan',family:'ahadzadeh',user:3},
+    //     {name:'parninan',family:'ahadzadeh',user:2},
+    //     {name:'parninan',family:'ahadzadeh',user:2},
+    //     {name:'parninan',family:'ahadzadeh',user:2},
+    //     {name:'parninan',family:'ahadzadeh',user:2},
+    //     {name:'parninan',family:'ahadzadeh',user:2},
+    //
+    // ]
 
    
     personRefEl.innerHTML=''
@@ -35,7 +54,8 @@ const setSelectedRefPerson=(e,userId,userName,userFamily)=>{
     
     
     selectedListE.innerHTML+=
-`        <div class="rounded border p-1 d-flex justify-content-between  col-6">
+`        <div class="rounded border p-1 d-flex justify-content-between  col-6" data-userId="${userId}">
+        
             <input class="d-none" value="${userId}" name="users"/>
             <small>${userName} ${userFamily}</small>
             <i onclick="removeUser(event,'${userId}')" role="button" class="fa fa-window-close" aria-hidden="true"></i>
@@ -44,12 +64,13 @@ const setSelectedRefPerson=(e,userId,userName,userFamily)=>{
     selectedListO.push(userId)
 
 }
-const removeUser=(e,userId)=>{
-    console.log(e.target.parentNode)
-    const target = e.target
+const removeUser=(event,userId)=>{
+    // console.log(event.target.parentNode)
+    // const target = event.target
 
-    target.parentNode.innerHTML=""
-    target.parentNode.remove()
+    // target.parentNode.innerHTML=""
+    // target.parentNode.remove()
+    document.querySelector(`[data-userId="${userId}"]`).remove()
     selectedListO.splice(selectedListO.indexOf(userId),1)
 
 }

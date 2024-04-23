@@ -19,6 +19,7 @@ public class LoginServlet extends HttpServlet {
         log.info("LoginServlet - Get");
         try {
             req.getRequestDispatcher("/jsp/login.jsp").forward(req, resp);
+            req.getSession().setAttribute("username",req.getUserPrincipal().getName());
         } catch (Exception e) {
             log.error(e.getMessage());
             throw new RuntimeException(e);

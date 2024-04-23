@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="../assets/css/reference.css">
 </head>
 <body>
-<jsp:include page="../jsp/navbar.jsp"></jsp:include>
 
 <div class="content">
     <div id="org-form">
@@ -78,25 +77,25 @@
             </div>
             <br><br>
 
-<%--            RefReceivers--%>
-<%--            <div class=" row ">--%>
-<%--                <label>references: </label>--%>
-<%--                <div class="position-relative">--%>
-<%--                    <div class="col-12 position-relative">--%>
-<%--                        <input class="col-12" oninput="getReferences()" type="text"/>--%>
-<%--                        <div   id="person-ref-list" class="border col-12" style="position: absolute;">--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <div id="selected-list" class="col-5 row ">--%>
-<%--                </div>--%>
-<%--            </div>--%>
-
-
-            <div class="row  mb-4">
-                <label class="col form-label" for="referenceReceiver">Reference Receiver</label>
-                <input id="referenceReceiver" class="col form-control" type="text" name="referenceReceiver" required>
+            RefReceivers
+            <div class=" row ">
+                <label>references: </label>
+                <div class="position-relative">
+                    <div class="col-12 position-relative">
+                        <input class="col-12" oninput="getReferences()" type="text"/>
+                        <div   id="person-ref-list" class="border col-12" style="position: absolute;">
+                        </div>
+                    </div>
+                </div>
+                <div id="selected-list" class="col-12 row ">
+                </div>
             </div>
+
+
+<%--            <div class="row  mb-4">--%>
+<%--                <label class="col form-label" for="referenceReceiver">Reference Receiver</label>--%>
+<%--                <input id="referenceReceiver" class="col form-control" type="text" name="referenceReceiver" required>--%>
+<%--            </div>--%>
 
             <div class="row mb-4">
                 <input type="submit" class="btn btn-primary" value="Save">
