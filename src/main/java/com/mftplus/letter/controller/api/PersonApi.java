@@ -38,26 +38,27 @@ public class PersonApi {
         }
     }
 
-//    @GET
-//    @Path("/{id}")
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Response findById(@PathParam("id") Long id) throws Exception {
-//        try {
-//            return Response.ok().entity(personService.findById(id)).build();
-//        } catch (Exception e) {
-//            return Response.status(204).entity("{\"message\": \"" + e.getMessage() + "\"}").build();
-//        }
-//    }
-
     @GET
-    @Path("/findbynameandfamily")
+    @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findByName(@QueryParam("name") String name,@QueryParam("family") String family) throws Exception{
+    public Response findById(@PathParam("id") Long id) throws Exception {
+        try {
+            return Response.ok().entity(personService.findById(id)).build();
+        } catch (Exception e) {
+            return Response.status(204).entity("{\"message\": \"" + e.getMessage() + "\"}").build();
+        }
+    }
+
+    @POST
+    @Path("/findByNameAndFamily")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response findByNameAndFamily(@QueryParam("name") String name,@QueryParam("family") String family) throws Exception{
         try {
             return Response.ok().entity(personService.findByNameAndFamily(name,family)).build();
         } catch (Exception e) {
+            log.error(e.getMessage());
             return Response.status(204).entity("{\"message\": \"" + e.getMessage() + "\"}").build();
         }
     }

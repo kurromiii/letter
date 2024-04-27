@@ -15,6 +15,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -108,4 +109,8 @@ public class Letter extends Base implements Serializable {
     //    @Pattern(regexp = "^[a-zA-Z\\s]{10,}$", message = "Invalid Context Name")
     @Column (name = "l_context")
     private String context;
+
+    @Column(name = "register_date_and_time")
+    private LocalDateTime registerDateAndTime;
+
 }

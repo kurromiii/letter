@@ -88,9 +88,10 @@ public class PersonServiceImpl implements PersonService, Serializable {
     @Transactional
     @Override
     public List<Person> findByNameAndFamily(String name, String family) throws Exception {
+//        List<Object[]> list = em.createQuery("SELECT p.field1, p.field2 FROM Entity p").getResultList();
         TypedQuery<Person> query = entityManager.createQuery("select oo from personEntity oo where oo.name=:name and oo.family=:family", Person.class);
-        query.setParameter(name,"name");
-        query.setParameter(family,"family");
+        query.setParameter("name",name);
+        query.setParameter("family",family);
         return query.getResultList();
     }
 

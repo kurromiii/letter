@@ -10,11 +10,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <jsp:include page="css-import.jsp"></jsp:include>
     <link rel="stylesheet" href="../assets/css/letter.css">
+    <link rel="stylesheet" href="../assets/css/reference.css">
 
 </head>
 <body>
-<jsp:include page="../jsp/navbar.jsp"></jsp:include>
-
 <div class="content">
     <div id="org-form">
     <form id="letter_form" method="post" action="letter.do" enctype="multipart/form-data">
@@ -22,7 +21,7 @@
         <br>
         <div class="row  mb-4 w-100">
             <label class="col form-label" for="username">username</label>
-            <input id="username" class="col form-control" type="text" name="username" value="${sessionScope.user}" readonly required>
+            <input id="username" class="col form-control" type="text" name="username" value="${sessionScope.username}" readonly required>
         </div>
 
         <div class="row  mb-4 w-100">
@@ -97,7 +96,18 @@
             <label for="l_date">Date : </label>
             <input type="text" id="l_date" name="l_date" required>
         </div>
-
+        <div class=" row ">
+            <label>references: </label>
+            <div class="position-relative">
+                <div class="col-12 position-relative">
+                    <input class="col-12" oninput="getReferences(event)" type="text"/>
+                    <div   id="person-ref-list" class="border col-12" style="position: absolute;">
+                    </div>
+                </div>
+            </div>
+            <div id="selected-list" class="col-12 row ">
+            </div>
+        </div>
         <div class="row mb-3">
             <input type="submit" class="btn btn-primary" value="Save">
         </div>
@@ -168,7 +178,7 @@
 <jsp:include page="js-import.jsp"></jsp:include>
 
 <script src="../assets/js/letter.js"></script>
-
+<script src="../assets/js/referenceInput.js"></script>
 <script src="../assets/js/jquery-3.7.1.min.js"></script>
 <script src="../assets/js/kamadatepicker.holidays.js"></script>
 <script src="../assets/js/kamadatepicker.min.js"></script>
