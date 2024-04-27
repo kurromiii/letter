@@ -1,6 +1,6 @@
 package com.mftplus.letter.model.service.interfaces;
 
-import com.mftplus.letter.model.entity.CompositeKey;
+import com.mftplus.letter.model.entity.RolesPrimaryKeys;
 import com.mftplus.letter.model.entity.Roles;
 
 import java.util.List;
@@ -12,7 +12,7 @@ public interface RolesService {
     void remove(Roles role) throws Exception;
     void removeById(String roleName,String username) throws Exception;
 
-    Optional<Roles> findById(CompositeKey compositeKey) throws Exception;
+    Optional<Roles> findById(RolesPrimaryKeys compositeKey) throws Exception;
     List<Roles> findAll() throws Exception;
     List<Roles> findByRoleName(String roleName) throws Exception;
     List<Roles> findByUser(String username) throws Exception;

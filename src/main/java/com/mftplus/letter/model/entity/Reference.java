@@ -27,7 +27,7 @@ public class Reference extends Base implements Serializable {
     @Id
     @SequenceGenerator(name = "referenceSeq", sequenceName = "reference_seq",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "referenceSeq")
-    @Column (name = "r_Id")
+    @Column (name = "id")
     private long id;
 
     @ManyToOne (fetch = FetchType.LAZY , cascade = {CascadeType.MERGE})
@@ -84,11 +84,11 @@ public class Reference extends Base implements Serializable {
     @Column (name = "r_explanation" , length = 50)
     private String explanation;
 
+    //todo
     @Column(name = "r_status")
     private boolean status;
 
     @Column(name = "r_validate")
     private boolean validate;
-
 
 }

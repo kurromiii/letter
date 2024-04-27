@@ -13,7 +13,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Embeddable
 @SuperBuilder
-public class CompositeKey implements Serializable {
+public class RolesPrimaryKeys implements Serializable {
     @Column(name = "role_name")
     private String roleName;
 

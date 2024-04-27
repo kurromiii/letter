@@ -1,6 +1,6 @@
 package com.mftplus.letter.controller.servlet;
 
-import com.mftplus.letter.model.entity.CompositeKey;
+import com.mftplus.letter.model.entity.RolesPrimaryKeys;
 import com.mftplus.letter.model.entity.Roles;
 import com.mftplus.letter.model.entity.User;
 import com.mftplus.letter.model.service.impl.RolesServiceImpl;
@@ -16,7 +16,6 @@ import java.io.IOException;
 
 
 @Slf4j
-//@WebServlet(urlPatterns = " ")
 public class InitialServlet extends HttpServlet {
     @Inject
     private UserServiceImpl userService;
@@ -50,8 +49,8 @@ public class InitialServlet extends HttpServlet {
             userService.save(user);
             log.info("admin username saved");
             }
-            CompositeKey compositeKey =
-                    CompositeKey
+            RolesPrimaryKeys rolesPrimaryKeys =
+                    RolesPrimaryKeys
                             .builder()
                             .roleName("admin")
                             .user(user)
@@ -59,10 +58,10 @@ public class InitialServlet extends HttpServlet {
             Roles role =
                     Roles
                             .builder()
-                            .compositeKey(compositeKey)
+                            .rolesPrimaryKeys(rolesPrimaryKeys)
                             .deleted(false)
                             .build();
-            if (rolesService.findById(compositeKey).isEmpty()){
+            if (rolesService.findById(rolesPrimaryKeys).isEmpty()){
                rolesService.save(role);
                log.info("admin role saved");
             }
@@ -78,8 +77,8 @@ public class InitialServlet extends HttpServlet {
                 userService.save(user1);
                 log.info("user username saved");
             }
-            CompositeKey compositeKey1 =
-                    CompositeKey
+            RolesPrimaryKeys rolesPrimaryKeys1 =
+                    RolesPrimaryKeys
                             .builder()
                             .roleName("user")
                             .user(user1)
@@ -87,10 +86,10 @@ public class InitialServlet extends HttpServlet {
             Roles role1 =
                     Roles
                             .builder()
-                            .compositeKey(compositeKey1)
+                            .rolesPrimaryKeys(rolesPrimaryKeys1)
                             .deleted(false)
                             .build();
-            if (rolesService.findById(compositeKey1).isEmpty()){
+            if (rolesService.findById(rolesPrimaryKeys1).isEmpty()){
                 rolesService.save(role1);
                 log.info("user role saved");
             }

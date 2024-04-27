@@ -3,6 +3,7 @@ package com.mftplus.letter.model.entity;
 import com.mftplus.letter.model.entity.enums.Role;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,7 +11,8 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -22,15 +24,24 @@ import java.util.List;
 @Table(name = "user_tbl")
 @RequestScoped
 public class User extends Base implements Serializable {
-    //id is set as username because username must be unique like id
     @Id
-//    @Pattern(regexp = "^[a-zA-Z\\s]{5,15}$", message = "Invalid Username")
-    @Column(name = "u_username", length = 15)
+    @Pattern(regexp = "^[a-zA-Z\\s]{4,15}$", message = "Invalid Username")
+    @Column(name = "u_username", length = 15, nullable = false)
     private String username;
 
-//    @Pattern(regexp = "^[a-zA-Z\\s]{8,20}$", message = "Invalid Password")
-    @Column(name = "u_password", length = 20)
+    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{5,20}$",message = "Minimum five characters, at least one letter and one number!")
+    @Column(name = "u_password", length = 20, nullable = false)
     private String password;
+
+    @OneToOne
+    private Person person;
+
+    @Enumerated(EnumType.ORDINAL)
+    private Role role;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "rolesPrimaryKeys.user", orphanRemoval = true)
+    private Set<Roles> roles = new LinkedHashSet<>();
 
     @ManyToOne (fetch = FetchType.LAZY)
     @ToString.Exclude
@@ -38,15 +49,5 @@ public class User extends Base implements Serializable {
 
     @Column(name="u_active")
     private boolean active;
-
-    @Enumerated(EnumType.ORDINAL)
-    private Role role;
-
-    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE} , fetch = FetchType.LAZY)
-    @ToString.Exclude
-    private List<Roles> roles;
-
-    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private Person person;
 
 }

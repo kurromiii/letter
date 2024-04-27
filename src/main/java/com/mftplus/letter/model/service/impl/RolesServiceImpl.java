@@ -1,7 +1,6 @@
 package com.mftplus.letter.model.service.impl;
 
-import com.mftplus.letter.model.entity.CompositeKey;
-import com.mftplus.letter.model.entity.Letter;
+import com.mftplus.letter.model.entity.RolesPrimaryKeys;
 import com.mftplus.letter.model.entity.Roles;
 import com.mftplus.letter.model.service.interfaces.RolesService;
 import jakarta.enterprise.context.SessionScoped;
@@ -47,7 +46,7 @@ public class RolesServiceImpl implements RolesService, Serializable {
 
     @Transactional
     @Override
-    public Optional<Roles> findById(CompositeKey compositeKey) throws Exception {
+    public Optional<Roles> findById(RolesPrimaryKeys compositeKey) throws Exception {
         return Optional.ofNullable(entityManager.find(Roles.class, compositeKey));
     }
 

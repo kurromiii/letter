@@ -1,6 +1,6 @@
 package com.mftplus.letter.controller.servlet;
 
-import com.mftplus.letter.model.entity.CompositeKey;
+import com.mftplus.letter.model.entity.RolesPrimaryKeys;
 import com.mftplus.letter.model.entity.Roles;
 import com.mftplus.letter.model.entity.User;
 import com.mftplus.letter.model.service.impl.RolesServiceImpl;
@@ -47,22 +47,19 @@ public class RolesServlet extends HttpServlet {
 
             if (username != null){
                 Optional<User> user = userService.findByUsername(username);
-                System.out.println(user);
 
                 if (user.isPresent()){
-                    CompositeKey compositeKey =
-                            CompositeKey
+                    RolesPrimaryKeys rolesPrimaryKeys =
+                            RolesPrimaryKeys
                                     .builder()
                                     .roleName(roleName)
                                     .user(user.get())
                                     .build();
-                    System.out.println(compositeKey);
                     Roles role =
                             Roles
                                     .builder()
-                                    .compositeKey(compositeKey)
+                                    .rolesPrimaryKeys(rolesPrimaryKeys)
                                     .build();
-                    System.out.println(role);
                     rolesService.save(role);
                     log.info("RolesServlet - role saved");
                     resp.sendRedirect("/roles.do");

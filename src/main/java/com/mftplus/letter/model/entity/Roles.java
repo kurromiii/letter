@@ -20,5 +20,15 @@ import java.io.Serializable;
 
 public class Roles extends Base implements Serializable {
     @EmbeddedId
-    private CompositeKey compositeKey;
+    private RolesPrimaryKeys rolesPrimaryKeys;
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
 }

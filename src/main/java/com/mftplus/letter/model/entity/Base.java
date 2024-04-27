@@ -2,7 +2,6 @@ package com.mftplus.letter.model.entity;
 
 import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.Version;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,9 +13,11 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 public class Base {
+    //todo : problem with version id when editing
 //    @Version
 //    @JsonbTransient
 //    private  Long versionId;
     @JsonbTransient
-    private boolean deleted;
+    private Boolean deleted;
+
 }
