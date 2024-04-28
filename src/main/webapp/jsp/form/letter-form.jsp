@@ -1,0 +1,157 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>نامه</title>
+    <link rel="stylesheet" href="../../assets/css/form.css">
+    <link rel="stylesheet" href="../../assets/css/kamadatepicker.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+<div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+        <!--img-->
+        <img src="../../assets/image/lettering.jpg" alt="">
+
+        <!--start form-->
+        <form action="letter.do" method="post" enctype="multipart/form-data">
+
+            <div class="formbold-input-group">
+                <label for="l_title" class="formbold-form-label"> عنوان </label>
+                <input type="text" name="l_title" id="l_title" placeholder="عنوان نامه را وارد کنید" class="formbold-form-input"/>
+            </div>
+
+            <div class="formbold-input-group">
+                <label for="l_letter_number" class="formbold-form-label"> شماره نامه </label>
+                <input type="text" name="l_letter_number" id="l_letter_number" placeholder="شماره نامه را وارد کنید" class="formbold-form-input"/>
+            </div>
+
+            <div class="formbold-input-group">
+                <label for="l_sender_name" class="formbold-form-label"> نام فرستنده نامه </label>
+                <input type="text" name="l_sender_name" id="l_sender_name" placeholder="نام فرستنده نامه را وارد کنید" class="formbold-form-input"/>
+            </div>
+
+            <div class="formbold-input-group">
+                <label for="l_sender_title" class="formbold-form-label"> عنوان فرستنده نامه </label>
+                <input type="text" name="l_sender_title" id="l_sender_title" placeholder="عنوان فرستنده نامه را وارد کنید" class="formbold-form-input"/>
+            </div>
+
+            <div class="formbold-input-group">
+                <label for="l_receiver_name" class="formbold-form-label"> نام گیرنده نامه </label>
+                <input type="text" name="l_receiver_name" id="l_receiver_name" placeholder="نام گیرنده نامه را وارد کنید" class="formbold-form-input"/>
+            </div>
+
+            <div class="formbold-input-group">
+                <label for="l_receiver_title" class="formbold-form-label"> عنوان گیرنده نامه </label>
+                <input type="text" name="l_receiver_title" id="l_receiver_title" placeholder="عنوان گیرنده نامه را وارد کنید" class="formbold-form-input"/>
+            </div>
+
+            <div class="formbold-input-group">
+                <label for="person-list" class="formbold-form-label"> ارجاع گیرندکان نامه </label>
+                <input type="text" name="person-list" id="person-list" placeholder="ارجاع گیرندگان نامه را وارد کنید" class="formbold-form-input"/>
+            </div>
+
+            <div class="formbold-input-group">
+                <label for="accessLevel" class="formbold-form-label">
+                    سطح دسترسی نامه را انتخاب کنید
+                </label>
+
+                <select class="formbold-form-select" name="accessLevel" id="accessLevel">
+                    <c:forEach var="accessLevel" items="${sessionScope.accessLevels}">
+                        <option value="${accessLevel}">${accessLevel}</option>
+                    </c:forEach>
+                </select>
+            </div>
+
+            <div class="formbold-input-group">
+                <label for="transferMethod" class="formbold-form-label">
+                    روش فرستادن نامه را انتخاب کنید
+                </label>
+
+                <select class="formbold-form-select" name="transferMethod" id="transferMethod">
+                    <c:forEach var="transferMethod" items="${sessionScope.transferMethods}">
+                        <option value="${transferMethod}">${transferMethod}</option>
+                    </c:forEach>
+                </select>
+            </div>
+
+            <div class="formbold-input-group">
+                <label for="letterType" class="formbold-form-label">
+                    نوع نامه را انتخاب کنید
+                </label>
+
+                <select class="formbold-form-select" name="letterType" id="letterType">
+                    <c:forEach var="letterType" items="${sessionScope.letterTypes}">
+                        <option value="${letterType}">${letterType}</option>
+                    </c:forEach>
+                </select>
+            </div>
+
+            <div>
+                <label for="l_context" class="formbold-form-label">
+                    متن نامه را وارد کنید
+                </label>
+                <textarea
+                        rows="18"
+                        name="l_context"
+                        id="l_context"
+                        placeholder="متن نامه..."
+                        class="formbold-form-input"
+                ></textarea>
+            </div>
+
+            <div class="formbold-input-group">
+                <label for="l_date" class="formbold-form-label"> تاریخ </label>
+                <input type="text" name="l_date" id="l_date" placeholder="تاریخ نامه را وارد کنید" class="formbold-form-input" required/>
+            </div>
+
+            <div class="formbold-form-file-flex">
+                <label for="file" class="formbold-form-label">
+                    تصویر نامه
+                </label>
+                <input
+                        type="file"
+                        name="file"
+                        id="file"
+                        class="formbold-form-file"
+                />
+            </div>
+            <br><br>
+
+            <div class=" row ">
+                <label>references: </label>
+                <div class="position-relative">
+                    <div class="col-12 position-relative">
+                        <input class="col-12" oninput="getReferences(event)" type="text"/>
+                        <div   id="person-ref-list" class="border col-12" style="position: absolute;">
+                        </div>
+                    </div>
+                </div>
+                <div id="selected-list" class="col-12 row ">
+                </div>
+            </div>
+
+            <button class="a-btn">ثبت</button>
+            <c:if test="${not empty param.selectedLetter}">
+                <a class="a-btn" href="reference.do?letterIdRef=${param.selectedLetter}">ارجاع نامه ثبت شده</a>
+            </c:if>
+
+        </form>
+        <!--end form-->
+    </div>
+</div>
+<script src="../../assets/js/jquery-3.7.1.min.js"></script>
+<script src="../../assets/js/kamadatepicker.holidays.js"></script>
+<script src="../../assets/js/kamadatepicker.min.js"></script>
+<script src="../../assets/js/referenceInput.js"></script>
+<script>
+    let myElement = document.querySelector('#l_date');
+    kamaDatepicker(myElement);
+
+    kamaDatepicker('l_date', { buttonsColor: "red", forceFarsiDigits: true });
+</script>
+</body>
+</html>

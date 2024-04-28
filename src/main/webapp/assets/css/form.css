@@ -1,0 +1,222 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    direction: rtl;
+    font-family: 'vazir', serif;
+}
+@font-face {
+    font-family: "vazir";
+    src: url("../../vazir-font-v29.1.0/Vazir-Medium.woff2");
+}
+img{
+    width: 70%;
+    display: block;
+    margin: auto;
+}
+.formbold-main-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px!important;
+}
+
+.formbold-form-wrapper {
+    margin: 0 auto;
+    max-width: 570px;
+    width: 100%;
+    background: white;
+    padding: 40px!important;
+}
+
+.formbold-form-img {
+    margin-bottom: 45px!important;
+}
+
+.formbold-input-group {
+    margin-bottom: 18px!important;
+}
+
+.formbold-form-select {
+    width: 100%;
+    padding: 12px 22px!important;
+    border-radius: 5px;
+    border: 1px solid #dde3ec;
+    background: #ffffff;
+    font-size: 16px;
+    color: #536387;
+    outline: none;
+    resize: none;
+}
+
+.formbold-input-radio-wrapper {
+    margin-bottom: 25px!important;
+}
+.formbold-radio-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.formbold-radio-label {
+    font-size: 14px;
+    line-height: 24px;
+    color: #07074d;
+    position: relative;
+    padding-left: 25px!important;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.formbold-input-radio {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+.formbold-radio-checkmark {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: #ffffff;
+    border: 1px solid #dde3ec;
+    border-radius: 50%;
+}
+.formbold-radio-label,
+.formbold-input-radio:checked,
+~ .formbold-radio-checkmark {
+    background-color: #6a64f1;
+}
+.formbold-radio-checkmark:after {
+    content: '';
+    position: absolute;
+    display: none;
+}
+
+.formbold-radio-label,
+.formbold-input-radio:checked,
+~ .formbold-radio-checkmark:after {
+    display: block;
+}
+
+.formbold-radio-label .formbold-radio-checkmark:after {
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ffffff;
+    transform: translate(-50%, -50%);
+}
+
+.formbold-form-input {
+    width: 100%;
+    padding: 13px 22px!important;
+    border-radius: 5px;
+    border: 1px solid #dde3ec;
+    background: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+    color: #07074d;
+    outline: none;
+    resize: none;
+}
+.formbold-form-input::placeholder {
+    color: #536387;
+}
+.formbold-form-input:focus {
+    border-color: #6a64f1;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+.formbold-form-label {
+    color: #07074d;
+    font-size: 14px;
+    line-height: 24px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.formbold-btn {
+    text-align: center;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 14px 25px!important;
+    border: none;
+    font-weight: 500;
+    background-color: #6a64f1;
+    color: white;
+    cursor: pointer;
+    margin-top: 25px;
+}
+.formbold-btn:hover {
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.formbold-form-file-flex {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.formbold-form-file-flex .formbold-form-label {
+    margin-bottom: 0!important;
+}
+.formbold-form-file {
+    font-size: 14px;
+    line-height: 24px;
+    color: #536387;
+}
+.formbold-form-file::-webkit-file-upload-button {
+    display: none;
+}
+.formbold-form-file:before {
+    content: 'Upload file';
+    display: inline-block;
+    background: #EEEEEE;
+    border: 0.5px solid #FBFBFB;
+    box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    padding: 3px 12px!important;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    color: #637381;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    margin-right: 10px!important;
+}
+a{
+    color: black;
+    text-decoration: none!important;
+    display: block;
+}
+.a-btn {
+    text-align: center;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 14px 25px!important;
+    border: none;
+    font-weight: 500;
+    background: rgb(205,174,238);
+    background: radial-gradient(circle, rgba(205,174,238,1) 0%, rgba(113,159,221,1) 100%);
+    color: #112351;
+    cursor: pointer;
+    margin-top: 25px!important;
+    transition: all 0.5s ease;
+}
+.a-btn:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.person-ref:hover{
+    background-color: #ababab;
+}
+#person-ref-list{
+    max-height:200px;
+    overflow: hidden;
+    overflow-y: scroll;
+}

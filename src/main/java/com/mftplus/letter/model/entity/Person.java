@@ -3,7 +3,6 @@ package com.mftplus.letter.model.entity;
 import com.mftplus.letter.model.entity.enums.Gender;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,6 +24,7 @@ import java.time.LocalDate;
 public class Person extends Base implements Serializable {
 
     //todo : nullable false has not been set yet
+    //todo : validation commented for production
     //todo : attachment
 
     @Id
@@ -33,15 +33,15 @@ public class Person extends Base implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Pattern(regexp = "^[a-zA-Z\\s]{3,30}$", message = "Invalid Name")
+//    @Pattern(regexp = "^[a-zA-Z\\s]{3,30}$", message = "Invalid Name")
     @Column(name = "p_name", length = 30)
     private String name;
 
-    @Pattern(regexp = "^[a-zA-Z\\s]{3,30}$", message = "Invalid Family")
+//    @Pattern(regexp = "^[a-zA-Z\\s]{3,30}$", message = "Invalid Family")
     @Column(name = "p_family", length = 30)
     private String family;
 
-    @Pattern(regexp = "^[0-9\\s]{10}$", message = "Invalid NationalCode")
+//    @Pattern(regexp = "^[0-9\\s]{10}$", message = "Invalid NationalCode")
     @Column(name = "p_nationalCode", length = 10)
     private String nationalCode;
 

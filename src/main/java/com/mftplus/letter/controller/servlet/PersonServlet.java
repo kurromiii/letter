@@ -41,7 +41,7 @@ public class PersonServlet extends HttpServlet {
         try {
             req.getSession().setAttribute("genders", Arrays.asList(Gender.values()));
             req.getSession().setAttribute("personList", personService.findAll());
-            req.getRequestDispatcher("/jsp/person.jsp").forward(req, resp);
+            req.getRequestDispatcher("/jsp/form/person-form.jsp").forward(req, resp);
         } catch (Exception e) {
             log.error("Person - GET : " + e.getMessage());
             throw new RuntimeException(e);

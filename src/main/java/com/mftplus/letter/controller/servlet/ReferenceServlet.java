@@ -41,7 +41,7 @@ public class ReferenceServlet extends HttpServlet {
             req.getSession().setAttribute("referenceList", referenceService.findAll());
             req.getSession().setAttribute("letterIdRef",req.getParameter("letterIdRef"));
             req.getSession().setAttribute("user",req.getUserPrincipal().getName());
-            req.getRequestDispatcher("/jsp/reference.jsp").forward(req, resp);
+            req.getRequestDispatcher("/jsp/form/reference-form.jsp").forward(req, resp);
         } catch (Exception e) {
             log.error(e.getMessage());
             throw new RuntimeException(e);
