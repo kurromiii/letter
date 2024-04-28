@@ -20,6 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -72,6 +73,11 @@ public class LetterServlet extends HttpServlet {
 
             String username = req.getUserPrincipal().getName();
 
+            List<String> usernameList = List.of(req.getParameterValues("users"));
+            System.out.println(usernameList);
+            List<User> userList = userService.findUserByUsernames(usernameList);
+            System.out.println(userList);
+
             //for uploading letter image
             String fileName = null;
                 Part filePart = req.getPart("file");
@@ -104,6 +110,7 @@ public class LetterServlet extends HttpServlet {
                             .transferMethod(TransferMethod.valueOf(transferMethod))
                             .letterType(LetterType.valueOf(letterType))
                             .registerDateAndTime(LocalDateTime.now())
+                            .userList(userList)
                             .build();
             letter.setFaDate(faDate);
             letterService.save(letter);

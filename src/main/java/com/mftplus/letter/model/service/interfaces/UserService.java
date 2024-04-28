@@ -22,5 +22,5 @@ public interface UserService {
     List<User> findByRole(Role role) throws Exception;
     List<User> findBySection(Section section) throws Exception;
     List<User> findByActive(Boolean active) throws Exception;
-    List<User> findUserByIds(List<String> userList) throws Exception;
+    List<User> findUserByUsernames(List<String> userList) throws Exception;
 }

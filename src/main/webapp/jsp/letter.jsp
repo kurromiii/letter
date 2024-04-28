@@ -16,7 +16,7 @@
 <body>
 <div class="content">
     <div id="org-form">
-    <form id="letter_form" method="post" action="letter.do" enctype="multipart/form-data">
+    <form id="letter_form" method="post" action="" enctype="multipart/form-data">
         <h1>Write Letter</h1>
         <br>
         <div class="row  mb-4 w-100">

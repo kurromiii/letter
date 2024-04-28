@@ -23,6 +23,7 @@ public class LetterApi {
     @Produces(MediaType.APPLICATION_JSON)
     public Response save(Letter letter) throws Exception{
         try {
+
             letterService.save(letter);
             return Response.ok().entity(letter).build();
         } catch (Exception e) {

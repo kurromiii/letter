@@ -16,7 +16,6 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -48,21 +47,20 @@ public class Letter extends Base implements Serializable {
 //    @Pattern(regexp = "^[a-zA-Z\\s]{3,30}$", message = "Invalid Letter Number")
     private String letterNumber;
 
-    @ManyToOne (cascade = {CascadeType.MERGE} , fetch = FetchType.LAZY)
-    @ToString.Exclude
+    @ManyToOne (fetch = FetchType.LAZY)
     private User user;
 
     //ref receivers
-    @ManyToMany (cascade = {CascadeType.MERGE , CascadeType.PERSIST} , fetch = FetchType.LAZY)
+    @ManyToMany (fetch = FetchType.LAZY)
     @ToString.Exclude
     private List<User> userList;
 
-    public void addUser(User user){
-        if (userList==null){
-            userList=new ArrayList<>();
-        }
-        userList.add(user);
-    }
+//    public void addUser(User user){
+//        if (userList==null){
+//            userList=new ArrayList<>();
+//        }
+//        userList.add(user);
+//    }
 
 //    @Pattern(regexp = "^[a-zA-Z\\s]{3,30}$", message = "Invalid Sender Name")
     @Column (name = "l_sender_name" , length = 30)

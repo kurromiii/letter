@@ -17,7 +17,7 @@ public class RolesPrimaryKeys implements Serializable {
     @Column(name = "role_name")
     private String roleName;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "u_username")
     private User user;
 }

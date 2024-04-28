@@ -12,7 +12,7 @@
 img{
     width: 70%;
     display: block;
-    margin: auto;
+    margin: auto!important;
 }
 .formbold-main-wrapper {
     display: flex;
@@ -213,10 +213,13 @@ a{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .person-ref:hover{
-    background-color: #ababab;
+    background-color: #6a64f1;
+
 }
 #person-ref-list{
     max-height:200px;
     overflow: hidden;
     overflow-y: scroll;
+    z-index: 3;
+    background-color: white;
 }

@@ -5,6 +5,8 @@
     <title>نامه</title>
     <link rel="stylesheet" href="../../assets/css/form.css">
     <link rel="stylesheet" href="../../assets/css/kamadatepicker.min.css">
+    <link rel="stylesheet" href="../assets/fontawesome-free-6.5.2-web/css/all.min.css">
+    <jsp:include page="../../jsp/css-import.jsp"></jsp:include>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -49,9 +51,17 @@
                 <input type="text" name="l_receiver_title" id="l_receiver_title" placeholder="عنوان گیرنده نامه را وارد کنید" class="formbold-form-input"/>
             </div>
 
-            <div class="formbold-input-group">
-                <label for="person-list" class="formbold-form-label"> ارجاع گیرندکان نامه </label>
-                <input type="text" name="person-list" id="person-list" placeholder="ارجاع گیرندگان نامه را وارد کنید" class="formbold-form-input"/>
+            <div class=" row formbold-input-group">
+                <label class="formbold-form-label"> ارجاع گیرندکان نامه </label>
+                <div class="position-relative">
+                    <div class="col-12 position-relative">
+                        <input class="col-12 formbold-form-input" oninput="getReferences(event)" type="text" placeholder="ارجاع گیرندگان نامه را وارد کنید"/>
+                        <div   id="person-ref-list" class="border col-12" style="position: absolute;">
+                        </div>
+                    </div>
+                </div>
+                <div id="selected-list" class="col-12 row ">
+                </div>
             </div>
 
             <div class="formbold-input-group">
@@ -95,7 +105,7 @@
                     متن نامه را وارد کنید
                 </label>
                 <textarea
-                        rows="18"
+                        rows="10"
                         name="l_context"
                         id="l_context"
                         placeholder="متن نامه..."
@@ -118,20 +128,6 @@
                         id="file"
                         class="formbold-form-file"
                 />
-            </div>
-            <br><br>
-
-            <div class=" row ">
-                <label>references: </label>
-                <div class="position-relative">
-                    <div class="col-12 position-relative">
-                        <input class="col-12" oninput="getReferences(event)" type="text"/>
-                        <div   id="person-ref-list" class="border col-12" style="position: absolute;">
-                        </div>
-                    </div>
-                </div>
-                <div id="selected-list" class="col-12 row ">
-                </div>
             </div>
 
             <button class="a-btn">ثبت</button>

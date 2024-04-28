@@ -12,20 +12,26 @@ const getReferences=async(event)=>{
     console.log(name)
     console.log(family)
     console.log(nameandfamilyList)
-
-    const res=await fetch("http://localhost"+'/api/person/findByNameAndFamily',{
-        method:"Post",
+    console.log({name:name,family:family})
+    const res=await fetch("http://localhost"+`/api/person/findByNameAndFamily?name=${name}&family=${family}`,{
+        method:"Get",
         headers: {
+
             "Content-Type": "application/json",
+
             // 'Content-Type': 'application/x-www-form-urlencoded',
         },
 
-        body:JSON.stringify({name:name,family:family})
+
+
+
+
     })
+    let list=[]
     if(res.status===200){
 
-        const list= await res.json()
-        console.log(list)
+         list= await res.json()
+
 
     }
     // const list=[
@@ -41,7 +47,7 @@ const getReferences=async(event)=>{
 
    
     personRefEl.innerHTML=''
-
+    console.log(list)
     for(let person of list){
         personRefEl.innerHTML+=`<div  role="button" class="person-ref col-12 border-bottom p-1" onclick="setSelectedRefPerson(event,'${person.user.username}','${person.name}','${person.family}')">    <i class="fa fa-user col-1" aria-hidden="true"></i>
         <small class="col-11">${person.name} ${person.family}</small></div>`

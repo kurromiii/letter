@@ -9,7 +9,6 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -60,11 +59,11 @@ public class Organisation extends Base implements Serializable {
     @ToString.Exclude
     private List<Section> sectionList;
 
-    public void addSection(Section section){
-        if (sectionList==null){
-            sectionList=new ArrayList<>();
-        }
-        sectionList.add(section);
-    }
+//    public void addSection(Section section){
+//        if (sectionList==null){
+//            sectionList=new ArrayList<>();
+//        }
+//        sectionList.add(section);
+//    }
 
 }

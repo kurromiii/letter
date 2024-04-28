@@ -1,5 +1,6 @@
 package com.mftplus.letter.model.entity;
 
+import com.google.gson.Gson;
 import com.mftplus.letter.model.entity.enums.Role;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.*;
@@ -11,14 +12,11 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @SuperBuilder
-@ToString
 
 @Entity(name = "userEntity")
 @Table(name = "user_tbl")
@@ -39,9 +37,9 @@ public class User extends Base implements Serializable {
     @Enumerated(EnumType.ORDINAL)
     private Role role;
 
-    @ToString.Exclude
-    @OneToMany(mappedBy = "rolesPrimaryKeys.user", orphanRemoval = true)
-    private Set<Roles> roles = new LinkedHashSet<>();
+//    @ToString.Exclude
+//    @OneToMany(mappedBy = "rolesPrimaryKeys.user", orphanRemoval = true,fetch = FetchType.LAZY)
+//    private Set<Roles> roles = new LinkedHashSet<>();
 
     @ManyToOne (fetch = FetchType.LAZY)
     @ToString.Exclude
@@ -49,5 +47,11 @@ public class User extends Base implements Serializable {
 
     @Column(name="u_active")
     private boolean active;
+
+    @Override
+    public String toString() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
 
 }

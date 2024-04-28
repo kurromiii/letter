@@ -19,7 +19,7 @@ import java.io.Serializable;
 @Table(name = "user_roles")
 
 public class Roles extends Base implements Serializable {
-    @EmbeddedId
+    @EmbeddedId()
     private RolesPrimaryKeys rolesPrimaryKeys;
 
     @Override
