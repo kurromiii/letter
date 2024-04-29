@@ -41,7 +41,7 @@
 
                 <select class="formbold-form-select" name="priority" id="priority">
                     <c:forEach var="priority" items="${sessionScope.priorities}">
-                        <option value="${priority}">${priority.tile}</option>
+                        <option value="${priority}">${priority.title}</option>
                     </c:forEach>
                 </select>
             </div>

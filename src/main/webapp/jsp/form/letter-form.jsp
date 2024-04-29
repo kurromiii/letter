@@ -5,7 +5,7 @@
     <title>نامه</title>
     <link rel="stylesheet" href="../../assets/css/form.css">
     <link rel="stylesheet" href="../../assets/css/kamadatepicker.min.css">
-    <link rel="stylesheet" href="../assets/fontawesome-free-6.5.2-web/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/fontawesome-free-6.5.2-web/css/all.min.css">
     <jsp:include page="../../jsp/css-import.jsp"></jsp:include>
     <meta charset="UTF-8">
     <meta name="viewport"
