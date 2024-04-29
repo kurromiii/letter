@@ -1,8 +1,16 @@
 package com.mftplus.letter.model.entity.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum LetterType {
-    inSystem,
-    //todo how to say these two are both outOfSystem
-    receiving,
-    sending
+    inSystem("ورودی"),
+    receiving("دریافتی"),
+    sending("ارسالی");
+
+    public final String title;
+
+    LetterType(String title) {
+        this.title = title;
+    }
 }

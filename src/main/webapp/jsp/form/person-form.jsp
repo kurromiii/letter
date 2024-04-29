@@ -41,7 +41,7 @@
 
                 <select class="formbold-form-select" name="gender" id="gender">
                     <c:forEach var="gender" items="${sessionScope.genders}">
-                        <option value="${gender}">${gender}</option>
+                        <option value="${gender}">${gender.title}</option>
                     </c:forEach>
                 </select>
             </div>

@@ -71,7 +71,7 @@
 
                 <select class="formbold-form-select" name="accessLevel" id="accessLevel">
                     <c:forEach var="accessLevel" items="${sessionScope.accessLevels}">
-                        <option value="${accessLevel}">${accessLevel}</option>
+                        <option value="${accessLevel}">${accessLevel.title}</option>
                     </c:forEach>
                 </select>
             </div>
@@ -83,7 +83,7 @@
 
                 <select class="formbold-form-select" name="transferMethod" id="transferMethod">
                     <c:forEach var="transferMethod" items="${sessionScope.transferMethods}">
-                        <option value="${transferMethod}">${transferMethod}</option>
+                        <option value="${transferMethod}">${transferMethod.title}</option>
                     </c:forEach>
                 </select>
             </div>
@@ -95,7 +95,7 @@
 
                 <select class="formbold-form-select" name="letterType" id="letterType">
                     <c:forEach var="letterType" items="${sessionScope.letterTypes}">
-                        <option value="${letterType}">${letterType}</option>
+                        <option value="${letterType}">${letterType.title}</option>
                     </c:forEach>
                 </select>
             </div>

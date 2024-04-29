@@ -41,7 +41,7 @@
 
                 <select class="formbold-form-select" name="priority" id="priority">
                     <c:forEach var="priority" items="${sessionScope.priorities}">
-                        <option value="${priority}">${priority}</option>
+                        <option value="${priority}">${priority.tile}</option>
                     </c:forEach>
                 </select>
             </div>
@@ -53,7 +53,7 @@
 
                 <select class="formbold-form-select" name="r_refType" id="r_refType">
                     <c:forEach var="r_refType" items="${sessionScope.refTypes}">
-                        <option value="${r_refType}">${r_refType}</option>
+                        <option value="${r_refType}">${r_refType.title}</option>
                     </c:forEach>
                 </select>
             </div>
