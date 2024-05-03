@@ -40,14 +40,12 @@ public class Reference extends Base implements Serializable {
     @Enumerated (EnumType.ORDINAL)
     private ReferencePriority priority;
 
-    @ManyToOne (fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "reference_sender",nullable = false)
-    @ToString.Exclude
     private User referenceSenderId;
 
-    @ManyToOne (fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "reference_receiver",nullable = false)
-    @ToString.Exclude
     private User referenceReceiverId;
 
     @Column (name = "r_date_and_time")

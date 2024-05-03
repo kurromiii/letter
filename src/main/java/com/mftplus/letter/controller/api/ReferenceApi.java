@@ -77,25 +77,6 @@ public class ReferenceApi {
         }
     }
 
-    @GET
-    @Path("/{referenceSenderOrReceiver}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response findByReferenceSenderOrReceiver(@PathParam("referenceSenderOrReceiver") Long id) throws Exception{
-        try {
-            log.info("FindByReferenceSenderOrReceiver");
-            return Response
-                    .ok()
-                    .entity(referenceService.findByReferenceSenderOrReceiver(id))
-                    .build();
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            return Response
-                    .serverError()
-                    .entity(e.getMessage())
-                    .build();
-        }
-    }
 
     @GET
     @Path("/{refDate}")

@@ -28,7 +28,13 @@
                         <li class="nav-item">
                             <a class="nav-link" id="sent-tab" data-bs-toggle="tab"  aria-controls="reference" href="#reference" role="tab" aria-selected="false">
                                 <span class="d-block d-md-none"><i class="ti-export"></i></span>
-                                <span class="d-none d-md-block">ارجاع</span>
+                                <span class="d-none d-md-block">ارجاع ارسالی</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="receive-tab" data-bs-toggle="tab"  aria-controls="reference" href="#referenceReceived" role="tab" aria-selected="false">
+                                <span class="d-block d-md-none"><i class="ti-export"></i></span>
+                                <span class="d-none d-md-block">ارجاع دریافتی</span>
                             </a>
                         </li>
                     </ul>
@@ -101,13 +107,13 @@
                         </div>
                     </div>
 
-                    <!--reference box-->
+                    <!--reference sent box-->
                     <div class="tab-pane fade" id="reference" aria-labelledby="sent-tab" role="tabpanel">
 
                         <div>
                             <div class="row p-4 no-gutters align-items-center">
                                 <div class="col-sm-12 col-md-6">
-                                    <h3 class="font-light mb-0"><i class="ti-email mr-2"></i>ارجاع های شما</h3>
+                                    <h3 class="font-light mb-0"><i class="ti-email mr-2"></i>ارجاع های ارسالی شما</h3>
                                 </div>
                                 <div class="col-sm-12 col-md-6">
                                     <ul class="list-inline dl mb-0 d-flex flex-row-reverse">
@@ -120,7 +126,7 @@
                                             </a>
                                         </li>
                                         <li class="list-inline-item text-info mr-3">
-                                            <a href="letter.do">
+                                            <a href="reference.do">
                                                 <button class="btn btn-circle btn-success text-white" href="javascript:void(0)">
                                                     <i class="fa fa-plus"></i>
                                                 </button>
@@ -134,7 +140,7 @@
                             <div class="table-responsive">
                                 <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
                                     <tbody>
-                                    <c:forEach var="reference" items="${sessionScope.referenceList}">
+                                    <c:forEach var="reference" items="${sessionScope.referenceListBySender}">
                                     <tr>
                                         <td class="pl-3">
                                             <div class="custom-control custom-checkbox">
@@ -145,11 +151,11 @@
 
                                         <td><i class="fa fa-star text-warning"></i></td>
                                         <td>
-                                            <span class="mb-0 text-muted">${reference.referenceSenderId.username}</span>
+                                            <span class="mb-0 text-muted">${reference.referenceReceiverId.username}</span>
                                         </td>
 
                                         <td>
-                                            <span class="text-dark">${reference.paraph}-</span>
+                                            <span class="text-dark">${reference.paraph}</span>
                                         </td>
 
                                         <td class="text-muted">${reference.refDateAndTime}</td>
@@ -165,6 +171,61 @@
                         </div>
                     </div>
 
+                    <!--reference received box-->
+                    <div class="tab-pane fade" id="referenceReceived" aria-labelledby="receive-tab" role="tabpanel">
+
+                        <div>
+                            <div class="row p-4 no-gutters align-items-center">
+                                <div class="col-sm-12 col-md-6">
+                                    <h3 class="font-light mb-0"><i class="ti-email mr-2"></i>ارجاع های دریافتی شما</h3>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <ul class="list-inline dl mb-0 d-flex flex-row-reverse">
+                                        <li class="list-inline-item text-danger">
+                                            <a href="#">
+                                                <button class="btn btn-circle btn-danger text-white" href="javascript:void(0)">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                                <span class="ml-2 font-normal text-dark">حذف</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
+                                    <tbody>
+                                    <c:forEach var="reference" items="${sessionScope.referenceListByReceiver}">
+                                        <tr>
+                                            <td class="pl-3">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="cst3" />
+                                                    <label class="custom-control-label" for="cst3">&nbsp;</label>
+                                                </div>
+                                            </td>
+
+                                            <td><i class="fa fa-star text-warning"></i></td>
+                                            <td>
+                                                <span class="mb-0 text-muted">${reference.referenceSenderId.username}</span>
+                                            </td>
+
+                                            <td>
+                                                <span class="text-dark">${reference.paraph}</span>
+                                            </td>
+
+                                            <td class="text-muted">${reference.refDateAndTime}</td>
+
+                                            <td class="d-flex justify-content-center">
+                                                <a href="#" class="btn text-dark p-2 bg-warning rounded">مشاهده ارجاع </a>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>

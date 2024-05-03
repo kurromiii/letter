@@ -62,35 +62,44 @@ public class ReferenceServiceImpl implements ReferenceService, Serializable {
     }
 
     @Override
-    public Optional<Reference> findByReferenceSenderOrReceiver(Long id) throws Exception {
-        return Optional.ofNullable(entityManager.find(Reference.class, id));
+    public List<Reference> findByReferenceSenderId(String senderUsername) throws Exception {
+        TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.referenceSenderId.username=:senderUsername", Reference.class);
+        query.setParameter("senderUsername",senderUsername);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Reference> findByReferenceReceiverId(String receiverUsername) throws Exception {
+        TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.referenceReceiverId.username=:receiverUsername", Reference.class);
+        query.setParameter("receiverUsername",receiverUsername);
+        return query.getResultList();
     }
 
     @Override
     public List<Reference> findByRefDate(LocalDateTime refDateAndTime) throws Exception {
         TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.refDateAndTime=:refDateAndTime", Reference.class);
-        query.setParameter(String.valueOf(refDateAndTime),"refDateAndTime");
+        query.setParameter("refDateAndTime",refDateAndTime);
         return query.getResultList();
     }
 
     @Override
     public List<Reference> findByLetterId(Long letterId) throws Exception {
         TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.letterId.id=:letterId", Reference.class);
-        query.setParameter(String.valueOf(letterId),"letterId");
+        query.setParameter("letterId",letterId);
         return query.getResultList();
     }
 
     @Override
     public List<Reference> findByValidate(Boolean validate) throws Exception {
         TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.validate=:validate", Reference.class);
-        query.setParameter(String.valueOf(validate),"validate");
+        query.setParameter("validate",validate);
         return query.getResultList();
     }
 
     @Override
     public List<Reference> findByParaph(String paraph) throws Exception {
         TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.paraph=:paraph", Reference.class);
-        query.setParameter(paraph,"paraph");
+        query.setParameter("paraph",paraph);
         return query.getResultList();
     }
 
@@ -98,14 +107,14 @@ public class ReferenceServiceImpl implements ReferenceService, Serializable {
     @Override
     public List<Reference> findByPriority(ReferencePriority priority) throws Exception {
         TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.priority=:priority", Reference.class);
-        query.setParameter(String.valueOf(priority),"priority");
+        query.setParameter("priority",priority);
         return query.getResultList();
     }
 
     @Override
     public List<Reference> findByStatus(Boolean status) throws Exception {
         TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.status=:status", Reference.class);
-        query.setParameter(String.valueOf(status),"status");
+        query.setParameter("status",status);
         return query.getResultList();
     }
 }
