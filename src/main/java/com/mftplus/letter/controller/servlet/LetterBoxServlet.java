@@ -26,6 +26,9 @@ public class LetterBoxServlet extends HttpServlet {
         log.info("LetterBoxServlet - Get");
 
         try {
+            String username = req.getUserPrincipal().getName();
+            req.getSession().setAttribute("letterListByUser", letterService.findByUser(username));
+
             req.getSession().setAttribute("letterList", letterService.findAll());
             req.getSession().setAttribute("referenceList", referenceService.findAll());
             req.getRequestDispatcher("/jsp/table/letter-box.jsp").forward(req, resp);

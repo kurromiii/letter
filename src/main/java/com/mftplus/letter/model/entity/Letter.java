@@ -47,7 +47,7 @@ public class Letter extends Base implements Serializable {
 //    @Pattern(regexp = "^[a-zA-Z\\s]{3,30}$", message = "Invalid Letter Number")
     private String letterNumber;
 
-    @ManyToOne (fetch = FetchType.LAZY)
+    @ManyToOne
     private User user;
 
     //ref receivers

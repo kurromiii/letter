@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="../../assets/css/letterBox.css">
     <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <div class="container">
@@ -54,7 +52,7 @@
                                             </a>
                                         </li>
                                         <li class="list-inline-item text-info mr-3">
-                                            <a href="#">
+                                            <a href="letter.do">
                                                 <button class="btn btn-circle btn-success text-white" href="javascript:void(0)">
                                                     <i class="fa fa-plus"></i>
                                                 </button>
@@ -69,7 +67,7 @@
                             <div class="table-responsive">
                                 <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
                                     <tbody>
-                                    <c:forEach var="letter" items="${sessionScope.letterList}">
+                                    <c:forEach var="letter" items="${sessionScope.letterListByUser}">
                                     <tr>
 
                                         <td class="pl-3">
@@ -91,8 +89,10 @@
                                         <td class="text-muted">${letter.date}</td>
 
                                         <td class="d-flex justify-content-center">
-                                            <a href="#" class="btn text-dark p-2 bg-warning rounded">مشاهده نامه </a>
+                                            <a href="#" class="text-dark p-2 bg-warning rounded">مشاهده نامه </a>
+                                            <a href="#" class="text-dark p-2 bg-warning rounded" onclick="edit(${letter.id})">ویرایش نامه </a>
                                         </td>
+
                                     </tr>
                                     </c:forEach>
                                     </tbody>
@@ -120,7 +120,7 @@
                                             </a>
                                         </li>
                                         <li class="list-inline-item text-info mr-3">
-                                            <a href="#">
+                                            <a href="letter.do">
                                                 <button class="btn btn-circle btn-success text-white" href="javascript:void(0)">
                                                     <i class="fa fa-plus"></i>
                                                 </button>
@@ -174,5 +174,15 @@
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="../../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
 <script type="text/javascript"></script>
+
+<script>
+    function edit(id) {
+        document.location.replace("/letterEdit.do?id=" + id);
+    }
+    let myElement = document.querySelector('#l_date');
+    kamaDatepicker(myElement);
+
+    kamaDatepicker('l_date', { buttonsColor: "red", forceFarsiDigits: true });
+</script>
 </body>
 </html>

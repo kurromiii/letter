@@ -12,6 +12,7 @@ body{
 }
 a{
     text-decoration: none!important;
+    margin: 10px;
 }
 .card {
     position: relative;

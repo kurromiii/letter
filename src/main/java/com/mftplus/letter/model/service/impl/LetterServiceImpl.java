@@ -67,7 +67,7 @@ public class LetterServiceImpl implements LetterService, Serializable {
     @Override
     public List<Letter> findByTitle(String title) throws Exception {
         TypedQuery<Letter> query = entityManager.createQuery("select oo from letterEntity oo where oo.title=:title", Letter.class);
-        query.setParameter(title,"title");
+        query.setParameter("title",title);
         return query.getResultList();
     }
 
@@ -75,7 +75,7 @@ public class LetterServiceImpl implements LetterService, Serializable {
     @Override
     public List<Letter> findByContext(String context) throws Exception {
         TypedQuery<Letter> query = entityManager.createQuery("select oo from letterEntity oo where oo.context=:context", Letter.class);
-        query.setParameter(context,"context");
+        query.setParameter("context",context);
         return query.getResultList();
     }
 
@@ -83,7 +83,7 @@ public class LetterServiceImpl implements LetterService, Serializable {
     @Override
     public List<Letter> findByDate(LocalDate date) throws Exception {
         TypedQuery<Letter> query = entityManager.createQuery("select oo from letterEntity oo where oo.date=:date", Letter.class);
-        query.setParameter(String.valueOf(date),"date");
+        query.setParameter("date",date);
         return query.getResultList();
     }
 
@@ -97,7 +97,7 @@ public class LetterServiceImpl implements LetterService, Serializable {
     @Override
     public List<Letter> findByRegisterDate(LocalDateTime dateTime) throws Exception {
         TypedQuery<Letter> query = entityManager.createQuery("select oo from letterEntity oo where oo.registerDateAndTime=:dateTime", Letter.class);
-        query.setParameter(String.valueOf(dateTime),"dateTime");
+        query.setParameter("dateTime",dateTime);
         return query.getResultList();
     }
 
@@ -105,8 +105,8 @@ public class LetterServiceImpl implements LetterService, Serializable {
     @Override
     public List<Letter> findBySenderNameAndTitle(String senderName, String senderTitle) throws Exception {
         TypedQuery<Letter> query = entityManager.createQuery("select oo from letterEntity oo where oo.senderName=:senderName and oo.senderTitle=:senderTitle", Letter.class);
-        query.setParameter(senderName,"senderName");
-        query.setParameter(senderTitle,"senderTitle");
+        query.setParameter("senderName",senderName);
+        query.setParameter("senderTitle",senderTitle);
         return query.getResultList();
     }
 
@@ -114,7 +114,16 @@ public class LetterServiceImpl implements LetterService, Serializable {
     @Override
     public List<Letter> findBySectionId(Long sectionId) throws Exception {
         TypedQuery<Letter> query = entityManager.createQuery("select oo from letterEntity oo where oo.user.section=:sectionId", Letter.class);
-        query.setParameter(String.valueOf(sectionId),"sectionId");
+        query.setParameter("sectionId",sectionId);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Letter> findByUser(String user) throws Exception {
+        System.out.println(user);
+        TypedQuery<Letter> query = entityManager.createQuery("select oo from letterEntity oo where oo.user.username=:userId", Letter.class);
+        query.setParameter("userId",user);
+        System.out.println(query.getResultList());
         return query.getResultList();
     }
 
