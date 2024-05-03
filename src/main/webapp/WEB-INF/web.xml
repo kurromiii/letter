@@ -6,15 +6,15 @@
     
 <!--  initial servlet  -->
     <welcome-file-list>
-        <welcome-file> </welcome-file>
+        <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
 
     <servlet>
-        <servlet-name>InitialServlet</servlet-name>
-        <servlet-class>com.mftplus.letter.controller.servlet.InitialServlet</servlet-class>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.mftplus.letter.controller.servlet.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>InitialServlet</servlet-name>
+        <servlet-name>LoginServlet</servlet-name>
         <url-pattern> </url-pattern>
     </servlet-mapping>
 
@@ -39,6 +39,7 @@
         <web-resource-collection>
             <web-resource-name>admin</web-resource-name>
             <url-pattern>/organisation.do</url-pattern>
+            <url-pattern>/home.do</url-pattern>
             <url-pattern>/user.do</url-pattern>
             <url-pattern>/person.do</url-pattern>
             <url-pattern>/letter.do</url-pattern>
@@ -57,6 +58,7 @@
         <web-resource-collection>
             <web-resource-name>manager</web-resource-name>
             <url-pattern>/organisation.do</url-pattern>
+            <url-pattern>/home.do</url-pattern>
             <url-pattern>/user.do</url-pattern>
             <http-method>GET</http-method>
             <http-method>POST</http-method>
@@ -71,6 +73,7 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>user</web-resource-name>
+            <url-pattern>/home.do</url-pattern>
             <url-pattern>/letter.do</url-pattern>
             <url-pattern>/reference.do</url-pattern>
             <url-pattern>/person.do</url-pattern>

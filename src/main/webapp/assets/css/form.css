@@ -223,3 +223,23 @@ a{
     z-index: 3;
     background-color: white;
 }
+.formbold-form-title {
+    margin-bottom: 30px!important;
+}
+.formbold-form-title h2 {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    color: #6a64f1;
+    text-align: center;
+    transition: all 0.5s ease;
+}
+.formbold-form-title p {
+    font-size: 16px;
+    line-height: 24px;
+    color: #536387;
+    margin-top: 12px;
+}
+.formbold-form-title h2:hover{
+    text-shadow: 10px 10px 10px #444343;
+}
