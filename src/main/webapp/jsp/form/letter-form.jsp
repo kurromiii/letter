@@ -6,13 +6,16 @@
     <link rel="stylesheet" href="../../assets/css/form.css">
     <link rel="stylesheet" href="../../assets/css/kamadatepicker.min.css">
     <link rel="stylesheet" href="../../assets/fontawesome-free-6.5.2-web/css/all.min.css">
-    <jsp:include page="../../jsp/css-import.jsp"></jsp:include>
+    <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
+<!--nav bar-->
+<jsp:include page="../../jsp/all.jsp"></jsp:include>
+
 <div class="formbold-main-wrapper">
     <div class="formbold-form-wrapper">
         <!--img-->
@@ -56,7 +59,7 @@
                 <div class="position-relative">
                     <div class="col-12 position-relative">
                         <input class="col-12 formbold-form-input" oninput="getReferences(event)" type="text" placeholder="ارجاع گیرندگان نامه را وارد کنید"/>
-                        <div   id="person-ref-list" class="border col-12" style="position: absolute;">
+                        <div   id="person-ref-list" class="border col-12">
                         </div>
                     </div>
                 </div>

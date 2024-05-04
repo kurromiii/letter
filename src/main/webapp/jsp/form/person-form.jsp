@@ -11,6 +11,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
+<!--nav bar-->
+<jsp:include page="../../jsp/all.jsp"></jsp:include>
+
 <div class="formbold-main-wrapper">
     <div class="formbold-form-wrapper">
         <!--img-->
