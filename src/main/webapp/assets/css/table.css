@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    direction: rtl;
+    font-family: 'vazir', serif;
+}
+@font-face {
+    font-family: "vazir";
+    src: url("../../vazir-font-v29.1.0/Vazir-Medium.woff2");
+}
+div .t-w{
+    padding-top: 50px!important;
+}
+table{
+    width: 90%;
+    height: auto;
+    margin: auto !important;
+    border: 1px solid #E4EfE9;
+    border-collapse: collapse;
+}
+table thead tr{
+    background-color: #537895;
+    height: 8vh;
+}
+table thead tr th{
+    font-size: 16px;
+    width: 10%;
+    color: black;
+    border-right: 2px outset #E4EfE9;
+}
+.btn{
+    width: 3%;
+}
+table thead tr th:nth-child(1){
+    width: 1%;
+}
+table tbody tr:nth-child(even){
+    background-color:  #b4c1df;
+    height: 60px;
+    border: 1px solid #E4EfE9;
+    transition: all 0.5s ease;
+}
+table tbody tr:nth-child(odd){
+    background-color: #E4EfE9;
+    height: 60px;
+    border: 1px solid #E4EfE9;
+    transition: all 0.5s ease;
+}
+table tbody tr:nth-child(even):hover{
+    background-color: #E4EfE9 ;
+}
+table tbody tr:nth-child(odd):hover{
+    background-color: #E4EfE9 ;
+}
+table tbody tr td{
+    color: black;
+    text-align: center;
+}
+table tbody tr td a{
+    display: inline-block;
+    padding: 2px!important;
+}
+.show {
+    color: #6a64f1;
+}
+.edit {
+    color: #ffc107;
+}
+.remove {
+    color: #dc3545;
+}
