@@ -10,12 +10,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+<!--nav bar-->
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body bg-primary text-white mailbox-widget pb-0">
                     <!--header-->
+                    <div>
+                        <a class="text-light" href="home.do"><span class="fa fa-home text-light home"></span></a>
+                    </div>
+
                     <h2 class="text-white pb-3">صندوق نامه و ارجاع</h2>
                     <!--navbar start-->
                     <ul class="nav nav-tabs custom-tab border-bottom-0 mt-4" id="myTab" role="tablist">
@@ -44,7 +50,7 @@
                         <div>
                             <div class="row p-4 no-gutters align-items-center">
                                 <div class="col-sm-12 col-md-6">
-                                    <h3 class="font-light mb-0"><i class="ti-email mr-2"></i>نامه های شما</h3>
+                                    <h4 class="font-light mb-0"><i class="ti-email mr-2"></i>نامه های شما</h4>
                                 </div>
                                 <!--add new and delete-->
                                 <div class="col-sm-12 col-md-6">
@@ -113,7 +119,7 @@
                         <div>
                             <div class="row p-4 no-gutters align-items-center">
                                 <div class="col-sm-12 col-md-6">
-                                    <h3 class="font-light mb-0"><i class="ti-email mr-2"></i>ارجاع های ارسالی شما</h3>
+                                    <h4 class="font-light mb-0"><i class="ti-email mr-2"></i>ارجاع های ارسالی شما</h4>
                                 </div>
                                 <div class="col-sm-12 col-md-6">
                                     <ul class="list-inline dl mb-0 d-flex flex-row-reverse">
@@ -177,7 +183,7 @@
                         <div>
                             <div class="row p-4 no-gutters align-items-center">
                                 <div class="col-sm-12 col-md-6">
-                                    <h3 class="font-light mb-0"><i class="ti-email mr-2"></i>ارجاع های دریافتی شما</h3>
+                                    <h4 class="font-light mb-0"><i class="ti-email mr-2"></i>ارجاع های دریافتی شما</h4>
                                 </div>
                                 <div class="col-sm-12 col-md-6">
                                     <ul class="list-inline dl mb-0 d-flex flex-row-reverse">
@@ -240,10 +246,6 @@
     function edit(id) {
         document.location.replace("/letterEdit.do?id=" + id);
     }
-    let myElement = document.querySelector('#l_date');
-    kamaDatepicker(myElement);
-
-    kamaDatepicker('l_date', { buttonsColor: "red", forceFarsiDigits: true });
 </script>
 </body>
 </html>
