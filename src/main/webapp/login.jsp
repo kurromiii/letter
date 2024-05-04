@@ -4,6 +4,7 @@
 <head>
     <title>ورود</title>
     <link rel="stylesheet" href="assets/css/form.css">
+    <link rel="stylesheet" href="assets/css/login.css">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -17,14 +18,12 @@
                 اتوماسیون اداری
             </h2>
         </div>
-        <!--img-->
-        <img src="assets/image/organization.jpg" alt="">
 
         <!--start form-->
         <form action=" " method="post">
 
             <div class="formbold-input-group">
-                <label for="username" class="formbold-form-label"> نام کابری </label>
+                <label for="username" class="formbold-form-label"> نام کاربری </label>
                 <input type="text" name="username" id="username" placeholder="نام کاربری خود را وارد کنید" class="formbold-form-input"/>
             </div>
 
@@ -33,7 +32,7 @@
                 <input type="password" name="password" id="password" placeholder="رمز عبور خود را وارد کنید" class="formbold-form-input"/>
             </div>
 
-            <button class="formbold-btn">ورود</button>
+            <button class="a-btn">ورود</button>
         </form>
         <!--end form-->
     </div>
