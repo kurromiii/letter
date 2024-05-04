@@ -3,8 +3,17 @@
 <html>
 <head>
     <title>Error 500</title>
+    <link rel="stylesheet" href="../assets/css/error.css">
 </head>
 <body>
-<h1>Internal Server Error</h1>
+<p class="zoom-area">خطای سرور </p>
+<section class="error-container">
+    <span>5</span>
+    <span><span class="screen-reader-text">0</span></span>
+    <span>0</span>
+</section>
+<div class="link-container">
+    <a target="_blank" href="home.do" class="more-link">بازگشت به صفحه اصلی</a>
+</div>
 </body>
 </html>
