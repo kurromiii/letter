@@ -76,6 +76,20 @@ public class ReferenceServiceImpl implements ReferenceService, Serializable {
     }
 
     @Override
+    public List<Reference> findByReferenceSenderIdAndDeletedFalse(String senderUsername) throws Exception {
+        TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.referenceSenderId.username=:senderUsername and oo.deleted=false", Reference.class);
+        query.setParameter("senderUsername",senderUsername);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Reference> findByReferenceReceiverIdAndDeletedFalse(String receiverUsername) throws Exception {
+        TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.referenceReceiverId.username=:receiverUsername and deleted=false", Reference.class);
+        query.setParameter("receiverUsername",receiverUsername);
+        return query.getResultList();
+    }
+
+    @Override
     public List<Reference> findByRefDate(LocalDateTime refDateAndTime) throws Exception {
         TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.refDateAndTime=:refDateAndTime", Reference.class);
         query.setParameter("refDateAndTime",refDateAndTime);

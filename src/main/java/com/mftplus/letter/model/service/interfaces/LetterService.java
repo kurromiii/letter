@@ -15,6 +15,7 @@ public interface LetterService {
 
     Optional<Letter> findById(Long id) throws Exception;
     List<Letter> findAll() throws Exception;
+
     List<Letter> findByTitle(String title) throws Exception;
     List<Letter> findByContext(String context) throws Exception;
     List<Letter> findByDate(LocalDate date) throws Exception;
@@ -22,7 +23,9 @@ public interface LetterService {
     List<Letter> findByRegisterDate(LocalDateTime dateTime) throws Exception;
     List<Letter> findBySenderNameAndTitle(String senderName,String senderTitle) throws Exception;
     List<Letter> findBySectionId(Long sectionId) throws Exception;
+
     List<Letter> findByUser(String user) throws  Exception;
+    List<Letter> findByUserAndDeletedFalse(String user) throws  Exception;
 
 
 

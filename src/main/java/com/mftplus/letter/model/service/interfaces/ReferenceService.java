@@ -19,6 +19,9 @@ public interface ReferenceService {
     List<Reference> findByReferenceSenderId(String senderUsername) throws Exception;
     List<Reference> findByReferenceReceiverId(String receiverUsername) throws Exception;
 
+    List<Reference> findByReferenceSenderIdAndDeletedFalse(String senderUsername) throws Exception;
+    List<Reference> findByReferenceReceiverIdAndDeletedFalse(String receiverUsername) throws Exception;
+
     List<Reference> findByRefDate(LocalDateTime date) throws Exception;
     List<Reference> findByLetterId(Long letterId) throws Exception;
     List<Reference> findByValidate(Boolean validate) throws Exception;

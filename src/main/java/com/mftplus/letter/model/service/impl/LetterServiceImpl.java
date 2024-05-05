@@ -120,10 +120,15 @@ public class LetterServiceImpl implements LetterService, Serializable {
 
     @Override
     public List<Letter> findByUser(String user) throws Exception {
-        System.out.println(user);
         TypedQuery<Letter> query = entityManager.createQuery("select oo from letterEntity oo where oo.user.username=:userId", Letter.class);
         query.setParameter("userId",user);
-        System.out.println(query.getResultList());
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Letter> findByUserAndDeletedFalse(String user) throws Exception {
+        TypedQuery<Letter> query = entityManager.createQuery("select oo from letterEntity oo where oo.user.username=:userId and oo.deleted=false ", Letter.class);
+        query.setParameter("userId",user);
         return query.getResultList();
     }
 
