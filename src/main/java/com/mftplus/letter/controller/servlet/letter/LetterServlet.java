@@ -1,5 +1,6 @@
-package com.mftplus.letter.controller.servlet;
+package com.mftplus.letter.controller.servlet.letter;
 
+import com.mftplus.letter.controller.exception.NoUserFoundException;
 import com.mftplus.letter.model.entity.Letter;
 import com.mftplus.letter.model.entity.User;
 import com.mftplus.letter.model.entity.enums.LetterAccessLevel;
@@ -15,6 +16,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -53,27 +55,29 @@ public class LetterServlet extends HttpServlet {
         }
     }
 
+    @Valid
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("LetterServlet - Post");
         try {
             //inputs
-            String title = req.getParameter("l_title");
-            String letterNumber = req.getParameter("l_letter_number");
-            String faDate = req.getParameter("l_date").replace("/", "-");
-            String context = req.getParameter("l_context");
-            String receiverName = req.getParameter("l_receiver_name");
-            String receiverTitle = req.getParameter("l_receiver_title");
-            String senderName = req.getParameter("l_sender_name");
-            String senderTitle = req.getParameter("l_sender_title");
+            String title = req.getParameter("title");
+            String letterNumber = req.getParameter("letter_number");
+            String faDate = req.getParameter("date").replace("/", "-");
+            String context = req.getParameter("context");
+            String receiverName = req.getParameter("receiver_name");
+            String receiverTitle = req.getParameter("receiver_title");
+            String senderName = req.getParameter("sender_name");
+            String senderTitle = req.getParameter("sender_title");
             String accessLevel = req.getParameter("accessLevel");
             String transferMethod = req.getParameter("transferMethod");
             String letterType = req.getParameter("letterType");
 
             String username = req.getUserPrincipal().getName();
 
+            //todo : null pointer exception
             List<String> usernameList = List.of(req.getParameterValues("users"));
-            List<User> userList = userService.findUserByUsernames(usernameList);
+
 
             //for uploading letter image
             String fileName = null;
@@ -85,36 +89,40 @@ public class LetterServlet extends HttpServlet {
                 }
                 resp.getWriter().print("The file uploaded successfully.");
             }
-//            verify
-            if (username != null){
+
+//            if (!usernameList.isEmpty()) {
                 Optional<User> user = userService.findByUsername(username);
+                List<User> userList = userService.findUserByUsernames(usernameList);
+
                 if (user.isPresent()) {
-             Letter letter =
-                    Letter
-                            .builder()
-                            .user(user.get())
-                            .title(title)
-                            .letterNumber(letterNumber)
-                            .context(context)
-                            .receiverName(receiverName)
-                            .receiverTitle(receiverTitle)
-                            .senderName(senderName)
-                            .senderTitle(senderTitle)
-                            .image(fileName)
-                            .deleted(false)
-                            .faDate(faDate)
-                            .accessLevel(LetterAccessLevel.valueOf(accessLevel))
-                            .transferMethod(TransferMethod.valueOf(transferMethod))
-                            .letterType(LetterType.valueOf(letterType))
-                            .registerDateAndTime(LocalDateTime.now())
-                            .userList(userList)
-                            .build();
-            letter.setFaDate(faDate);
-            letterService.save(letter);
-            log.info("LetterServlet - Letter Saved");
-            req.getSession().setAttribute("letterId",letter.getId());
-            resp.sendRedirect("/letter.do?selectedLetter="+letter.getId());
-                }
+                    Letter letter =
+                            Letter
+                                    .builder()
+                                    .user(user.get())
+                                    .title(title)
+                                    .letterNumber(letterNumber)
+                                    .context(context)
+                                    .receiverName(receiverName)
+                                    .receiverTitle(receiverTitle)
+                                    .senderName(senderName)
+                                    .senderTitle(senderTitle)
+                                    .image(fileName)
+                                    .deleted(false)
+                                    .faDate(faDate)
+                                    .accessLevel(LetterAccessLevel.valueOf(accessLevel))
+                                    .transferMethod(TransferMethod.valueOf(transferMethod))
+                                    .letterType(LetterType.valueOf(letterType))
+                                    .registerDateAndTime(LocalDateTime.now())
+                                    .userList(userList)
+                                    .build();
+                    letter.setFaDate(faDate);
+                    letterService.save(letter);
+                    log.info("LetterServlet - Letter Saved");
+                    req.getSession().setAttribute("letterId", letter.getId());
+                    resp.sendRedirect("/letter.do?selectedLetter=" + letter.getId());
+//                }
+            } else {
+                throw new NoUserFoundException("The required users do not exist !");
             }
         } catch (Exception e) {
             log.error(e.getMessage());

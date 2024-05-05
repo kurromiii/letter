@@ -51,6 +51,7 @@ public class Reference extends Base implements Serializable {
     @Column (name = "r_date_and_time")
     private LocalDateTime refDateAndTime;
 
+    //todo
 //    @Transient
 //    private LocalDateTime faRefDateAndTime;
 //

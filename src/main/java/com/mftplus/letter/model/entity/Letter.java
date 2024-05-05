@@ -5,6 +5,7 @@ import com.mftplus.letter.model.entity.enums.LetterAccessLevel;
 import com.mftplus.letter.model.entity.enums.LetterType;
 import com.mftplus.letter.model.entity.enums.TransferMethod;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +17,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -53,14 +55,15 @@ public class Letter extends Base implements Serializable {
     //ref receivers
     @ManyToMany (fetch = FetchType.LAZY)
     @ToString.Exclude
+    @NotNull (message = "UserList should not be null!")
     private List<User> userList;
 
-//    public void addUser(User user){
-//        if (userList==null){
-//            userList=new ArrayList<>();
-//        }
-//        userList.add(user);
-//    }
+    public void addUser(User user){
+        if (userList==null){
+            userList=new ArrayList<>();
+        }
+        userList.add(user);
+    }
 
 //    @Pattern(regexp = "^[a-zA-Z\\s]{3,30}$", message = "Invalid Sender Name")
     @Column (name = "l_sender_name" , length = 30)

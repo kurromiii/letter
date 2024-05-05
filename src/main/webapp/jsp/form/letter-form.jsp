@@ -25,33 +25,33 @@
         <form action="letter.do" method="post" enctype="multipart/form-data">
 
             <div class="formbold-input-group">
-                <label for="l_title" class="formbold-form-label"> عنوان </label>
-                <input type="text" name="l_title" id="l_title" placeholder="عنوان نامه را وارد کنید" class="formbold-form-input"/>
+                <label for="title" class="formbold-form-label"> عنوان </label>
+                <input type="text" name="title" id="title" placeholder="عنوان نامه را وارد کنید" class="formbold-form-input"/>
             </div>
 
             <div class="formbold-input-group">
-                <label for="l_letter_number" class="formbold-form-label"> شماره نامه </label>
-                <input type="text" name="l_letter_number" id="l_letter_number" placeholder="شماره نامه را وارد کنید" class="formbold-form-input"/>
+                <label for="letter_number" class="formbold-form-label"> شماره نامه </label>
+                <input type="text" name="letter_number" id="letter_number" placeholder="شماره نامه را وارد کنید" class="formbold-form-input"/>
             </div>
 
             <div class="formbold-input-group">
-                <label for="l_sender_name" class="formbold-form-label"> نام فرستنده نامه </label>
-                <input type="text" name="l_sender_name" id="l_sender_name" placeholder="نام فرستنده نامه را وارد کنید" class="formbold-form-input"/>
+                <label for="sender_name" class="formbold-form-label"> نام فرستنده نامه </label>
+                <input type="text" name="sender_name" id="sender_name" placeholder="نام فرستنده نامه را وارد کنید" class="formbold-form-input"/>
             </div>
 
             <div class="formbold-input-group">
-                <label for="l_sender_title" class="formbold-form-label"> عنوان فرستنده نامه </label>
-                <input type="text" name="l_sender_title" id="l_sender_title" placeholder="عنوان فرستنده نامه را وارد کنید" class="formbold-form-input"/>
+                <label for="sender_title" class="formbold-form-label"> عنوان فرستنده نامه </label>
+                <input type="text" name="sender_title" id="sender_title" placeholder="عنوان فرستنده نامه را وارد کنید" class="formbold-form-input"/>
             </div>
 
             <div class="formbold-input-group">
-                <label for="l_receiver_name" class="formbold-form-label"> نام گیرنده نامه </label>
-                <input type="text" name="l_receiver_name" id="l_receiver_name" placeholder="نام گیرنده نامه را وارد کنید" class="formbold-form-input"/>
+                <label for="receiver_name" class="formbold-form-label"> نام گیرنده نامه </label>
+                <input type="text" name="receiver_name" id="receiver_name" placeholder="نام گیرنده نامه را وارد کنید" class="formbold-form-input"/>
             </div>
 
             <div class="formbold-input-group">
-                <label for="l_receiver_title" class="formbold-form-label"> عنوان گیرنده نامه </label>
-                <input type="text" name="l_receiver_title" id="l_receiver_title" placeholder="عنوان گیرنده نامه را وارد کنید" class="formbold-form-input"/>
+                <label for="receiver_title" class="formbold-form-label"> عنوان گیرنده نامه </label>
+                <input type="text" name="receiver_title" id="receiver_title" placeholder="عنوان گیرنده نامه را وارد کنید" class="formbold-form-input"/>
             </div>
 
             <div class=" row formbold-input-group">
@@ -104,21 +104,21 @@
             </div>
 
             <div>
-                <label for="l_context" class="formbold-form-label">
+                <label for="context" class="formbold-form-label">
                     متن نامه را وارد کنید
                 </label>
                 <textarea
                         rows="10"
-                        name="l_context"
-                        id="l_context"
+                        name="context"
+                        id="context"
                         placeholder="متن نامه..."
                         class="formbold-form-input"
                 ></textarea>
             </div>
 
             <div class="formbold-input-group">
-                <label for="l_date" class="formbold-form-label"> تاریخ </label>
-                <input type="text" name="l_date" id="l_date" placeholder="تاریخ نامه را وارد کنید" class="formbold-form-input" required/>
+                <label for="date" class="formbold-form-label"> تاریخ </label>
+                <input type="text" name="date" id="date" placeholder="تاریخ نامه را وارد کنید" class="formbold-form-input" required/>
             </div>
 
             <div class="formbold-form-file-flex">
@@ -147,10 +147,10 @@
 <script src="../../assets/js/kamadatepicker.min.js"></script>
 <script src="../../assets/js/referenceInput.js"></script>
 <script>
-    let myElement = document.querySelector('#l_date');
+    let myElement = document.querySelector('#date');
     kamaDatepicker(myElement);
 
-    kamaDatepicker('l_date', { buttonsColor: "red", forceFarsiDigits: true });
+    kamaDatepicker('date', { buttonsColor: "red", forceFarsiDigits: true });
 </script>
 </body>
 </html>

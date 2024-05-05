@@ -150,10 +150,10 @@
 <script src="../../../assets/js/kamadatepicker.min.js"></script>
 <script src="../../../assets/js/referenceInput.js"></script>
 <script>
-    let myElement = document.querySelector('#l_date');
+    let myElement = document.querySelector('#date');
     kamaDatepicker(myElement);
 
-    kamaDatepicker('l_date', { buttonsColor: "red", forceFarsiDigits: true });
+    kamaDatepicker('date', { buttonsColor: "red", forceFarsiDigits: true });
 </script>
 
 <script>

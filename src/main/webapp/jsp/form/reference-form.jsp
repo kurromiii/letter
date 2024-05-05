@@ -50,13 +50,13 @@
             </div>
 
             <div class="formbold-input-group">
-                <label for="r_refType" class="formbold-form-label">
+                <label for="refType" class="formbold-form-label">
                     نوع ارجاع را انتخاب کنید
                 </label>
 
-                <select class="formbold-form-select" name="r_refType" id="r_refType">
-                    <c:forEach var="r_refType" items="${sessionScope.refTypes}">
-                        <option value="${r_refType}">${r_refType.title}</option>
+                <select class="formbold-form-select" name="refType" id="refType">
+                    <c:forEach var="refType" items="${sessionScope.refTypes}">
+                        <option value="${refType}">${refType.title}</option>
                     </c:forEach>
                 </select>
             </div>

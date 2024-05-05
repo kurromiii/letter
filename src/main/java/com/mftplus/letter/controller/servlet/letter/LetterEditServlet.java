@@ -1,4 +1,4 @@
-package com.mftplus.letter.controller.servlet;
+package com.mftplus.letter.controller.servlet.letter;
 
 import com.mftplus.letter.controller.exception.LetterIdIsRequiredException;
 import com.mftplus.letter.controller.exception.NoLetterFoundException;
