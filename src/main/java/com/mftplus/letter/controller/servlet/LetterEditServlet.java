@@ -51,7 +51,7 @@ public class LetterEditServlet extends HttpServlet {
                 req.getSession().setAttribute("accessLevels", Arrays.asList(LetterAccessLevel.values()));
                 req.getSession().setAttribute("transferMethods", Arrays.asList(TransferMethod.values()));
                 req.getSession().setAttribute("letterTypes", Arrays.asList(LetterType.values()));
-                req.getRequestDispatcher("/jsp/edit-letter.jsp").forward(req,resp);
+                req.getRequestDispatcher("/jsp/form/edit/letter-edit.jsp").forward(req,resp);
             }
         } catch (Exception e) {
             log.error(e.getMessage());
