@@ -1,5 +1,7 @@
-package com.mftplus.letter.controller.servlet;
+package com.mftplus.letter.controller.servlet.letter;
 
+import com.mftplus.letter.controller.exception.LetterIdIsRequiredException;
+import com.mftplus.letter.controller.exception.NoLetterFoundException;
 import com.mftplus.letter.model.entity.Letter;
 import com.mftplus.letter.model.entity.enums.LetterAccessLevel;
 import com.mftplus.letter.model.entity.enums.LetterType;
@@ -23,12 +25,13 @@ public class LetterDisplayServlet extends HttpServlet {
     @Inject
     private LetterServiceImpl letterService;
 
+    //todo : a better way instead of 500 error page
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("LetterDisplayServlet - Get");
         try {
             if (req.getParameter("id") == null) {
-                resp.sendRedirect("/letterBox.do");
+                throw new LetterIdIsRequiredException("Please set letter id !");
             } else {
                 long id = Integer.parseInt(req.getParameter("id"));
                 Optional<Letter> letter = letterService.findById(id);
@@ -36,6 +39,7 @@ public class LetterDisplayServlet extends HttpServlet {
                     req.getSession().setAttribute("letter", letter.get());
                 }else {
                     log.error("letter not present");
+                    throw new NoLetterFoundException("letter with id : "+ id + " not found !");
                 }
                 req.getSession().setAttribute("accessLevels", Arrays.asList(LetterAccessLevel.values()));
                 req.getSession().setAttribute("transferMethods", Arrays.asList(TransferMethod.values()));

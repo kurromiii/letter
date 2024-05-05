@@ -1,4 +1,4 @@
-package com.mftplus.letter.controller.servlet;
+package com.mftplus.letter.controller.servlet.letter;
 
 import com.mftplus.letter.model.service.impl.LetterServiceImpl;
 import com.mftplus.letter.model.service.impl.ReferenceServiceImpl;

@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>مشاهده نامه</title>
     <link rel="stylesheet" href="../../../assets/css/displayForm.css">
 </head>
@@ -60,16 +61,20 @@
 
             <div class="formbold-input-flex">
                 <div>
-                    <label for="accessLevel" class="formbold-form-label"> سطح دسترسی نامه : </label>
-                    <input type="text" name="accessLevel" id="accessLevel" class="formbold-form-input" value="${sessionScope.letter.accessLevel}"/>
+                    <label for="user" class="formbold-form-label"> کاربر سیستم : </label>
+                    <input type="text" name="user" id="user" class="formbold-form-input" value="${sessionScope.letter.user.username}"/>
                 </div>
                 <div>
-                    <label for="transferMethod" class="formbold-form-label"> روش فرستادن نامه : </label>
-                    <input type="text" name="transferMethod" id="transferMethod" class="formbold-form-input" value="${sessionScope.letter.transferMethod}"/>
+                    <label for="accessLevel" class="formbold-form-label"> سطح دسترسی نامه : </label>
+                    <input type="text" name="accessLevel" id="accessLevel" class="formbold-form-input" value="${sessionScope.letter.accessLevel}"/>
                 </div>
             </div>
 
             <div class="formbold-input-flex">
+                <div>
+                    <label for="transferMethod" class="formbold-form-label"> روش فرستادن نامه : </label>
+                    <input type="text" name="transferMethod" id="transferMethod" class="formbold-form-input" value="${sessionScope.letter.transferMethod}"/>
+                </div>
                 <div>
                     <label for="letterType" class="formbold-form-label"> نوع نامه : </label>
                     <input type="text" name="letterType" id="letterType" class="formbold-form-input" value="${sessionScope.letter.letterType}"/>
