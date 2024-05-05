@@ -27,10 +27,10 @@ public class LetterBoxServlet extends HttpServlet {
 
         try {
             String username = req.getUserPrincipal().getName();
-            req.getSession().setAttribute("letterListByUser", letterService.findByUser(username));
+            req.getSession().setAttribute("letterListByUser", letterService.findByUserAndDeletedFalse(username));
 
-            req.getSession().setAttribute("referenceListBySender", referenceService.findByReferenceSenderId(username));
-            req.getSession().setAttribute("referenceListByReceiver", referenceService.findByReferenceReceiverId(username));
+            req.getSession().setAttribute("referenceListBySender", referenceService.findByReferenceSenderIdAndDeletedFalse(username));
+            req.getSession().setAttribute("referenceListByReceiver", referenceService.findByReferenceReceiverIdAndDeletedFalse(username));
 
             req.getRequestDispatcher("/jsp/table/letter-box.jsp").forward(req, resp);
         } catch (Exception e) {

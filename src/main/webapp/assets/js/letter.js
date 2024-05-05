@@ -7,5 +7,5 @@ async function remove(id) {
     const response = await fetch("/api/letter/" + id, {
         method: "DELETE"
     });
-    document.location.replace("/letter.do")
+    document.location.replace("/letterBox.do")
 }
