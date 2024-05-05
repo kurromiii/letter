@@ -39,13 +39,12 @@ public class LetterServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        log.info("LetterServlet - GET");
+        log.info("LetterServlet - Get");
 
         try {
                 req.getSession().setAttribute("accessLevels", Arrays.asList(LetterAccessLevel.values()));
                 req.getSession().setAttribute("transferMethods", Arrays.asList(TransferMethod.values()));
                 req.getSession().setAttribute("letterTypes", Arrays.asList(LetterType.values()));
-                req.getSession().setAttribute("letterList", letterService.findAll());
                 req.getSession().setAttribute("username",req.getUserPrincipal().getName());
                 req.getRequestDispatcher("/jsp/form/letter-form.jsp").forward(req, resp);
         } catch (Exception e) {
@@ -74,9 +73,7 @@ public class LetterServlet extends HttpServlet {
             String username = req.getUserPrincipal().getName();
 
             List<String> usernameList = List.of(req.getParameterValues("users"));
-            System.out.println(usernameList);
             List<User> userList = userService.findUserByUsernames(usernameList);
-            System.out.println(userList);
 
             //for uploading letter image
             String fileName = null;

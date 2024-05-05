@@ -101,7 +101,7 @@
                                         <td class="text-muted">${letter.date}</td>
 
                                         <td class="d-flex justify-content-center">
-                                            <a href="#" class="text-dark p-2 bg-warning rounded">مشاهده نامه </a>
+                                            <a href="#" class="text-dark p-2 bg-warning rounded" onclick="select(${letter.id})">مشاهده نامه </a>
                                             <a href="#" class="text-dark p-2 bg-warning rounded" onclick="edit(${letter.id})">ویرایش نامه </a>
                                         </td>
 
@@ -245,6 +245,9 @@
 <script>
     function edit(id) {
         document.location.replace("/letterEdit.do?id=" + id);
+    }
+    function select(id) {
+        document.location.replace("/letterDisplay.do?id=" + id);
     }
 </script>
 </body>

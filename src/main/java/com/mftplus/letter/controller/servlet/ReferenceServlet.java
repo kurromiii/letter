@@ -36,6 +36,18 @@ public class ReferenceServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("ReferenceServlet - Get");
         try {
+//            if (req.getParameter("letterIdRef") == null) {
+//                resp.sendRedirect("/letterBox.do");
+//            } else {
+//                long id = Integer.parseInt(req.getParameter("letterIdRef"));
+//                Optional<Letter> letter = letterService.findById(id);
+//                if (letter.isPresent()) {
+//                    req.getSession().setAttribute("letter", letter.get());
+//                } else {
+//                    log.error("letter not present");
+//                    resp.sendRedirect("/error-jsp/404.jsp");
+//                }
+//            }
             req.getSession().setAttribute("refTypes", Arrays.asList(ReferenceType.values()));
             req.getSession().setAttribute("priorities", Arrays.asList(ReferencePriority.values()));
             req.getSession().setAttribute("referenceList", referenceService.findAll());

@@ -24,7 +24,7 @@
 
             <div class="formbold-input-group">
                 <label for="letterIdRef" class="formbold-form-label"> کد نامه </label>
-                <input type="text" name="letterIdRef" id="letterIdRef" placeholder="نامه" value="${sessionScope.letterIdRef}" class="formbold-form-input" required/>
+                <input type="text" name="letterIdRef" id="letterIdRef" placeholder="نامه" value="${sessionScope.letter.id}" class="formbold-form-input" required/>
             </div>
 
             <div class="formbold-input-group">
