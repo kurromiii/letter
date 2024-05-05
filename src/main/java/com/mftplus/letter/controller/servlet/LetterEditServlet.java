@@ -1,5 +1,8 @@
 package com.mftplus.letter.controller.servlet;
 
+import com.mftplus.letter.controller.exception.LetterIdIsRequiredException;
+import com.mftplus.letter.controller.exception.NoLetterFoundException;
+import com.mftplus.letter.controller.exception.NoUserFoundException;
 import com.mftplus.letter.model.entity.Letter;
 import com.mftplus.letter.model.entity.User;
 import com.mftplus.letter.model.entity.enums.LetterAccessLevel;
@@ -17,8 +20,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
+import java.nio.file.AccessDeniedException;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Optional;
 
 @Slf4j
@@ -34,20 +39,31 @@ public class LetterEditServlet extends HttpServlet {
     @Inject
     private UserServiceImpl userService;
 
+    //todo : a better way instead of 500 error page
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("LetterEditServlet - Get");
         try {
             if (req.getParameter("id") == null) {
-                resp.sendRedirect("/letter.do");
+                throw new LetterIdIsRequiredException("Please set letter id !");
             } else {
                 long id = Integer.parseInt(req.getParameter("id"));
                 Optional<Letter> letter = letterService.findById(id);
+
                 if (letter.isPresent()) {
+                    String loggedInUser = req.getUserPrincipal().getName();
+                    //letter edit security not tested yet
+                    if (!Objects.equals(letter.get().getUser().getUsername(), loggedInUser)){
+                        throw new AccessDeniedException("No access for editing this letter!");
+                    }
+
                     req.getSession().setAttribute("letter", letter.get());
-                }else {
-                    log.error("letter not present");
                 }
+                else {
+                    log.error("letter not present");
+                    throw new NoLetterFoundException("letter with id : "+ id + " not found !");
+                }
+
                 req.getSession().setAttribute("accessLevels", Arrays.asList(LetterAccessLevel.values()));
                 req.getSession().setAttribute("transferMethods", Arrays.asList(TransferMethod.values()));
                 req.getSession().setAttribute("letterTypes", Arrays.asList(LetterType.values()));
@@ -64,20 +80,21 @@ public class LetterEditServlet extends HttpServlet {
         log.info("LetterEditServlet - put");
         try {
             long id = Integer.parseInt(req.getParameter("id"));
-            String title = req.getParameter("l_title");
-            String letterNumber = req.getParameter("l_letter_number");
-            String faDate = req.getParameter("l_date").replace("/", "-");
-            String context = req.getParameter("l_context");
-            String receiverName = req.getParameter("l_receiver_name");
-            String receiverTitle = req.getParameter("l_receiver_title");
-            String senderName = req.getParameter("l_sender_name");
-            String senderTitle = req.getParameter("l_sender_title");
+            String title = req.getParameter("title");
+            String letterNumber = req.getParameter("letter_number");
+            String faDate = req.getParameter("date").replace("/", "-");
+            String context = req.getParameter("context");
+            String receiverName = req.getParameter("receiver_name");
+            String receiverTitle = req.getParameter("receiver_title");
+            String senderName = req.getParameter("sender_name");
+            String senderTitle = req.getParameter("sender_title");
             String accessLevel = req.getParameter("accessLevel");
             String transferMethod = req.getParameter("transferMethod");
             String letterType = req.getParameter("letterType");
 
             String username = req.getUserPrincipal().getName();
 
+            //todo : file upload for edit doesnt work
             //for uploading letter image
 //            String fileName = null;
 //            Part filePart = req.getPart("file");
@@ -118,6 +135,8 @@ public class LetterEditServlet extends HttpServlet {
                     log.info("LetterEditServlet - Letter Edited");
                     resp.sendRedirect("/letter.do");
                 }
+            } else {
+                throw new NoUserFoundException("The required user does not exist !");
             }
         } catch (Exception e) {
             log.error(e.getMessage());
