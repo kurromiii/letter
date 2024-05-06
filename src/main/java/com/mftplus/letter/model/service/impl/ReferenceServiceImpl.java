@@ -50,17 +50,20 @@ public class ReferenceServiceImpl implements ReferenceService, Serializable {
         entityManager.merge(reference);
     }
 
+    @Transactional
     @Override
     public Optional<Reference> findById(Long id) throws Exception {
         return Optional.ofNullable(entityManager.find(Reference.class, id));
     }
 
+    @Transactional
     @Override
     public List<Reference> findAll() throws Exception {
         TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.deleted=false", Reference.class);
         return query.getResultList();
     }
 
+    @Transactional
     @Override
     public List<Reference> findByReferenceSenderId(String senderUsername) throws Exception {
         TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.referenceSenderId.username=:senderUsername", Reference.class);
@@ -68,6 +71,7 @@ public class ReferenceServiceImpl implements ReferenceService, Serializable {
         return query.getResultList();
     }
 
+    @Transactional
     @Override
     public List<Reference> findByReferenceReceiverId(String receiverUsername) throws Exception {
         TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.referenceReceiverId.username=:receiverUsername", Reference.class);
@@ -75,6 +79,7 @@ public class ReferenceServiceImpl implements ReferenceService, Serializable {
         return query.getResultList();
     }
 
+    @Transactional
     @Override
     public List<Reference> findByReferenceSenderIdAndDeletedFalse(String senderUsername) throws Exception {
         TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.referenceSenderId.username=:senderUsername and oo.deleted=false", Reference.class);
@@ -82,6 +87,7 @@ public class ReferenceServiceImpl implements ReferenceService, Serializable {
         return query.getResultList();
     }
 
+    @Transactional
     @Override
     public List<Reference> findByReferenceReceiverIdAndDeletedFalse(String receiverUsername) throws Exception {
         TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.referenceReceiverId.username=:receiverUsername and deleted=false", Reference.class);
@@ -89,6 +95,7 @@ public class ReferenceServiceImpl implements ReferenceService, Serializable {
         return query.getResultList();
     }
 
+    @Transactional
     @Override
     public List<Reference> findByRefDate(LocalDateTime refDateAndTime) throws Exception {
         TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.refDateAndTime=:refDateAndTime", Reference.class);
@@ -96,6 +103,7 @@ public class ReferenceServiceImpl implements ReferenceService, Serializable {
         return query.getResultList();
     }
 
+    @Transactional
     @Override
     public List<Reference> findByLetterId(Long letterId) throws Exception {
         TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.letterId.id=:letterId", Reference.class);
@@ -103,6 +111,7 @@ public class ReferenceServiceImpl implements ReferenceService, Serializable {
         return query.getResultList();
     }
 
+    @Transactional
     @Override
     public List<Reference> findByValidate(Boolean validate) throws Exception {
         TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.validate=:validate", Reference.class);
@@ -110,6 +119,7 @@ public class ReferenceServiceImpl implements ReferenceService, Serializable {
         return query.getResultList();
     }
 
+    @Transactional
     @Override
     public List<Reference> findByParaph(String paraph) throws Exception {
         TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.paraph=:paraph", Reference.class);
@@ -118,6 +128,7 @@ public class ReferenceServiceImpl implements ReferenceService, Serializable {
     }
 
     //todo input needs to rethink
+    @Transactional
     @Override
     public List<Reference> findByPriority(ReferencePriority priority) throws Exception {
         TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.priority=:priority", Reference.class);
@@ -125,6 +136,7 @@ public class ReferenceServiceImpl implements ReferenceService, Serializable {
         return query.getResultList();
     }
 
+    @Transactional
     @Override
     public List<Reference> findByStatus(Boolean status) throws Exception {
         TypedQuery<Reference> query = entityManager.createQuery("select oo from referenceEntity oo where oo.status=:status", Reference.class);

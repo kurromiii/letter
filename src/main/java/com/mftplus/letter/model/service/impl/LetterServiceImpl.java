@@ -118,6 +118,7 @@ public class LetterServiceImpl implements LetterService, Serializable {
         return query.getResultList();
     }
 
+    @Transactional
     @Override
     public List<Letter> findByUser(String user) throws Exception {
         TypedQuery<Letter> query = entityManager.createQuery("select oo from letterEntity oo where oo.user.username=:userId", Letter.class);
@@ -125,6 +126,7 @@ public class LetterServiceImpl implements LetterService, Serializable {
         return query.getResultList();
     }
 
+    @Transactional
     @Override
     public List<Letter> findByUserAndDeletedFalse(String user) throws Exception {
         TypedQuery<Letter> query = entityManager.createQuery("select oo from letterEntity oo where oo.user.username=:userId and oo.deleted=false ", Letter.class);

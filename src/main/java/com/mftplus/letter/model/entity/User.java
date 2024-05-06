@@ -46,7 +46,7 @@ public class User extends Base implements Serializable {
     @Column(name="u_active")
     private boolean active;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Roles> roleList;
 
     public void addRole(Roles role){
