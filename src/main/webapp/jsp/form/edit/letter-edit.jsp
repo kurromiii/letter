@@ -128,19 +128,19 @@
                 <input type="text" name="date" id="date" value="${sessionScope.letter.getFaDate()}" class="formbold-form-input" required/>
             </div>
 
-<%--            <div class="formbold-form-file-flex">--%>
-<%--                <label for="file" class="formbold-form-label">--%>
-<%--                    تصویر نامه--%>
-<%--                </label>--%>
-<%--                <input--%>
-<%--                        type="file"--%>
-<%--                        name="file"--%>
-<%--                        id="file"--%>
-<%--                        class="formbold-form-file"--%>
-<%--                />--%>
-<%--            </div>--%>
+            <div class="formbold-form-file-flex">
+                <label for="file" class="formbold-form-label">
+                    تصویر نامه
+                </label>
+                <input
+                        type="file"
+                        name="file"
+                        id="file"
+                        class="formbold-form-file"
+                />
+            </div>
 
-            <button id="submit"  class="formbold-btn" onclick="edit()">ویرایش</button>
+            <button id="submit"  class="formbold-btn" onclick="edit(event)">ویرایش</button>
         </form>
         <!--end form-->
     </div>
@@ -157,13 +157,17 @@
 </script>
 
 <script>
-    function edit() {
+    function edit(event) {
+        event.preventDefault()
         const myForm = document.getElementById("myForm");
-        const queryString = new URLSearchParams(new FormData(myForm)).toString();
-        fetch("/letterEdit.do?" + queryString, {
-            method: "PUT"
+        const formData=new FormData(myForm)
+        console.log(formData.get("id"))
+        // const queryString = new URLSearchParams(new FormData(myForm)).toString();
+        fetch("/letterEdit.do", {
+            method: "PUT",
+            body:formData
         }).then(() => {
-            document.location.replace("/letter.do");
+            document.location.replace("/letterDisplay.do?id=" + formData.get("id"));
         });
     }
 </script>

@@ -17,6 +17,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -44,6 +45,7 @@ public class LetterEditServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("LetterEditServlet - Get");
         try {
+
             if (req.getParameter("id") == null) {
                 throw new LetterIdIsRequiredException("Please set letter id !");
             } else {
@@ -79,6 +81,7 @@ public class LetterEditServlet extends HttpServlet {
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("LetterEditServlet - put");
         try {
+            System.out.println(req.getPart("file"));
             long id = Integer.parseInt(req.getParameter("id"));
             String title = req.getParameter("title");
             String letterNumber = req.getParameter("letter_number");
@@ -94,17 +97,16 @@ public class LetterEditServlet extends HttpServlet {
 
             String username = req.getUserPrincipal().getName();
 
-            //todo : file upload for edit doesnt work
             //for uploading letter image
-//            String fileName = null;
-//            Part filePart = req.getPart("file");
-//            if (filePart.getSize()>0) {
-//                fileName = filePart.getSubmittedFileName();
-//                for (Part part : req.getParts()) {
-//                    part.write(fileName); //todo set server path
-//                }
-//                resp.getWriter().print("The file uploaded successfully.");
-//            }
+            String fileName = null;
+            Part filePart = req.getPart("file");
+            if (filePart.getSize()>0) {
+                fileName = filePart.getSubmittedFileName();
+                for (Part part : req.getParts()) {
+                    part.write(fileName); //todo set server path
+                }
+                resp.getWriter().print("The file uploaded successfully.");
+            }
 
 //            verify
             if (username != null) {
@@ -122,7 +124,7 @@ public class LetterEditServlet extends HttpServlet {
                                     .receiverTitle(receiverTitle)
                                     .senderName(senderName)
                                     .senderTitle(senderTitle)
-//                                    .image(fileName)
+                                    .image(fileName)
                                     .deleted(false)
                                     .faDate(faDate)
                                     .accessLevel(LetterAccessLevel.valueOf(accessLevel))
@@ -133,7 +135,7 @@ public class LetterEditServlet extends HttpServlet {
                     letter.setFaDate(faDate);
                     letterService.edit(letter);
                     log.info("LetterEditServlet - Letter Edited");
-                    resp.sendRedirect("/letter.do");
+                    resp.setStatus(200);
                 }
             } else {
                 throw new NoUserFoundException("The required user does not exist !");
