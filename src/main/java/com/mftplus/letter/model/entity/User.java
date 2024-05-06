@@ -12,6 +12,8 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -37,16 +39,22 @@ public class User extends Base implements Serializable {
     @Enumerated(EnumType.ORDINAL)
     private Role role;
 
-//    @ToString.Exclude
-//    @OneToMany(mappedBy = "rolesPrimaryKeys.user", orphanRemoval = true,fetch = FetchType.LAZY)
-//    private Set<Roles> roles = new LinkedHashSet<>();
-
     @ManyToOne (fetch = FetchType.LAZY)
     @ToString.Exclude
     private Section section;
 
     @Column(name="u_active")
     private boolean active;
+
+    @OneToMany
+    private List<Roles> roleList;
+
+    public void addRole(Roles role){
+        if (roleList==null){
+            roleList=new ArrayList<>();
+        }
+        roleList.add(role);
+    }
 
     @Override
     public String toString() {

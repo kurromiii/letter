@@ -1,6 +1,5 @@
 package com.mftplus.letter.model.service.impl;
 
-import com.mftplus.letter.model.entity.RolesPrimaryKeys;
 import com.mftplus.letter.model.entity.Roles;
 import com.mftplus.letter.model.service.interfaces.RolesService;
 import jakarta.enterprise.context.SessionScoped;
@@ -40,20 +39,20 @@ public class RolesServiceImpl implements RolesService, Serializable {
 
     @Transactional
     @Override
-    public void removeById(String roleName, String username) throws Exception {
+    public void removeById(Long id) throws Exception {
 
     }
 
     @Transactional
     @Override
-    public Optional<Roles> findById(RolesPrimaryKeys compositeKey) throws Exception {
-        return Optional.ofNullable(entityManager.find(Roles.class, compositeKey));
+    public Optional<Roles> findById(Long id) throws Exception {
+        return Optional.ofNullable(entityManager.find(Roles.class, id));
     }
 
     @Transactional
     @Override
     public List<Roles> findAll() throws Exception {
-        TypedQuery<Roles> query = entityManager.createQuery("select oo from userRolesEntity oo where oo.deleted=false", Roles.class);
+        TypedQuery<Roles> query = entityManager.createQuery("select oo from rolesEntity oo where oo.deleted=false", Roles.class);
         return query.getResultList();
     }
 
@@ -67,5 +66,16 @@ public class RolesServiceImpl implements RolesService, Serializable {
     @Override
     public List<Roles> findByUser(String username) throws Exception {
         return null;
+    }
+
+    //todo : is this supposed to be optional? did not work
+    @Override
+    public List<Roles> findByUsernameAndRoleName(String username, String roleName) throws Exception {
+        TypedQuery<Roles> query = entityManager.
+                createQuery
+                        ("select oo from rolesEntity oo where oo.user.username=:username and oo.role=:roleName and deleted=false", Roles.class);
+        query.setParameter("username",username);
+        query.setParameter("roleName",roleName);
+        return query.getResultList();
     }
 }

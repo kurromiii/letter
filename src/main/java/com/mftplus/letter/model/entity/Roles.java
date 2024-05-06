@@ -15,20 +15,21 @@ import java.io.Serializable;
 @SuperBuilder
 @ToString
 
-@Entity(name = "userRolesEntity")
-@Table(name = "user_roles")
-
+@Entity(name = "rolesEntity")
+@Table(name = "roles_tbl", uniqueConstraints = {@UniqueConstraint(columnNames = {"u_username","role_name"})})
 public class Roles extends Base implements Serializable {
-    @EmbeddedId()
-    private RolesPrimaryKeys rolesPrimaryKeys;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "roles_seq")
+    @SequenceGenerator(name = "roles_seq", sequenceName = "roles_seq", allocationSize = 1)
+    @Column(name = "id", nullable = false)
+    private Long id;
 
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
+    @ToString.Exclude
+    @ManyToOne
+    @JoinColumn(name = "u_username")
+    private User user;
 
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
+    @Column(name = "role_name")
+    private String role;
+
 }

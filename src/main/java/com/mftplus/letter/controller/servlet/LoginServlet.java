@@ -1,7 +1,6 @@
 package com.mftplus.letter.controller.servlet;
 
 import com.mftplus.letter.model.entity.Roles;
-import com.mftplus.letter.model.entity.RolesPrimaryKeys;
 import com.mftplus.letter.model.entity.User;
 import com.mftplus.letter.model.service.impl.RolesServiceImpl;
 import com.mftplus.letter.model.service.impl.UserServiceImpl;
@@ -44,7 +43,7 @@ public class LoginServlet extends HttpServlet {
         log.info("LoginServlet - Init");
         super.init();
         try {
-            User user =
+            User admin =
                     User
                             .builder()
                             .username("admin")
@@ -52,27 +51,23 @@ public class LoginServlet extends HttpServlet {
                             .deleted(false)
                             .build();
             if (userService.findByUsername("admin").isEmpty()){
-                userService.save(user);
+                userService.save(admin);
                 log.info("admin username saved");
             }
-            RolesPrimaryKeys rolesPrimaryKeys =
-                    RolesPrimaryKeys
-                            .builder()
-                            .roleName("admin")
-                            .user(user)
-                            .build();
-            Roles role =
+            Roles adminRole =
                     Roles
                             .builder()
-                            .rolesPrimaryKeys(rolesPrimaryKeys)
+                            .user(admin)
+                            .role("admin")
                             .deleted(false)
                             .build();
-            if (rolesService.findById(rolesPrimaryKeys).isEmpty()){
-                rolesService.save(role);
+            if (rolesService.findByUsernameAndRoleName("admin","admin").isEmpty()){
+                System.out.println(adminRole);
+                rolesService.save(adminRole);
                 log.info("admin role saved");
             }
 
-            User user1 =
+            User user =
                     User
                             .builder()
                             .username("user")
@@ -80,23 +75,18 @@ public class LoginServlet extends HttpServlet {
                             .deleted(false)
                             .build();
             if (userService.findByUsername("user").isEmpty()){
-                userService.save(user1);
+                userService.save(user);
                 log.info("user username saved");
             }
-            RolesPrimaryKeys rolesPrimaryKeys1 =
-                    RolesPrimaryKeys
-                            .builder()
-                            .roleName("user")
-                            .user(user1)
-                            .build();
-            Roles role1 =
+            Roles userRole =
                     Roles
                             .builder()
-                            .rolesPrimaryKeys(rolesPrimaryKeys1)
+                            .user(user)
+                            .role("user")
                             .deleted(false)
                             .build();
-            if (rolesService.findById(rolesPrimaryKeys1).isEmpty()){
-                rolesService.save(role1);
+            if (rolesService.findByUsernameAndRoleName("user","user").isEmpty()){
+                rolesService.save(userRole);
                 log.info("user role saved");
             }
 
