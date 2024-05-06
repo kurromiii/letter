@@ -21,6 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -75,13 +76,14 @@ public class LetterServlet extends HttpServlet {
 
             String username = req.getUserPrincipal().getName();
 
-            //todo : null pointer exception
-            List<String> usernameList = List.of(req.getParameterValues("users"));
-
+            List<String> usernameList = new ArrayList<>();
+            if(req.getParameterValues("users")!=null){
+               usernameList = List.of(req.getParameterValues("users"));
+            }
 
             //for uploading letter image
             String fileName = null;
-                Part filePart = req.getPart("file");
+                    Part filePart = req.getPart("file");
             if (filePart.getSize()>0) {
                 fileName = filePart.getSubmittedFileName();
                 for (Part part : req.getParts()) {
@@ -134,7 +136,5 @@ public class LetterServlet extends HttpServlet {
 //todo indicator code
 //todo letter number format
 //todo carbonCopies
-//todo refReceivers
 //todo register number
 //todo exception handling
-//todo test needed

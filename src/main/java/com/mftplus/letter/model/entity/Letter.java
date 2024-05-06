@@ -5,7 +5,6 @@ import com.mftplus.letter.model.entity.enums.LetterAccessLevel;
 import com.mftplus.letter.model.entity.enums.LetterType;
 import com.mftplus.letter.model.entity.enums.TransferMethod;
 import jakarta.enterprise.context.RequestScoped;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -55,7 +54,7 @@ public class Letter extends Base implements Serializable {
     //ref receivers
     @ManyToMany (fetch = FetchType.LAZY)
     @ToString.Exclude
-    @NotNull (message = "UserList should not be null!")
+//    @NotNull (message = "UserList should not be null!")
     private List<User> userList;
 
     public void addUser(User user){
