@@ -1,4 +1,4 @@
-package com.mftplus.letter.controller.servlet;
+package com.mftplus.letter.controller.servlet.person;
 
 import com.mftplus.letter.model.entity.Person;
 import com.mftplus.letter.model.entity.User;

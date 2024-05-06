@@ -3,15 +3,14 @@
 <html>
 <head>
     <title>جدول افراد</title>
-    <link rel="stylesheet" href="../../assets/css/table.css">
+    <link rel="stylesheet" href="../../assets/css/myTable.css">
     <link rel="stylesheet" href="../../assets/fontawesome-free-6.5.2-web/css/all.min.css">
 </head>
 <body>
 <!--nav bar-->
-<%--<jsp:include page="../../jsp/all.jsp"></jsp:include>--%>
+<jsp:include page="../../jsp/all.jsp"></jsp:include>
 
 <!--table-->
-<div class="t-w">
 <table>
     <thead>
     <tr>
@@ -40,6 +39,5 @@
     </tbody>
     </c:forEach>
 </table>
-</div>
 </body>
 </html>
