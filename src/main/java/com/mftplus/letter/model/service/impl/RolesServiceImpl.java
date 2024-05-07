@@ -34,13 +34,17 @@ public class RolesServiceImpl implements RolesService, Serializable {
     @Transactional
     @Override
     public void remove(Roles role) throws Exception {
-
+        role = entityManager.find(Roles.class, role.getId());
+        role.setDeleted(true);
+        entityManager.merge(role);
     }
 
     @Transactional
     @Override
     public void removeById(Long id) throws Exception {
-
+        Roles role = entityManager.find(Roles.class, id);
+        role.setDeleted(true);
+        entityManager.merge(role);
     }
 
     @Transactional
@@ -59,13 +63,17 @@ public class RolesServiceImpl implements RolesService, Serializable {
     @Transactional
     @Override
     public List<Roles> findByRoleName(String roleName) throws Exception {
-        return null;
+        TypedQuery<Roles> query = entityManager.createQuery("select oo from rolesEntity oo where oo.role=:roleName", Roles.class);
+        query.setParameter("roleName",roleName);
+        return query.getResultList();
     }
 
     @Transactional
     @Override
     public List<Roles> findByUser(String username) throws Exception {
-        return null;
+        TypedQuery<Roles> query = entityManager.createQuery("select oo from rolesEntity oo where oo.user=:username", Roles.class);
+        query.setParameter("username",username);
+        return query.getResultList();
     }
 
     //todo : is this supposed to be optional? did not work
