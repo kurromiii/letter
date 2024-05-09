@@ -1,6 +1,5 @@
 package com.mftplus.letter.model.entity;
 
-import com.google.gson.Gson;
 import com.mftplus.letter.model.entity.enums.Role;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.*;
@@ -23,6 +22,7 @@ import java.util.List;
 @Entity(name = "userEntity")
 @Table(name = "user_tbl")
 @RequestScoped
+@ToString
 public class User extends Base implements Serializable {
     @Id
     @Pattern(regexp = "^[a-zA-Z\\s]{4,15}$", message = "Invalid Username")
@@ -39,10 +39,6 @@ public class User extends Base implements Serializable {
     @Enumerated(EnumType.ORDINAL)
     private Role role;
 
-    @ManyToOne (fetch = FetchType.LAZY)
-    @ToString.Exclude
-    private Section section;
-
     @Column(name="u_active")
     private boolean active;
 
@@ -56,10 +52,5 @@ public class User extends Base implements Serializable {
         roleList.add(role);
     }
 
-    @Override
-    public String toString() {
-        Gson gson = new Gson();
-        return gson.toJson(this);
-    }
 
 }

@@ -1,12 +1,12 @@
 package com.mftplus.letter.model.entity;
 
-import com.google.gson.Gson;
 import com.mftplus.letter.model.entity.enums.Gender;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
@@ -20,6 +20,7 @@ import java.time.LocalDate;
 @Entity(name = "personEntity")
 @Table(name = "person_tbl")
 @RequestScoped
+@ToString
 public class Person extends Base implements Serializable {
 
     //todo : nullable false has not been set yet
@@ -57,10 +58,5 @@ public class Person extends Base implements Serializable {
     @Column(name = "p_image")
     private String image;
 
-    @Override
-    public String toString() {
-        Gson gson = new Gson();
-        return gson.toJson(this);
-    }
 
 }

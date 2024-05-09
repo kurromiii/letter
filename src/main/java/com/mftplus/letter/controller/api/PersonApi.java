@@ -56,9 +56,6 @@ public class PersonApi {
     @Produces(MediaType.APPLICATION_JSON)
     public Response findByNameAndFamily(@QueryParam("name") String name,@QueryParam("family") String family) throws Exception{
         try {
-            log.info(name);
-            log.info(family);
-
             return Response.ok().entity(personService.findByNameAndFamily(name,family)).build();
         } catch (Exception e) {
             log.error(e.getMessage());

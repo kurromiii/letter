@@ -22,7 +22,7 @@
         <ul>
           <li><a href="">صفحه اصلی </a></li>
           <li><a href="organisation.do">سازمان</a></li>
-          <li><a href="">اداری </a>
+          <li><a href="letterBox.do">اداری </a>
             <ul class="submenu">
               <li><a href="letter.do">نامه</a></li>
               <li><a href="reference.do">ارجاع</a></li>

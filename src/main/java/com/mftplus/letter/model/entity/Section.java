@@ -10,7 +10,6 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -26,7 +25,7 @@ public class Section extends Base implements Serializable {
     @Id
     @SequenceGenerator(name = "sectionSeq", sequenceName = "section_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sectionSeq")
-    @Column(name = "s_id")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "s_title", length = 40, unique = true)
@@ -43,28 +42,27 @@ public class Section extends Base implements Serializable {
     @Column(name = "s_phoneNnumber", length = 11)
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "section" , fetch = FetchType.LAZY)
-    @ToString.Exclude
-    private List<User> users;
+//    @OneToMany(mappedBy = "section" , fetch = FetchType.LAZY)
+//    @ToString.Exclude
+//    private List<User> users;
 
     @OneToMany (fetch = FetchType.LAZY)
     @ToString.Exclude
     private List<Section> sectionsPart;
 
-    public List<Section> getSectionsPart() {
-        if (sectionsPart == null) {
-            sectionsPart = new ArrayList<>();
-        }
-        return sectionsPart;
-    }
-
-
-    public List<User> getUsers() {
-        if (users == null) {
-            users = new ArrayList<>();
-        }
-        return users;
-    }
+//    public List<Section> getSectionsPart() {
+//        if (sectionsPart == null) {
+//            sectionsPart = new ArrayList<>();
+//        }
+//        return sectionsPart;
+//    }
+//
+//    public List<User> getUsers() {
+//        if (users == null) {
+//            users = new ArrayList<>();
+//        }
+//        return users;
+//    }
 
     @OneToOne (fetch = FetchType.LAZY)
     @ToString.Exclude

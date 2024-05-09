@@ -52,7 +52,7 @@ public class Letter extends Base implements Serializable {
     private User user;
 
     //ref receivers
-    @ManyToMany (fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @ToString.Exclude
 //    @NotNull (message = "UserList should not be null!")
     private List<User> userList;

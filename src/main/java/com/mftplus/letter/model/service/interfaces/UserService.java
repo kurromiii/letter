@@ -7,7 +7,6 @@ import com.mftplus.letter.model.entity.enums.Role;
 import java.util.List;
 import java.util.Optional;
 
-
 public interface UserService {
     void save(User user) throws Exception;
     void edit(User user) throws Exception;
