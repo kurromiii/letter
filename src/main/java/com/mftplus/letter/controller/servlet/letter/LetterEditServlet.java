@@ -1,8 +1,7 @@
 package com.mftplus.letter.controller.servlet.letter;
 
 import com.mftplus.letter.controller.exception.LetterIdIsRequiredException;
-import com.mftplus.letter.controller.exception.NoLetterFoundException;
-import com.mftplus.letter.controller.exception.NoUserFoundException;
+import com.mftplus.letter.controller.exception.NoContentException;
 import com.mftplus.letter.model.entity.Letter;
 import com.mftplus.letter.model.entity.User;
 import com.mftplus.letter.model.entity.enums.LetterAccessLevel;
@@ -21,11 +20,7 @@ import jakarta.servlet.http.Part;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
-import java.nio.file.AccessDeniedException;
-import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 @Slf4j
 @WebServlet(urlPatterns = "/letterEdit.do")
@@ -45,26 +40,12 @@ public class LetterEditServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("LetterEditServlet - Get");
         try {
-
             if (req.getParameter("id") == null) {
                 throw new LetterIdIsRequiredException("Please set letter id !");
             } else {
                 long id = Integer.parseInt(req.getParameter("id"));
                 Optional<Letter> letter = letterService.findById(id);
-
-                if (letter.isPresent()) {
-                    String loggedInUser = req.getUserPrincipal().getName();
-                    //letter edit security not tested yet
-                    if (!Objects.equals(letter.get().getUser().getUsername(), loggedInUser)){
-                        throw new AccessDeniedException("No access for editing this letter!");
-                    }
-
-                    req.getSession().setAttribute("letter", letter.get());
-                }
-                else {
-                    log.error("letter not present");
-                    throw new NoLetterFoundException("letter with id : "+ id + " not found !");
-                }
+                letter.ifPresent(value -> req.getSession().setAttribute("letter", value));
 
                 req.getSession().setAttribute("accessLevels", Arrays.asList(LetterAccessLevel.values()));
                 req.getSession().setAttribute("transferMethods", Arrays.asList(TransferMethod.values()));
@@ -81,7 +62,6 @@ public class LetterEditServlet extends HttpServlet {
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("LetterEditServlet - put");
         try {
-            System.out.println(req.getPart("file"));
             long id = Integer.parseInt(req.getParameter("id"));
             String title = req.getParameter("title");
             String letterNumber = req.getParameter("letter_number");
@@ -97,6 +77,11 @@ public class LetterEditServlet extends HttpServlet {
 
             String username = req.getUserPrincipal().getName();
 
+            List<String> usernameList = new ArrayList<>();
+            if(req.getParameterValues("users")!=null){
+                usernameList = List.of(req.getParameterValues("users"));
+            }
+
             //for uploading letter image
             String fileName = null;
             Part filePart = req.getPart("file");
@@ -108,9 +93,8 @@ public class LetterEditServlet extends HttpServlet {
                 resp.getWriter().print("The file uploaded successfully.");
             }
 
-//            verify
-            if (username != null) {
                 Optional<User> user = userService.findByUsername(username);
+                List<User> userList = userService.findUserByUsernames(usernameList);
                 if (user.isPresent()) {
                     Letter letter =
                             Letter
@@ -130,15 +114,14 @@ public class LetterEditServlet extends HttpServlet {
                                     .accessLevel(LetterAccessLevel.valueOf(accessLevel))
                                     .transferMethod(TransferMethod.valueOf(transferMethod))
                                     .letterType(LetterType.valueOf(letterType))
-                                    .registerDateAndTime(LocalDateTime.now())
+                                    .userList(userList)
                                     .build();
                     letter.setFaDate(faDate);
                     letterService.edit(letter);
                     log.info("LetterEditServlet - Letter Edited");
                     resp.setStatus(200);
-                }
             } else {
-                throw new NoUserFoundException("The required user does not exist !");
+                throw new NoContentException("The required user does not exist !");
             }
         } catch (Exception e) {
             log.error(e.getMessage());

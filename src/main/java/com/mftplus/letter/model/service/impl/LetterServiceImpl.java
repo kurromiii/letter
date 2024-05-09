@@ -1,5 +1,6 @@
 package com.mftplus.letter.model.service.impl;
 
+import com.mftplus.letter.controller.exception.NoContentException;
 import com.mftplus.letter.model.entity.Letter;
 import com.mftplus.letter.model.service.interfaces.LetterService;
 import jakarta.enterprise.context.SessionScoped;
@@ -30,8 +31,14 @@ public class LetterServiceImpl implements LetterService, Serializable {
 
     @Transactional
     @Override
-    public void edit(Letter letter) throws Exception {
-        entityManager.merge(letter);
+    public void edit(Letter letter) throws NoContentException {
+        Optional<Letter> optionalLetter = Optional.ofNullable(entityManager.find(Letter.class, letter.getId()));
+
+        if (optionalLetter.isPresent()) {
+            entityManager.merge(letter);
+        } else {
+            throw new NoContentException("Letter with id : " + letter.getId() + " not found !");
+        }
     }
 
     @Transactional
@@ -52,8 +59,13 @@ public class LetterServiceImpl implements LetterService, Serializable {
 
     @Transactional
     @Override
-    public Optional<Letter> findById(Long id) throws Exception {
-        return Optional.ofNullable(entityManager.find(Letter.class, id));
+    public Optional<Letter> findById(Long id) throws NoContentException {
+        Optional<Letter> optional = Optional.ofNullable(entityManager.find(Letter.class, id));
+        if (optional.isPresent()) {
+            return optional;
+        } else {
+            throw new NoContentException("Letter with id : " + id + "not found !");
+        }
     }
 
     @Transactional
@@ -112,14 +124,6 @@ public class LetterServiceImpl implements LetterService, Serializable {
 
     @Transactional
     @Override
-    public List<Letter> findBySectionId(Long sectionId) throws Exception {
-        TypedQuery<Letter> query = entityManager.createQuery("select oo from letterEntity oo where oo.user.section=:sectionId", Letter.class);
-        query.setParameter("sectionId",sectionId);
-        return query.getResultList();
-    }
-
-    @Transactional
-    @Override
     public List<Letter> findByUser(String user) throws Exception {
         TypedQuery<Letter> query = entityManager.createQuery("select oo from letterEntity oo where oo.user.username=:userId", Letter.class);
         query.setParameter("userId",user);
@@ -133,29 +137,5 @@ public class LetterServiceImpl implements LetterService, Serializable {
         query.setParameter("userId",user);
         return query.getResultList();
     }
-
-//    public void pdfText() throws IOException {
-//        XWPFDocument xwpfDocument = new XWPFDocument(new FileInputStream(
-//                new File("/")
-//        ));
-//        xwpfDocument.getBodyElements();
-//        for (IBodyElement bodyElement : xwpfDocument.getBodyElements()) {
-//            if(bodyElement instanceof XWPFParagraph){
-//                XWPFParagraph para=(XWPFParagraph) bodyElement;
-//                System.out.println(para.getText());
-//            } else if (bodyElement instanceof XWPFTable) {
-//                XWPFTable table=(XWPFTable) bodyElement;
-//                System.out.println(table.getText());
-//                List<XWPFTableRow> rowList = table.getRows();
-//                for (XWPFTableRow row:
-//                        rowList
-//                ) {
-//
-//
-//                }
-//
-//            }
-//        }
-//    }
 
 }
