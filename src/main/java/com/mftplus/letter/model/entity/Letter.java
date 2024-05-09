@@ -5,6 +5,7 @@ import com.mftplus.letter.model.entity.enums.LetterAccessLevel;
 import com.mftplus.letter.model.entity.enums.LetterType;
 import com.mftplus.letter.model.entity.enums.TransferMethod;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,22 +31,23 @@ import java.util.List;
 @RequestScoped
 public class Letter extends Base implements Serializable {
 
-    //todo : nullable false has not been set yet
-    //todo : validation commented for production
-    //todo : attachment
-
     @Id
     @SequenceGenerator(name = "letterSeq", sequenceName = "letter_seq",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "letterSeq")
-    @Column (name = "id")
+    @Column (name = "l_id")
     private long id;
 
-    @Column (name = "l_title" , length = 20)
-//    @Pattern(regexp = "^[a-zA-Z\\s]{3,20}$", message = "Invalid Letter Title")
+    @Column (name = "l_title" ,columnDefinition = "NVARCHAR2(20)")
+    @Pattern(regexp = "^[a-zA-Zآ-ی\\s]{3,20}$", message = "Invalid Title")
+    @Size(min = 3, max = 20, message = "Title must be between 3 and 20 characters")
+    @NotBlank(message = "Should Not Be Null")
     private String title;
 
-    @Column (name = "l_letter_number" , length = 30)
-//    @Pattern(regexp = "^[a-zA-Z\\s]{3,30}$", message = "Invalid Letter Number")
+    //todo : what is the actual min and max for letter number?
+    @Column (name = "l_letter_number" , columnDefinition = "NVARCHAR2(20)")
+    @Pattern(regexp = "^[0-9]{1,20}$", message = "Invalid LetterNumber")
+    @Size(min = 1, max = 20, message = " LetterNumber must be between 1 and 20 characters")
+    @NotBlank(message = "Should Not Be Null")
     private String letterNumber;
 
     @ManyToOne
@@ -54,7 +56,7 @@ public class Letter extends Base implements Serializable {
     //ref receivers
     @ManyToMany(fetch = FetchType.EAGER)
     @ToString.Exclude
-//    @NotNull (message = "UserList should not be null!")
+    @NotNull(message = "Should Not Be Null")
     private List<User> userList;
 
     public void addUser(User user){
@@ -64,22 +66,31 @@ public class Letter extends Base implements Serializable {
         userList.add(user);
     }
 
-//    @Pattern(regexp = "^[a-zA-Z\\s]{3,30}$", message = "Invalid Sender Name")
-    @Column (name = "l_sender_name" , length = 30)
+    @Column (name = "l_sender_name" , columnDefinition = "NVARCHAR2(20)")
+    @Pattern(regexp = "^[a-zA-Zآ-ی\\s]{3,20}$", message = "Invalid SenderName")
+    @Size(min = 3, max = 20, message = "SenderName must be between 3 and 20 characters")
+    @NotBlank(message = "Should Not Be Null")
     private String senderName;
 
-//    @Pattern(regexp = "^[a-zA-Z\\s]{3,30}$", message = "Invalid Sender Title")
-    @Column (name = "l_sender_title", length = 30)
+    @Column (name = "l_sender_title", columnDefinition = "NVARCHAR2(20)")
+    @Pattern(regexp = "^[a-zA-Zآ-ی\\s]{3,20}$", message = "Invalid SenderTitle")
+    @Size(min = 3, max = 20, message = "SenderTitle must be between 3 and 20 characters")
+    @NotBlank(message = "Should Not Be Null")
     private String senderTitle;
 
-//    @Pattern(regexp = "^[a-zA-Z\\s]{3,30}$", message = "Invalid Receiver Name")
-    @Column (name = "l_receiver_name" , length = 30)
+    @Column (name = "l_receiver_name" , columnDefinition = "NVARCHAR2(20)")
+    @Pattern(regexp = "^[a-zA-Zآ-ی\\s]{3,20}$", message = "Invalid ReceiverName")
+    @Size(min = 3, max = 20, message = "ReceiverName must be between 3 and 20 characters")
+    @NotBlank(message = "Should Not Be Null")
     private String receiverName;
 
-//    @Pattern(regexp = "^[a-zA-Z\\s]{3,30}$", message = "Invalid Receiver Title")
-    @Column (name = "l_receiver_title" , length = 30)
+    @Column (name = "l_receiver_title" , columnDefinition = "NVARCHAR2(20)")
+    @Pattern(regexp = "^[a-zA-Zآ-ی\\s]{3,20}$", message = "Invalid ReceiverTitle")
+    @Size(min = 3, max = 20, message = "ReceiverTitle must be between 3 and 20 characters")
+    @NotBlank(message = "Should Not Be Null")
     private String receiverTitle;
 
+    //todo : attachment needed
     @Column (name = "l_file")
     private String image;
 
@@ -93,6 +104,8 @@ public class Letter extends Base implements Serializable {
     private LetterType letterType;
 
     @Column (name = "l_date")
+    @FutureOrPresent(message = "Invalid letter date")
+    @NotNull(message = "Should Not Be Null")
     private LocalDate date;
 
     @Transient
@@ -106,10 +119,12 @@ public class Letter extends Base implements Serializable {
         this.date =PersianDate.parse(faDate).toGregorian();
     }
 
-    //    @Pattern(regexp = "^[a-zA-Z\\s]{10,}$", message = "Invalid Context Name")
     @Column (name = "l_context")
+    @Pattern(regexp = "^[a-zA-Zآ-ی\\s]{3}$", message = "Invalid Context")
+    @Size(min = 3, message = "Context must be at least 3 characters")
     private String context;
 
+    //todo : does this need @futureOrPresent? I set is as localDateTime.now in servlet
     @Column(name = "register_date_and_time")
     private LocalDateTime registerDateAndTime;
 

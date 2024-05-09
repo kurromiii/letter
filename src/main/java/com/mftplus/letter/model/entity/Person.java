@@ -3,6 +3,10 @@ package com.mftplus.letter.model.entity;
 import com.mftplus.letter.model.entity.enums.Gender;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,27 +26,28 @@ import java.time.LocalDate;
 @RequestScoped
 @ToString
 public class Person extends Base implements Serializable {
-
-    //todo : nullable false has not been set yet
-    //todo : validation commented for production
-    //todo : attachment
-
     @Id
     @SequenceGenerator(name = "personSeq", sequenceName = "person_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "personSeq")
-    @Column(name = "id")
+    @Column(name = "p_id")
     private Long id;
 
-//    @Pattern(regexp = "^[a-zA-Z\\s]{3,30}$", message = "Invalid Name")
-    @Column(name = "p_name", length = 30)
+    @Column(name = "p_name", columnDefinition = "NVARCHAR2(20)")
+    @Pattern(regexp = "^[a-zA-Zآ-ی\\s]{3,20}$", message = "Invalid Name")
+    @Size(min = 3, max = 20, message = "Name must be between 3 and 20 characters")
+    @NotBlank(message = "Should Not Be Null")
     private String name;
 
-//    @Pattern(regexp = "^[a-zA-Z\\s]{3,30}$", message = "Invalid Family")
-    @Column(name = "p_family", length = 30)
+    @Column(name = "p_family", columnDefinition = "NVARCHAR2(20)")
+    @Pattern(regexp = "^[a-zA-Zآ-ی\\s]{3,20}$", message = "Invalid Family")
+    @Size(min = 3, max = 20, message = "Family must be between 3 and 20 characters")
+    @NotBlank(message = "Should Not Be Null")
     private String family;
 
-//    @Pattern(regexp = "^[0-9\\s]{10}$", message = "Invalid NationalCode")
-    @Column(name = "p_nationalCode", length = 10)
+    @Column(name = "p_nationalCode", columnDefinition = "NVARCHAR2(10)")
+    @Pattern(regexp = "^[0-9]{1,10}$", message = "Invalid NationalCode")
+    @Size(min = 1, max = 10, message = "NationalCode must be between 1 and 10 characters")
+    @NotBlank(message = "Should Not Be Null")
     private String nationalCode;
 
     @Enumerated(EnumType.ORDINAL)
@@ -52,9 +57,12 @@ public class Person extends Base implements Serializable {
     @JoinColumn(name = "p_username", nullable = false,unique = true)
     private User user;
 
+    //todo : has not been set in servlet or form
     @Column(name = "p_birthdate")
+    @Past(message = "Invalid Birthdate")
     private LocalDate birthdate;
 
+    //todo : attachment
     @Column(name = "p_image")
     private String image;
 

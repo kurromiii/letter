@@ -1,6 +1,9 @@
 package com.mftplus.letter.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,7 +32,10 @@ public class Roles extends Base implements Serializable {
     @JoinColumn(name = "u_username")
     private User user;
 
-    @Column(name = "role_name")
+    @Column(name = "role_name", columnDefinition = "NVARCHAR2(10)")
+    @Pattern(regexp = "^[a-zA-Z\\s]{4,10}$", message = "Invalid RoleName")
+    @Size(min = 4, max = 10, message = "RoleName must be between 4 and 10 characters")
+    @NotBlank(message = "Should Not Be Null")
     private String role;
 
 }
