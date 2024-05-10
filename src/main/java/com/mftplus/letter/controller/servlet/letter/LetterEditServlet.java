@@ -1,6 +1,6 @@
 package com.mftplus.letter.controller.servlet.letter;
 
-import com.mftplus.letter.controller.exception.LetterIdIsRequiredException;
+import com.mftplus.letter.controller.exception.IdIsRequiredException;
 import com.mftplus.letter.controller.exception.NoContentException;
 import com.mftplus.letter.model.entity.Letter;
 import com.mftplus.letter.model.entity.User;
@@ -41,7 +41,7 @@ public class LetterEditServlet extends HttpServlet {
         log.info("LetterEditServlet - Get");
         try {
             if (req.getParameter("id") == null) {
-                throw new LetterIdIsRequiredException("Please set letter id !");
+                throw new IdIsRequiredException("Please set letter id !");
             } else {
                 long id = Integer.parseInt(req.getParameter("id"));
                 Optional<Letter> letter = letterService.findById(id);

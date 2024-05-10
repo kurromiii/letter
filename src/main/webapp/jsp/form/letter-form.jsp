@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="../../assets/css/kamadatepicker.min.css">
     <link rel="stylesheet" href="../../assets/fontawesome-free-6.5.2-web/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" lang="fa">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
 <!--nav bar-->
-<jsp:include page="../../jsp/all.jsp"></jsp:include>
+<%--<jsp:include page="../../jsp/all.jsp"></jsp:include>--%>
 
 <div class="formbold-main-wrapper">
     <div class="formbold-form-wrapper">
@@ -27,6 +27,9 @@
             <div class="formbold-input-group">
                 <label for="title" class="formbold-form-label"> عنوان </label>
                 <input type="text" name="title" id="title" placeholder="عنوان نامه را وارد کنید" class="formbold-form-input"/>
+<%--                <c:if test="${not empty sessionScope.errorMassage}">--%>
+<%--                    <span>${sessionScope.errorMassage}</span>--%>
+<%--                </c:if>--%>
             </div>
 
             <div class="formbold-input-group">

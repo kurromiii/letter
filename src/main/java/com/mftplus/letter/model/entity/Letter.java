@@ -119,9 +119,10 @@ public class Letter extends Base implements Serializable {
         this.date =PersianDate.parse(faDate).toGregorian();
     }
 
+    //todo : max size for context?
     @Column (name = "l_context")
-    @Pattern(regexp = "^[a-zA-Zآ-ی\\s]{3}$", message = "Invalid Context")
-    @Size(min = 3, message = "Context must be at least 3 characters")
+    @Pattern(regexp = "^[a-zA-Zآ-ی\\s]{3,250}$", message = "Invalid Context")
+    @Size(min = 3,max = 250,message = "Context must be at least 3 characters")
     private String context;
 
     //todo : does this need @futureOrPresent? I set is as localDateTime.now in servlet

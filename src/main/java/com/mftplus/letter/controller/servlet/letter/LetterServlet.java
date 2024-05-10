@@ -1,6 +1,7 @@
 package com.mftplus.letter.controller.servlet.letter;
 
-import com.mftplus.letter.controller.exception.NoUserFoundException;
+import com.mftplus.letter.controller.exception.NoContentException;
+import com.mftplus.letter.controller.validation.BeanValidator;
 import com.mftplus.letter.model.entity.Letter;
 import com.mftplus.letter.model.entity.User;
 import com.mftplus.letter.model.entity.enums.LetterAccessLevel;
@@ -34,6 +35,9 @@ import java.util.Optional;
         maxRequestSize = 1024 * 1024 * 100   // 10 MB
 )
 public class LetterServlet extends HttpServlet {
+
+    //todo : how to show validation msg in jsp ?
+
     @Inject
     private LetterServiceImpl letterService;
 
@@ -92,7 +96,6 @@ public class LetterServlet extends HttpServlet {
                 resp.getWriter().print("The file uploaded successfully.");
             }
 
-//            if (!usernameList.isEmpty()) {
                 Optional<User> user = userService.findByUsername(username);
                 List<User> userList = userService.findUserByUsernames(usernameList);
 
@@ -118,13 +121,17 @@ public class LetterServlet extends HttpServlet {
                                     .userList(userList)
                                     .build();
                     letter.setFaDate(faDate);
+
+                    //validate
+                    BeanValidator<Letter> validator = new BeanValidator<>();
+                    validator.validate(letter);
+
                     letterService.save(letter);
                     log.info("LetterServlet - Letter Saved");
                     req.getSession().setAttribute("letterId", letter.getId());
-                    resp.sendRedirect("/letter.do?selectedLetter=" + letter.getId());
-//                }
+                    resp.sendRedirect("/letterBox.do");
             } else {
-                throw new NoUserFoundException("The required users do not exist !");
+                throw new NoContentException("The required user does not exist !");
             }
         } catch (Exception e) {
             log.error(e.getMessage());
@@ -133,8 +140,3 @@ public class LetterServlet extends HttpServlet {
     }
 }
 
-//todo indicator code
-//todo letter number format
-//todo carbonCopies
-//todo register number
-//todo exception handling

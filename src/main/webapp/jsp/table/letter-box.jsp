@@ -5,8 +5,8 @@
     <title>Title</title>
     <link rel="stylesheet" href="../../assets/fontawesome-free-6.5.2-web/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/letterBox.css">
-    <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
-    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta charset="UTF-8" lang="fa">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -98,11 +98,11 @@
                                             <span class="text-dark">${letter.receiverName}</span>
                                         </td>
 
-                                        <td class="text-muted">${letter.date}</td>
+                                        <td class="text-muted">${letter.getFaDate()}</td>
 
                                         <td class="d-flex justify-content-center">
-                                            <a href="#" class="text-dark p-2 bg-warning rounded" onclick="select(${letter.id})">مشاهده نامه </a>
-                                            <a href="#" class="text-dark p-2 bg-warning rounded" onclick="edit(${letter.id})">ویرایش نامه </a>
+                                            <a href="#" class="text-dark p-2 bg-warning rounded" onclick="selectLetter(${letter.id})">مشاهده نامه </a>
+                                            <a href="#" class="text-dark p-2 bg-warning rounded" onclick="editLetter(${letter.id})">ویرایش نامه </a>
                                         </td>
 
                                     </tr>
@@ -167,7 +167,8 @@
                                         <td class="text-muted">${reference.refDateAndTime}</td>
 
                                         <td class="d-flex justify-content-center">
-                                            <a href="#" class="btn text-dark p-2 bg-warning rounded">مشاهده ارجاع </a>
+                                            <a href="#" class="text-dark p-2 bg-warning rounded" onclick="selectReference(${reference.id})">مشاهده ارجاع </a>
+                                            <a href="#" class="text-dark p-2 bg-warning rounded" onclick="edit(${reference.id})">ویرایش ارجاع </a>
                                         </td>
                                     </tr>
                                     </c:forEach>
@@ -243,11 +244,14 @@
 <script type="text/javascript"></script>
 
 <script>
-    function edit(id) {
+    function editLetter(id) {
         document.location.replace("/letterEdit.do?id=" + id);
     }
-    function select(id) {
+    function selectLetter(id) {
         document.location.replace("/letterDisplay.do?id=" + id);
+    }
+    function selectReference(id) {
+        document.location.replace("/referenceDisplay.do?id=" + id);
     }
 </script>
 </body>

@@ -1,7 +1,6 @@
 package com.mftplus.letter.controller.servlet.letter;
 
-import com.mftplus.letter.controller.exception.LetterIdIsRequiredException;
-import com.mftplus.letter.controller.exception.NoLetterFoundException;
+import com.mftplus.letter.controller.exception.IdIsRequiredException;
 import com.mftplus.letter.model.entity.Letter;
 import com.mftplus.letter.model.entity.enums.LetterAccessLevel;
 import com.mftplus.letter.model.entity.enums.LetterType;
@@ -31,16 +30,12 @@ public class LetterDisplayServlet extends HttpServlet {
         log.info("LetterDisplayServlet - Get");
         try {
             if (req.getParameter("id") == null) {
-                throw new LetterIdIsRequiredException("Please set letter id !");
+                throw new IdIsRequiredException("Please set letter id !");
             } else {
                 long id = Integer.parseInt(req.getParameter("id"));
                 Optional<Letter> letter = letterService.findById(id);
-                if (letter.isPresent()) {
-                    req.getSession().setAttribute("letter", letter.get());
-                }else {
-                    log.error("letter not present");
-                    throw new NoLetterFoundException("letter with id : "+ id + " not found !");
-                }
+                letter.ifPresent(value -> req.getSession().setAttribute("letter", value));
+
                 req.getSession().setAttribute("accessLevels", Arrays.asList(LetterAccessLevel.values()));
                 req.getSession().setAttribute("transferMethods", Arrays.asList(TransferMethod.values()));
                 req.getSession().setAttribute("letterTypes", Arrays.asList(LetterType.values()));

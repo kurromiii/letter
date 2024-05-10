@@ -57,17 +57,30 @@
                 <input type="text" name="receiver_title" id="receiver_title" value="${sessionScope.letter.receiverTitle}" class="formbold-form-input"/>
             </div>
 
-<%--            <div class=" row formbold-input-group">--%>
-<%--                <label class="formbold-form-label"> ارجاع گیرندکان نامه </label>--%>
-<%--                <div class="position-relative">--%>
-<%--                    <div class="col-12 position-relative">--%>
-<%--                        <input class="col-12 formbold-form-input" oninput="getReferences(event)" type="text" value="${sessionScope.letter.userList}"/>--%>
-<%--                        <div   id="person-ref-list" class="border col-12" style="position: absolute;">--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <div id="selected-list" class="col-12 row ">--%>
-<%--                </div>--%>
+            <div class=" row formbold-input-group">
+                <label class="formbold-form-label"> ارجاع گیرندکان نامه </label>
+                <div class="position-relative">
+                    <div class="col-12 position-relative">
+                        <input class="col-12 formbold-form-input" oninput="getReferences(event)" type="text"/>
+                        <div   id="person-ref-list" class="border col-12" style="position: absolute;">
+                        </div>
+                    </div>
+                </div>
+                <div id="selected-list" class="col-12 row ">
+                </div>
+            </div>
+
+<%--            <div>--%>
+<%--                <table>--%>
+<%--                    <thead>--%>
+<%--                    <th>name</th>--%>
+<%--                    </thead>--%>
+<%--                    <tbody>--%>
+<%--                    <c:forEach var="user" items="${sessionScope.letter.userList}">--%>
+<%--                    <tr>${user.person.name}</tr>--%>
+<%--                    </tbody>--%>
+<%--                    </c:forEach>--%>
+<%--                </table>--%>
 <%--            </div>--%>
 
             <div class="formbold-input-group">
@@ -140,7 +153,7 @@
                 />
             </div>
 
-            <button id="submit"  class="formbold-btn" onclick="edit(event)">ویرایش</button>
+            <button id="submit" class="a-btn" onclick="edit(event)">ویرایش</button>
         </form>
         <!--end form-->
     </div>
