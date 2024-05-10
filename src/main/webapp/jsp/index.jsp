@@ -20,25 +20,33 @@
     <section class="menu">
       <div class="right">
         <ul>
-          <li><a href="">صفحه اصلی </a></li>
-          <li><a href="organisation.do">سازمان</a></li>
+          <li><a href="#" class="fa-solid fa-house"></a></li>
+          <li><a href="#">سازمان</a>
+            <ul class="submenu">
+              <li><a href="#">چارت</a></li>
+            </ul>
+          </li>
           <li><a href="letterBox.do">اداری </a>
             <ul class="submenu">
               <li><a href="letter.do">نامه</a></li>
               <li><a href="reference.do">ارجاع</a></li>
             </ul>
           </li>
-          <li><a href="">داشبورد </a></li>
+          <li><a href="#">بانک </a></li>
+          <li><a href="">انبار </a>
+            <ul class="submenu">
+              <li><a href="#">کالا</a></li>
+            </ul>
+          </li>
+          <li><a href="dashboard.do">داشبورد </a></li>
         </ul>
       </div>
-      <c:if test="${not empty pageContext.request.userPrincipal}">
       <div class="left">
         <ul>
-          <li><a href="person.do">پروفایل </a></li>
-          <li><a href="logout.do">خروج </a></li>
+          <li><a href="person.do" class="fas fa-user-circle"></a></li>
+          <li class="logOut"><a href="logout.do" class="fas fa-sign-out"></a></li>
         </ul>
       </div>
-      </c:if>
     </section>
     <!--end menu-->
     <div class="d-flex w-100 ">
@@ -76,7 +84,7 @@
 </div>
 <!--footer-->
 <section class="footer">
-  <p>نمی دانم! اطلاعی ندارم</p>
+  <p>با ما در ارتباط باشید !</p>
   <p>جهت اطلاعات بیشتر</p>
   <span class="fab fa-telegram"></span>
   <span class="fab fa-facebook"></span>
