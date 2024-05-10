@@ -1,7 +1,6 @@
 package com.mftplus.letter.controller.servlet.reference;
 
-import com.mftplus.letter.controller.exception.NoReferenceFoundException;
-import com.mftplus.letter.controller.exception.ReferenceIdIsRequiredException;
+import com.mftplus.letter.controller.exception.IdIsRequiredException;
 import com.mftplus.letter.model.entity.Letter;
 import com.mftplus.letter.model.entity.Reference;
 import com.mftplus.letter.model.entity.User;
@@ -37,16 +36,12 @@ public class ReferenceEditServlet extends HttpServlet {
         log.info("ReferenceEditServlet - Get");
         try {
             if (req.getParameter("id") == null) {
-                throw new ReferenceIdIsRequiredException("Please set reference id !");
+                throw new IdIsRequiredException("Please set reference id !");
             } else {
                 long id = Integer.parseInt(req.getParameter("id"));
                 Optional<Reference> reference = referenceService.findById(id);
-                if (reference.isPresent()) {
-                    req.getSession().setAttribute("reference", reference.get());
-                }else {
-                    log.error("reference not present");
-                    throw new NoReferenceFoundException("reference with id : "+ id + " not found !");
-                }
+                reference.ifPresent(value -> req.getSession().setAttribute("reference", value));
+
                 req.getSession().setAttribute("refTypes", Arrays.asList(ReferenceType.values()));
                 req.getSession().setAttribute("priorities", Arrays.asList(ReferencePriority.values()));
                 req.getSession().setAttribute("referenceList", referenceService.findAll());

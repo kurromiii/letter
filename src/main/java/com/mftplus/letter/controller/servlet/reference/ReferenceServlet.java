@@ -1,6 +1,5 @@
 package com.mftplus.letter.controller.servlet.reference;
 
-import com.mftplus.letter.controller.exception.NoLetterFoundException;
 import com.mftplus.letter.controller.exception.NoUserFoundException;
 import com.mftplus.letter.model.entity.Letter;
 import com.mftplus.letter.model.entity.Reference;
@@ -67,11 +66,7 @@ public class ReferenceServlet extends HttpServlet {
                 String username = req.getUserPrincipal().getName();
 
 //            if (letterId != null){
-                //todo : number format exception
-                Optional<Letter> letter = letterService.findById(Long.valueOf(letterId));
-                if (letter.isEmpty()){
-                    throw new NoLetterFoundException("no letter found for reference !");
-                }
+
                 Optional<User> user = userService.findByUsername(username);
                 if (user.isEmpty()){
                     throw new NoUserFoundException("no user found for reference !");
@@ -81,6 +76,10 @@ public class ReferenceServlet extends HttpServlet {
                     throw new NoUserFoundException("no user found for reference receiver !");
                 }
 
+            //todo : number format exception
+            Optional<Letter> letter = letterService.findById(Long.valueOf(letterId));
+
+                if (letter.isPresent()){
                     Reference reference =
                             Reference
                                     .builder()
@@ -101,13 +100,11 @@ public class ReferenceServlet extends HttpServlet {
                     referenceService.save(reference);
                     log.info("ReferenceServlet - Reference Saved");
                 resp.sendRedirect("/reference.do");
-//                }
+                }
         } catch (Exception e) {
             log.error(e.getMessage());
             throw new RuntimeException(e);
         }
     }
 }
-//todo referenceSenderId
-//todo referenceReceiverId
-//todo status and validate
+

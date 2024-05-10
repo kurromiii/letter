@@ -1,5 +1,6 @@
 package com.mftplus.letter.model.service.interfaces;
 
+import com.mftplus.letter.controller.exception.NoContentException;
 import com.mftplus.letter.model.entity.Reference;
 import com.mftplus.letter.model.entity.enums.ReferencePriority;
 
@@ -9,11 +10,11 @@ import java.util.Optional;
 
 public interface ReferenceService {
     void save(Reference reference) throws Exception;
-    void edit(Reference reference) throws Exception;
+    void edit(Reference reference) throws NoContentException;
     void remove(Reference reference) throws Exception;
     void removeById(Long id) throws Exception;
 
-    Optional<Reference> findById(Long id) throws Exception;
+    Optional<Reference> findById(Long id) throws NoContentException;
     List<Reference> findAll() throws Exception;
 
     List<Reference> findByReferenceSenderId(String senderUsername) throws Exception;

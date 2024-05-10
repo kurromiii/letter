@@ -1,5 +1,6 @@
 package com.mftplus.letter.model.service.impl;
 
+import com.mftplus.letter.controller.exception.NoContentException;
 import com.mftplus.letter.model.entity.Reference;
 import com.mftplus.letter.model.entity.enums.ReferencePriority;
 import com.mftplus.letter.model.service.interfaces.ReferenceService;
@@ -30,10 +31,17 @@ public class ReferenceServiceImpl implements ReferenceService, Serializable {
 
     @Transactional
     @Override
-    public void edit(Reference reference) throws Exception {
-        entityManager.merge(reference);
+    public void edit(Reference reference) throws NoContentException {
+        Optional<Reference> optionalReference = Optional.ofNullable(entityManager.find(Reference.class, reference.getId()));
+
+        if (optionalReference.isPresent()) {
+            entityManager.merge(reference);
+        } else {
+            throw new NoContentException("Reference with id : " + reference.getId() + " not found !");
+        }
     }
 
+    //todo : no id check for methods
     @Transactional
     @Override
     public void remove(Reference reference) throws Exception {
@@ -52,8 +60,13 @@ public class ReferenceServiceImpl implements ReferenceService, Serializable {
 
     @Transactional
     @Override
-    public Optional<Reference> findById(Long id) throws Exception {
-        return Optional.ofNullable(entityManager.find(Reference.class, id));
+    public Optional<Reference> findById(Long id) throws NoContentException {
+        Optional<Reference> optional = Optional.ofNullable(entityManager.find(Reference.class, id));
+        if (optional.isPresent()) {
+            return optional;
+        } else {
+            throw new NoContentException("Reference with id : " + id + "not found !");
+        }
     }
 
     @Transactional
@@ -127,7 +140,6 @@ public class ReferenceServiceImpl implements ReferenceService, Serializable {
         return query.getResultList();
     }
 
-    //todo input needs to rethink
     @Transactional
     @Override
     public List<Reference> findByPriority(ReferencePriority priority) throws Exception {
