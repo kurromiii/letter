@@ -8,7 +8,7 @@
 </head>
 <body>
 <!--nav bar-->
-<jsp:include page="../../../jsp/all.jsp"></jsp:include>
+<jsp:include page="../../../jsp/dashboard.jsp"></jsp:include>
 
 <div class="formbold-main-wrapper">
     <div class="formbold-form-wrapper">

@@ -42,7 +42,7 @@
         <td>${letter.receiverTitle}</td>
         <td>${letter.accessLevel}</td>
         <td>${letter.transferMethod}</td>
-        <td>${letter.date}</td>
+        <td>${letter.getFaDate()}</td>
         <td>${letter.letterType}</td>
         <td>
             <a href="#" onclick="selectLetter(${letter.id})"><i class="fas fa-eye show"></i></a>
