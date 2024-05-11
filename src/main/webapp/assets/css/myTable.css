@@ -12,10 +12,11 @@ table{
     position: relative;
     width: 90%;
     height: auto;
-    margin: auto !important;
-    border: 1px solid #E4EfE9;
+    /*border: 1px solid #E4EfE9;*/
     border-collapse: collapse;
-    top: 100px;
+    top: 90px;
+    right : 100px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 table thead tr{
     background-color: #c4adff;
@@ -23,12 +24,12 @@ table thead tr{
 }
 table thead tr th{
     font-size: 16px;
-    width: 10%;
+    padding: 10px!important;
     /*color: black;*/
     /*border-right: 2px outset #E4EfE9;*/
 }
 .btn{
-    width: 3%;
+    width: 7%;
 }
 table thead tr th:nth-child(1){
     width: 1%;
