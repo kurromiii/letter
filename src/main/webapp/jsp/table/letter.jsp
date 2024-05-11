@@ -46,22 +46,13 @@
         <td>${letter.letterType}</td>
         <td>
             <a href="#" onclick="selectLetter(${letter.id})"><i class="fas fa-eye show"></i></a>
-            <a href="#" onclick="editLetter(${letter.id})"><i class="fa fa-edit edit"></i></a>
-            <a href="#" onclick="remove(${letter.id})"><i class="fa fa-remove remove"></i></a>
+            <a href="#" onclick="showEditLetter(${letter.id})"><i class="fa fa-edit edit"></i></a>
+            <a href="#" onclick="removeLetter(${letter.id})"><i class="fa fa-remove remove"></i></a>
         </td>
     </tr>
     </tbody>
     </c:forEach>
 </table>
-
-<script>
-    function editLetter(id) {
-        document.location.replace("/letterEdit.do?id=" + id);
-    }
-    function selectLetter(id) {
-        document.location.replace("/letterDisplay.do?id=" + id);
-    }
-</script>
 <script src="../../assets/js/letter.js"></script>
 </body>
 </html>
