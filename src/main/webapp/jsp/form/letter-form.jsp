@@ -3,10 +3,9 @@
 <html>
 <head>
     <title>نامه</title>
-    <link rel="stylesheet" href="../../assets/css/form.css">
+    <jsp:include page="../css-import.jsp"></jsp:include>
     <link rel="stylesheet" href="../../assets/css/kamadatepicker.min.css">
-    <link rel="stylesheet" href="../../assets/fontawesome-free-6.5.2-web/css/all.min.css">
-    <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/form.css">
     <meta charset="UTF-8" lang="fa">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -14,12 +13,15 @@
 </head>
 <body>
 <!--nav bar-->
-<%--<jsp:include page="../../jsp/all.jsp"></jsp:include>--%>
+<jsp:include page="../../jsp/dashboard.jsp"></jsp:include>
 
 <div class="formbold-main-wrapper">
     <div class="formbold-form-wrapper">
         <!--img-->
-        <img src="../../assets/image/lettering.jpg" alt="">
+<%--        <img src="../../assets/image/lettering.jpg" alt="">--%>
+        <div class="formbold-form-title">
+            <h2>ایجاد نامه جدید</h2>
+        </div>
 
         <!--start form-->
         <form action="letter.do" method="post" enctype="multipart/form-data">

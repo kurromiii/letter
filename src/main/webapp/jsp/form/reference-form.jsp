@@ -12,12 +12,16 @@
 </head>
 <body>
 <!--nav bar-->
-<jsp:include page="../../jsp/all.jsp"></jsp:include>
+<jsp:include page="../../jsp/dashboard.jsp"></jsp:include>
 
 <div class="formbold-main-wrapper">
     <div class="formbold-form-wrapper">
         <!--img-->
-        <img src="../../assets/image/reference.jpg" alt="">
+<%--        <img src="../../assets/image/reference.jpg" alt="">--%>
+
+        <div class="formbold-form-title">
+            <h2>ایجاد ارجاع جدید</h2>
+        </div>
 
         <!--start form-->
         <form action="reference.do" method="POST">

@@ -35,7 +35,7 @@ public class Reference extends Base implements Serializable {
     @Column (name = "r_id")
     private long id;
 
-    @ManyToOne (fetch = FetchType.LAZY)
+    @ManyToOne (fetch = FetchType.EAGER)
     @ToString.Exclude
     private Letter letterId;
 
