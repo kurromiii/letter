@@ -16,8 +16,8 @@
         <div class="formbold-form-title">
             <h2 class="">ارجاع</h2>
             <a class="formbold-btn primary" href="#" onclick="showLetter(${sessionScope.reference.letterId.id})">مشاهده نامه</a>
-            <a class="formbold-btn warning" href="#" onclick="edit(${sessionScope.reference.id})">ویرایش</a>
-            <a class="formbold-btn danger" href="#" onclick="remove(${sessionScope.reference.id})">حذف</a>
+            <a class="formbold-btn warning" href="#" onclick="showEditReference(${sessionScope.reference.id})">ویرایش</a>
+            <a class="formbold-btn danger" href="#" onclick="removeReference(${sessionScope.reference.id})">حذف</a>
         </div>
 
         <!--start form-->

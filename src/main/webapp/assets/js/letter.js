@@ -1,8 +1,8 @@
-function edit(id) {
+function showEditLetter(id) {
     document.location.replace("/letterEdit.do?id=" + id);
 }
 
-async function remove(id) {
+async function removeLetter(id) {
     alert(id);
     const response = await fetch("/api/letter/" + id, {
         method: "DELETE"
@@ -25,4 +25,8 @@ function editLetter(event) {
     }).then(() => {
         document.location.replace("/letterDisplay.do?id=" + formData.get("id"));
     });
+}
+
+function selectLetter(id) {
+    document.location.replace("/letterDisplay.do?id=" + id);
 }
