@@ -40,13 +40,12 @@
             <!-- duplicate or remove this li tag if you want to add or remove navlink with submenu -->
             <!-- start -->
             <li class="item">
-                <div href="home.do" class="nav_link submenu_item">
+                <a href="home.do" class="nav_link">
               <span class="navlink_icon">
                 <i class="fa-solid fa-house"></i>
               </span>
                     <span class="navlink">خانه</span>
-                    <i class="bx bx-chevron-right arrow-left"></i>
-                </div>
+                </a>
             </li>
             <!-- end -->
 
@@ -74,7 +73,7 @@
         <ul class="menu_items">
             <div class="menu_title">
             <span>
-            <i class="fa-solid fa-envelope"></i>
+            <i class=""></i>
             </span>
                 <span class="navlink">اداری</span>
                 <i class="bx bx-chevron-right arrow-left"></i>
@@ -107,10 +106,23 @@
                     <span class="navlink">چارت جدید</span>
                 </a>
             </li>
+        </ul>
+
+        <ul class="menu_items">
+            <div class="menu_title">
+            <span>
+            <i class="fa-solid fa-envelopes"></i>
+            </span>
+                <span class="navlink">نامه نگاری</span>
+                <i class="bx bx-chevron-right arrow-left"></i>
+            </div>
+            <!-- duplicate these li tag if you want to add or remove navlink only -->
+            <!-- Start -->
+
             <li class="item">
                 <a href="letterBox.do" class="nav_link">
               <span class="navlink_icon">
-                <i class="bx bx-cloud-upload"></i>
+                <i class="fa-regular fa-inbox"></i>
               </span>
                     <span class="navlink">صندوق نامه و ارجاع</span>
                 </a>
@@ -126,23 +138,23 @@
             <li class="item">
                 <a href="reference.do" class="nav_link">
               <span class="navlink_icon">
-                <i class="bx bx-cloud-upload"></i>
+                <i class="fa-regular fa-message"></i>
               </span>
                     <span class="navlink">ارجاع جدید</span>
                 </a>
             </li>
             <li class="item">
-                <a href="#" class="nav_link">
+                <a href="letterTable.do" class="nav_link">
               <span class="navlink_icon">
-                <i class="bx bx-cloud-upload"></i>
+                <i class="fa-regular fa-envelope"></i>
               </span>
                     <span class="navlink">نامه ها</span>
                 </a>
             </li>
             <li class="item">
-                <a href="#" class="nav_link">
+                <a href="referenceTable.do" class="nav_link">
               <span class="navlink_icon">
-                <i class="bx bx-cloud-upload"></i>
+                <i class="fa-regular fa-messages"></i>
               </span>
                     <span class="navlink">ارجاع ها</span>
                 </a>
@@ -160,9 +172,9 @@
             <!-- duplicate these li tag if you want to add or remove navlink only -->
             <!-- Start -->
             <li class="item">
-                <a href="#" class="nav_link">
+                <a href="personTable.do" class="nav_link">
               <span class="navlink_icon">
-                <i class="bx bxs-magic-wand"></i>
+                <i class="fas fa-id-card"></i>
               </span>
                     <span class="navlink">پروفایل ها</span>
                 </a>
@@ -172,7 +184,7 @@
             <li class="item">
                 <a href="#" class="nav_link">
               <span class="navlink_icon">
-                <i class="bx bx-loader-circle"></i>
+                <i class="fas fa-user-circle"></i>
               </span>
                     <span class="navlink">کاربران</span>
                 </a>
@@ -180,9 +192,25 @@
             <li class="item">
                 <a href="#" class="nav_link">
               <span class="navlink_icon">
-                <i class="bx bx-filter"></i>
+                <i class="fas fa-user-lock"></i>
               </span>
                     <span class="navlink">سطوح دسترسی</span>
+                </a>
+            </li>
+            <li class="item">
+                <a href="person.do" class="nav_link">
+              <span class="navlink_icon">
+                <i class="fas fa-user-edit"></i>
+              </span>
+                    <span class="navlink">ایجاد پروفایل</span>
+                </a>
+            </li>
+            <li class="item">
+                <a href="person.do" class="nav_link">
+              <span class="navlink_icon">
+                <i class="fas fa-user-plus"></i>
+              </span>
+                    <span class="navlink">ایجاد کاربر جدید</span>
                 </a>
             </li>
         </ul>
