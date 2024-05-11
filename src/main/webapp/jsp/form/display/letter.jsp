@@ -107,15 +107,6 @@
         </form>
     </div>
 </div>
-
-<script>
-    function edit(id) {
-        document.location.replace("/letterEdit.do?id=" + id);
-    }
-    function reference(id) {
-        document.location.replace("/reference.do?letterIdRef=" + id);
-    }
-</script>
 <script src="../../../assets/js/letter.js"></script>
 </body>
 </html>

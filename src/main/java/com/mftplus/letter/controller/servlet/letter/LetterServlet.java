@@ -129,7 +129,7 @@ public class LetterServlet extends HttpServlet {
                     letterService.save(letter);
                     log.info("LetterServlet - Letter Saved");
                     req.getSession().setAttribute("letterId", letter.getId());
-                    resp.sendRedirect("/letterBox.do");
+                    resp.sendRedirect("/letter.do");
             } else {
                 throw new NoContentException("The required user does not exist !");
             }

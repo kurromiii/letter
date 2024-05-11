@@ -14,7 +14,7 @@
 </head>
 <body>
 <!--nav bar-->
-<jsp:include page="../../../jsp/all.jsp"></jsp:include>
+<jsp:include page="../../../jsp/dashboard.jsp"></jsp:include>
 
 <div class="formbold-main-wrapper">
     <div class="formbold-form-wrapper">
@@ -153,7 +153,7 @@
                 />
             </div>
 
-            <button id="submit" class="a-btn" onclick="edit(event)">ویرایش</button>
+            <button id="submit" class="a-btn" onclick="editLetter(event)">ویرایش</button>
         </form>
         <!--end form-->
     </div>
@@ -162,27 +162,12 @@
 <script src="../../../assets/js/kamadatepicker.holidays.js"></script>
 <script src="../../../assets/js/kamadatepicker.min.js"></script>
 <script src="../../../assets/js/referenceInput.js"></script>
+<script src="../../../assets/js/letter.js"></script>
 <script>
     let myElement = document.querySelector('#date');
     kamaDatepicker(myElement);
 
     kamaDatepicker('date', { buttonsColor: "red", forceFarsiDigits: true });
-</script>
-
-<script>
-    function edit(event) {
-        event.preventDefault()
-        const myForm = document.getElementById("myForm");
-        const formData=new FormData(myForm)
-        console.log(formData.get("id"))
-        // const queryString = new URLSearchParams(new FormData(myForm)).toString();
-        fetch("/letterEdit.do", {
-            method: "PUT",
-            body:formData
-        }).then(() => {
-            document.location.replace("/letterDisplay.do?id=" + formData.get("id"));
-        });
-    }
 </script>
 </body>
 </html>
