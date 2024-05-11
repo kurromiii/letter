@@ -39,29 +39,17 @@
         <td>${reference.paraph}</td>
         <td>${reference.explanation}</td>
         <td>${reference.refDateAndTime}</td>
-        <td>${reference.expiration}</td>
+        <td>${reference.getFaExpiration()}</td>
         <td>
             <a href="#" onclick="selectReference(${reference.id})"><i class="fas fa-eye show"></i></a>
-            <a href="#" onclick="edit(${reference.id})"><i class="fa fa-edit edit"></i></a>
-            <a href="#" onclick="remove(${reference.id})"><i class="fa fa-remove remove"></i></a>
+            <a href="#" onclick="showEditReference(${reference.id})"><i class="fa fa-edit edit"></i></a>
+            <a href="#" onclick="removeReference(${reference.id})"><i class="fa fa-remove remove"></i></a>
             <a href="#" onclick="showLetter(${reference.letterId.id})"><i class="fa-regular fa-envelope"></i></a>
         </td>
     </tr>
     </tbody>
     </c:forEach>
 </table>
-
-<script>
-    function edit(id) {
-        document.location.replace("/referenceEdit.do?id=" + id);
-    }
-    function selectReference(id) {
-        document.location.replace("/referenceDisplay.do?id=" + id);
-    }
-    function showLetter(id) {
-        document.location.replace("/letterDisplay.do?id=" + id);
-    }
-</script>
 <script src="../../assets/js/reference.js"></script>
 </body>
 </html>

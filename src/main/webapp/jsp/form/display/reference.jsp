@@ -76,7 +76,7 @@
                 </div>
                 <div>
                     <label for="r_expiration" class="formbold-form-label">تاریخ انقضا ارجاع : </label>
-                    <input type="text" name="r_expiration" id="r_expiration" class="formbold-form-input" value="${sessionScope.reference.expiration}"/>
+                    <input type="text" name="r_expiration" id="r_expiration" class="formbold-form-input" value="${sessionScope.reference.getFaExpiration()}"/>
                 </div>
             </div>
         </form>

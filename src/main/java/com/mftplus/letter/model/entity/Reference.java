@@ -1,5 +1,6 @@
 package com.mftplus.letter.model.entity;
 
+import com.github.mfathi91.time.PersianDate;
 import com.github.mfathi91.time.PersianDateTime;
 import com.mftplus.letter.model.entity.enums.ReferencePriority;
 import com.mftplus.letter.model.entity.enums.ReferenceType;
@@ -15,6 +16,7 @@ import lombok.experimental.SuperBuilder;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -58,16 +60,16 @@ public class Reference extends Base implements Serializable {
     private LocalDateTime refDateAndTime;
 
     //todo : does not work
-//    @Transient
-//    private LocalDateTime faRefDateAndTime;
-//
-//    public String getFaRefDateAndTime() {
-//        return PersianDate.fromGregorian(LocalDate.from(refDateAndTime)).toString();
-//    }
-//
-//    public void setFaRefDateAndTime(String faRefDateAndTime) {
-//        this.refDateAndTime = LocalDateTime.from(PersianDate.parse(faRefDateAndTime).toGregorian());
-//    }
+    @Transient
+    private LocalDateTime faRefDateAndTime;
+
+    public String getFaRefDateAndTime() {
+        return PersianDateTime.fromGregorian(refDateAndTime).toString();
+    }
+
+    public void setFaRefDateAndTime(String faRefDateAndTime) {
+        this.refDateAndTime = PersianDateTime.parse(faRefDateAndTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")).toGregorian();
+    }
 
     @Column (name = "r_expiration")
     @Future(message = "Invalid reference expiration date")
