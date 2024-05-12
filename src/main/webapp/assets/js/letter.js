@@ -15,8 +15,8 @@ function reference(id) {
 
 function editLetter(event) {
     event.preventDefault()
-    const myForm = document.getElementById("myForm");
-    const formData=new FormData(myForm)
+    const letterEditForm = document.getElementById("letterEditForm");
+    const formData=new FormData(letterEditForm)
     console.log(formData.get("id"))
     // const queryString = new URLSearchParams(new FormData(myForm)).toString();
     fetch("/letterEdit.do", {

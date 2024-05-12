@@ -5,8 +5,6 @@
     <title>ویرایش نامه</title>
     <link rel="stylesheet" href="../../../assets/css/form.css">
     <link rel="stylesheet" href="../../../assets/css/kamadatepicker.min.css">
-    <link rel="stylesheet" href="../../../assets/fontawesome-free-6.5.2-web/css/all.min.css">
-    <jsp:include page="../../../jsp/css-import.jsp"></jsp:include>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -19,10 +17,14 @@
 <div class="formbold-main-wrapper">
     <div class="formbold-form-wrapper">
         <!--img-->
-        <img src="../../../assets/image/lettering.jpg" alt="">
+<%--        <img src="../../../assets/image/lettering.jpg" alt="">--%>
+
+        <div class="formbold-form-title">
+            <h2>ویرایش نامه</h2>
+        </div>
 
         <!--start form-->
-        <form id="myForm" enctype="multipart/form-data">
+        <form id="letterEditForm" enctype="multipart/form-data">
 
             <input class="form-control" type="text" name="id" value="${sessionScope.letter.id}" hidden="hidden">
 <%--            <input class="form-control" type="text" placeholder="ID" value="${sessionScope.letter.id}" disabled>--%>
@@ -85,7 +87,7 @@
 
             <div class="formbold-input-group">
                 <label for="accessLevelPre" class="formbold-form-label"> سطح دسترسی ثبت شده نامه </label>
-                <input type="text" name="accessLevelPre" id="accessLevelPre" value="${sessionScope.letter.accessLevel}" class="formbold-form-input"/>
+                <input type="text" name="accessLevelPre" id="accessLevelPre" value="${sessionScope.letter.accessLevel.title}" class="formbold-form-input" readonly/>
             </div>
 
             <div class="formbold-input-group">
