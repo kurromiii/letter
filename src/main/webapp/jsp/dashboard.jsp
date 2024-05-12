@@ -30,13 +30,14 @@
 <nav class="sidebar">
     <div class="menu_content">
         <ul class="menu_items">
-            <div class="menu_title">
-            <span>
+            <li class="item">
+                <a href="#" class="nav_link">
+              <span class="navlink_icon">
                 <i class="fa-solid fa-dashboard"></i>
               </span>
-                <span class="navlink">داشبورد</span>
-                <i class="bx bx-chevron-right arrow-left"></i>
-            </div>
+                    <span class="navlink">داشبورد</span>
+                </a>
+            </li>
             <!-- duplicate or remove this li tag if you want to add or remove navlink with submenu -->
             <!-- start -->
             <li class="item">
@@ -211,6 +212,14 @@
                 <i class="fas fa-user-plus"></i>
               </span>
                     <span class="navlink">ایجاد کاربر جدید</span>
+                </a>
+            </li>
+            <li class="item">
+                <a href="roles.do" class="nav_link">
+              <span class="navlink_icon">
+                <i class="fas fa-user-check"></i>
+              </span>
+                    <span class="navlink">تعلق نقش</span>
                 </a>
             </li>
         </ul>
