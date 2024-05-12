@@ -11,6 +11,7 @@
 </head>
 <body>
 <!--nav bar-->
+<jsp:include page="../../jsp/dashboard.jsp"></jsp:include>
 
 <div class="container">
     <div class="row">
@@ -18,11 +19,11 @@
             <div class="card">
                 <div class="card-body bg-primary text-white mailbox-widget pb-0">
                     <!--header-->
-                    <div>
-                        <a class="text-light" href="home.do"><span class="fa fa-home text-light home"></span></a>
-                    </div>
+<%--                    <div>--%>
+<%--                        <a class="text-light" href="home.do"><span class="fa fa-home text-light home"></span></a>--%>
+<%--                    </div>--%>
 
-                    <h2 class="text-white pb-3">صندوق نامه و ارجاع</h2>
+                    <h4 class="text-white pb-3">صندوق نامه و ارجاع</h4>
                     <!--navbar start-->
                     <ul class="nav nav-tabs custom-tab border-bottom-0 mt-4" id="myTab" role="tablist">
                         <li class="nav-item">
