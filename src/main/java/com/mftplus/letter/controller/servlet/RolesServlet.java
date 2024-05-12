@@ -30,7 +30,7 @@ public class RolesServlet extends HttpServlet {
             //todo
 //            req.getSession().setAttribute("roleTypes", Arrays.asList(Role.values()));
             req.getSession().setAttribute("rolesList", rolesService.findAll());
-            req.getRequestDispatcher("/jsp/roles.jsp").forward(req, resp);
+            req.getRequestDispatcher("/jsp/form/roles-form.jsp").forward(req, resp);
         } catch (Exception e) {
             log.error(e.getMessage());
             throw new RuntimeException(e);
@@ -39,10 +39,13 @@ public class RolesServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //todo : can not save
         log.info("RolesServlet - Post");
         try {
-            String roleName = req.getParameter("roleName");
-            String username = req.getParameter("username");
+            String roleName = req.getParameter("role");
+            String username = req.getParameter("user");
+            System.out.println(roleName);
+            System.out.println(username);
 
             if (username != null){
                 Optional<User> user = userService.findByUsername(username);
