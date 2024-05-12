@@ -17,3 +17,18 @@ async function removeReference(id) {
 function selectReference(id) {
     document.location.replace("/referenceDisplay.do?id=" + id);
 }
+
+
+function editReference(event) {
+    event.preventDefault()
+    const referenceEditForm = document.getElementById("referenceEditForm");
+    const formData=new FormData(referenceEditForm)
+    console.log(formData.get("id"))
+    // const queryString = new URLSearchParams(new FormData(myForm)).toString();
+    fetch("/referenceEdit.do", {
+        method: "PUT",
+        body:formData
+    }).then(() => {
+        document.location.replace("/referenceDisplay.do?id=" + formData.get("id"));
+    });
+}

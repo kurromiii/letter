@@ -1,6 +1,5 @@
 package com.mftplus.letter.model.entity;
 
-import com.github.mfathi91.time.PersianDate;
 import com.github.mfathi91.time.PersianDateTime;
 import com.mftplus.letter.model.entity.enums.ReferencePriority;
 import com.mftplus.letter.model.entity.enums.ReferenceType;
@@ -16,7 +15,6 @@ import lombok.experimental.SuperBuilder;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 

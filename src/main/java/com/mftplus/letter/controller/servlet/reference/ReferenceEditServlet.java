@@ -1,9 +1,7 @@
 package com.mftplus.letter.controller.servlet.reference;
 
 import com.mftplus.letter.controller.exception.IdIsRequiredException;
-import com.mftplus.letter.model.entity.Letter;
 import com.mftplus.letter.model.entity.Reference;
-import com.mftplus.letter.model.entity.User;
 import com.mftplus.letter.model.entity.enums.*;
 import com.mftplus.letter.model.service.impl.LetterServiceImpl;
 import com.mftplus.letter.model.service.impl.ReferenceServiceImpl;
@@ -17,7 +15,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -45,7 +42,7 @@ public class ReferenceEditServlet extends HttpServlet {
                 req.getSession().setAttribute("refTypes", Arrays.asList(ReferenceType.values()));
                 req.getSession().setAttribute("priorities", Arrays.asList(ReferencePriority.values()));
                 req.getSession().setAttribute("referenceList", referenceService.findAll());
-                req.getRequestDispatcher("/jsp/edit-reference.jsp").forward(req, resp);
+                req.getRequestDispatcher("/jsp/form/edit/reference-edit.jsp").forward(req, resp);
             }
         } catch (Exception e) {
             log.error(e.getMessage());
@@ -57,49 +54,41 @@ public class ReferenceEditServlet extends HttpServlet {
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("ReferenceEditServlet - Put");
 
+        //todo : name is null error, does not work
+
         try {
-            String letterId = req.getParameter("letterIdRef");
-            String refType = req.getParameter("r_refType");
+            long id = Integer.parseInt(req.getParameter("id"));
+            String refType = req.getParameter("refType");
             String priority = req.getParameter("priority");
             String faExpiration = req.getParameter("r_expiration");
             String paraph = req.getParameter("paraph");
             String explanation = req.getParameter("explanation");
             String status = req.getParameter("status");
-            String referenceReceiver = req.getParameter("referenceReceiver");
             boolean validate = req.getParameter("validate") != null && req.getParameter("validate").equals("on");
 
-            String username = req.getUserPrincipal().getName();
 
+//            if (username != null) {
 
-            if (letterId != null && username != null) {
-
-                Optional<Letter> letter = letterService.findById(Long.valueOf(letterId));
-                Optional<User> user = userService.findByUsername(username);
-                Optional<User> referenceReceiverId = userService.findByUsername(referenceReceiver);
-
-                if (letter.isPresent() && user.isPresent() && referenceReceiverId.isPresent()) {
+//                if (user.isPresent() && referenceReceiverId.isPresent()) {
                     Reference reference =
                             Reference
                                     .builder()
-                                    .letterId(letter.get())
-                                    .referenceSenderId(user.get())
-                                    .refDateAndTime(LocalDateTime.now())
+                                    .id(id)
                                     .paraph(paraph)
                                     .explanation(explanation)
                                     .status(Boolean.parseBoolean(status))
                                     .validate(validate)
                                     .priority(ReferencePriority.valueOf(priority))
                                     .refType(ReferenceType.valueOf(refType))
-                                    .faExpiration(faExpiration)
+//                                    .faExpiration(faExpiration)
                                     .deleted(false)
-                                    .referenceReceiverId(referenceReceiverId.get())
                                     .build();
-                    reference.setFaExpiration(faExpiration);
+//                    reference.setFaExpiration(faExpiration);
                     referenceService.edit(reference);
                     log.info("ReferenceEditServlet - Reference Edited");
-                    resp.sendRedirect("/reference.do");
-                }
-            }
+                    resp.setStatus(200);
+//                }
+//            }
         } catch (Exception e) {
             log.error(e.getMessage());
             throw new RuntimeException(e);
