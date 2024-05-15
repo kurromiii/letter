@@ -42,6 +42,11 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>admin</web-resource-name>
+            <!--security for dashboard-->
+            <url-pattern>/dashboard.do</url-pattern>
+            <url-pattern>/userDashboard.do</url-pattern>
+            <!--security for dashboard-->
+
             <!--security for letter pages-->
             <url-pattern>/letter.do</url-pattern>
             <url-pattern>/letterBox.do</url-pattern>
@@ -77,6 +82,11 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>manager</web-resource-name>
+            <!--security for dashboard-->
+            <url-pattern>/dashboard.do</url-pattern>
+            <url-pattern>/userDashboard.do</url-pattern>
+            <!--security for dashboard-->
+
             <!--security for letter pages-->
             <url-pattern>/letter.do</url-pattern>
             <url-pattern>/letterBox.do</url-pattern>
@@ -112,6 +122,10 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>user</web-resource-name>
+            <!--security for dashboard-->
+            <url-pattern>/userDashboard.do</url-pattern>
+            <!--security for dashboard-->
+
             <!--security for letter pages-->
             <url-pattern>/letter.do</url-pattern>
             <url-pattern>/letterBox.do</url-pattern>
