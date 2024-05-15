@@ -3,9 +3,8 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="../../assets/fontawesome-free-6.5.2-web/css/all.min.css">
+    <jsp:include page="../../jsp/css-import.jsp"></jsp:include>
     <link rel="stylesheet" href="../../assets/css/letterBox.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <meta charset="UTF-8" lang="fa">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -17,7 +16,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-body bg-primary text-white mailbox-widget pb-0">
+                <div class="card-body card-color text-white mailbox-widget pb-0">
                     <!--header-->
 <%--                    <div>--%>
 <%--                        <a class="text-light" href="home.do"><span class="fa fa-home text-light home"></span></a>--%>

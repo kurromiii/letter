@@ -89,7 +89,7 @@ body.dark {
 /* sidebar */
 .sidebar {
     /*background-color: var(--white-color);*/
-    background-color: #C8C6C6;
+    background-color: #e5dddd;
     width: 260px;
     position: fixed;
     top: 0;
@@ -231,7 +231,7 @@ body.dark {
     color: var(--grey-color);
     border-top: 1px solid var(--grey-color-light);
     /*background-color: var(--white-color);*/
-    background-color: #C8C6C6;
+    background-color: #e5dddd;
 }
 .bottom i {
     font-size: 20px;
