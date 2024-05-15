@@ -19,6 +19,9 @@ body{
 }
 .a-btn{
     width: 50%!important;
+    background: rgb(205,174,238);
+    background: radial-gradient(circle, rgba(205,174,238,1) 0%, rgba(113,159,221,1) 100%);
+    color: #252323;
 }
 .formbold-form-title {
     margin-bottom: 30px!important;

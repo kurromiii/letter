@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +16,7 @@
     --grey-color-light: #aaa;
 }
 body {
-    background-color: #e7f2fd;
+    background: #F7F6F2;
     transition: all 0.5s ease;
 }
 body.dark {
@@ -36,7 +35,8 @@ body.dark {
     top: 0;
     width: 100%;
     right: 0;
-    background-color: var(--white-color);
+    /*background-color: var(--white-color);*/
+    background-color: #4B6587;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -50,7 +50,8 @@ body.dark {
     column-gap: 10px;
     font-size: 22px;
     font-weight: 500;
-    color: var(--blue-color);
+    /*color: var(--blue-color);*/
+    color: #C8C6C6;
 }
 .navbar img {
     width: 35px;
@@ -87,7 +88,8 @@ body.dark {
 
 /* sidebar */
 .sidebar {
-    background-color: var(--white-color);
+    /*background-color: var(--white-color);*/
+    background-color: #C8C6C6;
     width: 260px;
     position: fixed;
     top: 0;
@@ -113,6 +115,7 @@ body.dark {
     margin: 15px 0;
     padding: 0 20px;
     font-size: 18px;
+    color: #00439b;
 }
 .sidebar.close .menu_title {
     padding: 6px 30px;
@@ -159,7 +162,8 @@ body.dark {
     left: -20px;
 }
 .navlink_icon:hover {
-    background: var(--blue-color);
+    /*background: var(--blue-color);*/
+    background: #4B6587;
 }
 .sidebar .nav_link {
     display: flex;
@@ -168,7 +172,8 @@ body.dark {
     padding: 4px 15px;
     border-radius: 8px;
     text-decoration: none;
-    color: var(--grey-color);
+    /*color: var(--grey-color);*/
+    color: #4B6587;
     white-space: nowrap;
 }
 .sidebar.close .navlink {
@@ -176,7 +181,8 @@ body.dark {
 }
 .nav_link:hover {
     color: var(--white-color);
-    background: var(--blue-color);
+    background: #4B6587;
+    /*background: var(--blue-color);*/
 }
 .sidebar.close .nav_link:hover {
     background: var(--white-color);
@@ -224,7 +230,8 @@ body.dark {
     width: 100%;
     color: var(--grey-color);
     border-top: 1px solid var(--grey-color-light);
-    background-color: var(--white-color);
+    /*background-color: var(--white-color);*/
+    background-color: #C8C6C6;
 }
 .bottom i {
     font-size: 20px;

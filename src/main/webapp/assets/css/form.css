@@ -25,7 +25,7 @@ img{
     margin: 0 auto;
     max-width: 570px;
     width: 100%;
-    background: #e0e3e7;
+    /*background: #e0e3e7;*/
     padding: 40px!important;
 }
 .formbold-form-img {
@@ -201,9 +201,8 @@ a{
     padding: 14px 25px!important;
     border: none;
     font-weight: 500;
-    background: rgb(205,174,238);
-    background: radial-gradient(circle, rgba(205,174,238,1) 0%, rgba(113,159,221,1) 100%);
-    color: #112351;
+    background-color: #4B6587;
+    color: #d4d4d4;
     cursor: pointer;
     margin-top: 25px!important;
     transition: all 0.5s ease;
@@ -230,7 +229,7 @@ a{
     font-weight: 600;
     font-size: 22px;
     line-height: 34px;
-    color: #6a64f1;
+    color: #4B6587;
     text-align: center;
     transition: all 0.5s ease;
 }

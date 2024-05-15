@@ -14,9 +14,9 @@
         <img src="../assets/image/logo.png" alt=""></i>لوگو سازمان
     </div>
 
-    <div class="search_bar">
-        <input type="text" placeholder="جستجو" />
-    </div>
+<%--    <div class="search_bar">--%>
+<%--        <input type="text" placeholder="جستجو" />--%>
+<%--    </div>--%>
 
     <div class="navbar_content">
         <i class="bi bi-grid"></i>
@@ -57,21 +57,21 @@
               <span class="navlink_icon">
                 <i class="bx bx-grid-alt"></i>
               </span>
-                    <span class="navlink">جدول ها</span>
+                    <span class="navlink">بخش ها</span>
                     <i class="bx bx-chevron-right arrow-left"></i>
                 </div>
 
                 <ul class="menu_items submenu">
-                    <a href="#" class="nav_link sublink">Nav Sub Link</a>
-                    <a href="#" class="nav_link sublink">Nav Sub Link</a>
-                    <a href="#" class="nav_link sublink">Nav Sub Link</a>
-                    <a href="#" class="nav_link sublink">Nav Sub Link</a>
+                    <a href="#section1" class="nav_link sublink">اداری</a>
+                    <a href="#section2" class="nav_link sublink">نامه نگاری</a>
+                    <a href="#" class="nav_link sublink">مدیریت کارمندان</a>
+                    <a href="#" class="nav_link sublink">بانک</a>
                 </ul>
             </li>
             <!-- end -->
         </ul>
 
-        <ul class="menu_items">
+        <ul id="section1" class="menu_items">
             <div class="menu_title">
             <span>
             <i class=""></i>
@@ -109,7 +109,7 @@
             </li>
         </ul>
 
-        <ul class="menu_items">
+        <ul id="section2" class="menu_items">
             <div class="menu_title">
             <span>
             <i class="fa-solid fa-envelopes"></i>
