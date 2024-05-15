@@ -38,7 +38,7 @@ public class ReferenceDisplayServlet extends HttpServlet {
                 String user = req.getUserPrincipal().getName();
                 if (reference.isPresent()){
                     String refReceiver = reference.get().getReferenceReceiverId().getUsername();
-                    if (user.equals(refReceiver)){
+                    if (!reference.get().isSeen() && user.equals(refReceiver)){
                         reference.get().setSeen(true);
                         referenceService.edit(reference.get());
                     }
