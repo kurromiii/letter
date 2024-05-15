@@ -224,7 +224,7 @@
                                             <td class="text-muted">${reference.refDateAndTime}</td>
 
                                             <td class="d-flex justify-content-center">
-                                                <a href="#" class="btn text-dark p-2 bg-warning rounded">مشاهده ارجاع </a>
+                                                <a href="#" class="text-dark p-2 bg-warning rounded" onclick="selectReference(${reference.id})">مشاهده ارجاع </a>
                                             </td>
                                         </tr>
                                     </c:forEach>
