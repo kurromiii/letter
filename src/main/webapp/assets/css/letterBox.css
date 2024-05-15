@@ -53,3 +53,13 @@ a{
 .font-light {
     font-weight: 300;
 }
+.new-msg {
+    font-size: 18px;
+    color: #cc0202;
+    border-radius: 25% 10%;
+    border: 2px solid #6a64f1;
+    background-color: #6a64f1;
+}
+.td-btn{
+    float: left;
+}

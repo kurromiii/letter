@@ -100,7 +100,7 @@
 
                                         <td class="text-muted">${letter.getFaDate()}</td>
 
-                                        <td class="d-flex justify-content-center">
+                                        <td class="d-flex justify-content-end">
                                             <a href="#" class="text-dark p-2 bg-warning rounded" onclick="selectLetter(${letter.id})">مشاهده نامه </a>
                                             <a href="#" class="text-dark p-2 bg-warning rounded" onclick="showEditLetter(${letter.id})">ویرایش نامه </a>
                                         </td>
@@ -166,7 +166,7 @@
 
                                         <td class="text-muted">${reference.refDateAndTime}</td>
 
-                                        <td class="d-flex justify-content-center">
+                                        <td class="d-flex justify-content-end">
                                             <a href="#" class="text-dark p-2 bg-warning rounded" onclick="selectReference(${reference.id})">مشاهده ارجاع </a>
                                             <a href="#" class="text-dark p-2 bg-warning rounded" onclick="showEditReference(${reference.id})">ویرایش ارجاع </a>
                                         </td>
@@ -223,8 +223,16 @@
 
                                             <td class="text-muted">${reference.refDateAndTime}</td>
 
-                                            <td class="d-flex justify-content-center">
+                                            <td class="d-flex justify-content-end">
                                                 <a href="#" class="text-dark p-2 bg-warning rounded" onclick="selectReference(${reference.id})">مشاهده ارجاع </a>
+
+
+                                                <c:if test="${reference.seen == false}">
+                                                    <a href="#" class="text-dark p-2 rounded" onclick="selectReference(${reference.id})">
+                                                        <span class="new-msg">new</span>
+                                                    </a>
+                                                </c:if>
+
                                             </td>
                                         </tr>
                                     </c:forEach>
