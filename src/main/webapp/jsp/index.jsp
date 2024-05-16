@@ -42,7 +42,7 @@
 <%--          todo : how to get role instead of username , this is not dynamic.--%>
           <c:set var="username" value="admin" />
           <c:if test="${pageContext.request.userPrincipal.name.equals(username)}">
-            <li><a href="dashboard.do">داشبورد </a></li>
+            <li><a href="dashboardUtils.do">داشبورد </a></li>
           </c:if>
 
           <c:if test="${not pageContext.request.userPrincipal.name.equals(username)}">

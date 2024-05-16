@@ -31,7 +31,7 @@
     <div class="menu_content">
         <ul class="menu_items">
             <li class="item">
-                <a href="#" class="nav_link">
+                <a href="dashboardUtils.do" class="nav_link">
               <span class="navlink_icon">
                 <i class="fa-solid fa-dashboard"></i>
               </span>
