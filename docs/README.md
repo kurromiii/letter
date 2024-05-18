@@ -73,8 +73,9 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+<img src="images/home.png" alt="Home">
 
-[![](E:\JavaFinalProject\letter\docs\images\home.png)](https://example.com)
+[//]: # ([![]&#40;E:\JavaFinalProject\letter\docs\images\home.png&#41;]&#40;https://example.com&#41;)
 
 This project, is a sample of an automation using Java EE.
 In this project we have provided features with regard to basic needs in an office platform -- it is worth a try
