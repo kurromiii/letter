@@ -155,7 +155,7 @@ Add code below as required realm settings
 
 ### Installation
 
-_Below is what you need to have already installed
+Below is what you need to have already installed
 
 1. apache-tomee-webprofile-9.1.2
 2. Jdk 11
