@@ -24,7 +24,6 @@ public class LetterDisplayServlet extends HttpServlet {
     @Inject
     private LetterServiceImpl letterService;
 
-    //todo : a better way instead of 500 error page
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("LetterDisplayServlet - Get");
@@ -39,7 +38,9 @@ public class LetterDisplayServlet extends HttpServlet {
                 req.getSession().setAttribute("accessLevels", Arrays.asList(LetterAccessLevel.values()));
                 req.getSession().setAttribute("transferMethods", Arrays.asList(TransferMethod.values()));
                 req.getSession().setAttribute("letterTypes", Arrays.asList(LetterType.values()));
+//                req.getSession().setAttribute("userList", letter.get().getUserList());
                 req.getRequestDispatcher("/jsp/form/display/letter.jsp").forward(req,resp);
+                req.getSession().removeAttribute("ok");
             }
         } catch (Exception e) {
             log.error(e.getMessage());

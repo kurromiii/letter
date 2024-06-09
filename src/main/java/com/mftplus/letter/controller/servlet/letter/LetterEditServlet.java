@@ -2,6 +2,7 @@ package com.mftplus.letter.controller.servlet.letter;
 
 import com.mftplus.letter.controller.exception.IdIsRequiredException;
 import com.mftplus.letter.controller.exception.NoContentException;
+import com.mftplus.letter.controller.validation.BeanValidator;
 import com.mftplus.letter.model.entity.Letter;
 import com.mftplus.letter.model.entity.User;
 import com.mftplus.letter.model.entity.enums.LetterAccessLevel;
@@ -20,7 +21,10 @@ import jakarta.servlet.http.Part;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @WebServlet(urlPatterns = "/letterEdit.do")
@@ -35,7 +39,6 @@ public class LetterEditServlet extends HttpServlet {
     @Inject
     private UserServiceImpl userService;
 
-    //todo : a better way instead of 500 error page
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("LetterEditServlet - Get");
@@ -62,6 +65,7 @@ public class LetterEditServlet extends HttpServlet {
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("LetterEditServlet - put");
         try {
+            long id = Integer.parseInt(req.getParameter("id"));
             String title = req.getParameter("title");
             String letterNumber = req.getParameter("letter_number");
             String faDate = req.getParameter("date").replace("/", "-");
@@ -98,6 +102,7 @@ public class LetterEditServlet extends HttpServlet {
                     Letter letter =
                             Letter
                                     .builder()
+                                    .id(id)
                                     .user(user.get())
                                     .title(title)
                                     .letterNumber(letterNumber)
@@ -115,9 +120,20 @@ public class LetterEditServlet extends HttpServlet {
                                     .userList(userList)
                                     .build();
                     letter.setFaDate(faDate);
+
+                    //validate
+                    BeanValidator<Letter> validator = new BeanValidator<>();
+
+                    if (validator.validate(letter) != null){
+                        resp.setStatus(500);
+                        resp.getWriter().write(validator.validate(letter).toString());
+                    }
+
                     letterService.edit(letter);
                     log.info("LetterEditServlet - Letter Edited");
                     resp.setStatus(200);
+                    String msg = "تغییرات با موفقیت ثبت شد !";
+                    req.getSession().setAttribute("ok",msg);
             } else {
                 throw new NoContentException("The required user does not exist !");
             }

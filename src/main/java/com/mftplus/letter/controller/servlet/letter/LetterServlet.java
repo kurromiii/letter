@@ -36,8 +36,6 @@ import java.util.Optional;
 )
 public class LetterServlet extends HttpServlet {
 
-    //todo : how to show validation msg in jsp ?
-
     @Inject
     private LetterServiceImpl letterService;
 
@@ -53,7 +51,7 @@ public class LetterServlet extends HttpServlet {
                 req.getSession().setAttribute("transferMethods", Arrays.asList(TransferMethod.values()));
                 req.getSession().setAttribute("letterTypes", Arrays.asList(LetterType.values()));
                 req.getSession().setAttribute("username",req.getUserPrincipal().getName());
-                req.getRequestDispatcher("/jsp/form/letter-form.jsp").forward(req, resp);
+                req.getRequestDispatcher("/jsp/form/save/letter-form.jsp").forward(req, resp);
         } catch (Exception e) {
             log.error(e.getMessage());
             throw new RuntimeException(e);
@@ -124,12 +122,19 @@ public class LetterServlet extends HttpServlet {
 
                     //validate
                     BeanValidator<Letter> validator = new BeanValidator<>();
-                    validator.validate(letter);
+
+                    if (validator.validate(letter) != null){
+                        resp.setStatus(500);
+                        resp.getWriter().write(validator.validate(letter).toString());
+                    }
 
                     letterService.save(letter);
                     log.info("LetterServlet - Letter Saved");
                     req.getSession().setAttribute("letterId", letter.getId());
-                    resp.sendRedirect("/letter.do");
+                    resp.sendRedirect("/letterDisplay.do?id=" + letter.getId());
+                    String msg = "نامه با موفقیت ثبت شد !";
+                    req.getSession().setAttribute("ok",msg);
+
             } else {
                 throw new NoContentException("The required user does not exist !");
             }

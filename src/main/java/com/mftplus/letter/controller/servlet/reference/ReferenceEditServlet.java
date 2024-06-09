@@ -1,11 +1,11 @@
 package com.mftplus.letter.controller.servlet.reference;
 
 import com.mftplus.letter.controller.exception.IdIsRequiredException;
+import com.mftplus.letter.controller.validation.BeanValidator;
 import com.mftplus.letter.model.entity.Reference;
-import com.mftplus.letter.model.entity.enums.*;
-import com.mftplus.letter.model.service.impl.LetterServiceImpl;
+import com.mftplus.letter.model.entity.enums.ReferencePriority;
+import com.mftplus.letter.model.entity.enums.ReferenceType;
 import com.mftplus.letter.model.service.impl.ReferenceServiceImpl;
-import com.mftplus.letter.model.service.impl.UserServiceImpl;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -23,10 +23,6 @@ import java.util.Optional;
 public class ReferenceEditServlet extends HttpServlet {
     @Inject
     private ReferenceServiceImpl referenceService;
-    @Inject
-    private UserServiceImpl userService;
-    @Inject
-    private LetterServiceImpl letterService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -54,7 +50,7 @@ public class ReferenceEditServlet extends HttpServlet {
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("ReferenceEditServlet - Put");
 
-        //todo : name is null error, does not work
+        //todo : edit method does not work
 
         try {
             long id = Integer.parseInt(req.getParameter("id"));
@@ -63,31 +59,43 @@ public class ReferenceEditServlet extends HttpServlet {
             String faExpiration = req.getParameter("r_expiration");
             String paraph = req.getParameter("paraph");
             String explanation = req.getParameter("explanation");
-            String status = req.getParameter("status");
-            boolean validate = req.getParameter("validate") != null && req.getParameter("validate").equals("on");
 
+
+            Optional<Reference> optionalReference = referenceService.findById(id);
+            System.out.println(optionalReference);
 
 //            if (username != null) {
 
-//                if (user.isPresent() && referenceReceiverId.isPresent()) {
+                if (optionalReference.isPresent()) {
                     Reference reference =
                             Reference
                                     .builder()
                                     .id(id)
                                     .paraph(paraph)
                                     .explanation(explanation)
-                                    .status(Boolean.parseBoolean(status))
-                                    .validate(validate)
                                     .priority(ReferencePriority.valueOf(priority))
                                     .refType(ReferenceType.valueOf(refType))
-//                                    .faExpiration(faExpiration)
+                                    .faExpiration(faExpiration)
+                                    .referenceSenderId(optionalReference.get().getReferenceSenderId())
+                                    .referenceReceiverId(optionalReference.get().getReferenceReceiverId())
                                     .deleted(false)
                                     .build();
-//                    reference.setFaExpiration(faExpiration);
+                    reference.setFaExpiration(faExpiration);
+            System.out.println(reference);
+
+            //validate
+            BeanValidator<Reference> validator = new BeanValidator<>();
+
+            if (validator.validate(reference) != null){
+                resp.setStatus(500);
+                resp.getWriter().write(validator.validate(reference).toString());
+            }
+
                     referenceService.edit(reference);
+
                     log.info("ReferenceEditServlet - Reference Edited");
                     resp.setStatus(200);
-//                }
+                }
 //            }
         } catch (Exception e) {
             log.error(e.getMessage());

@@ -1,10 +1,12 @@
 package com.mftplus.letter.controller.servlet.reference;
 
 import com.mftplus.letter.controller.exception.NoUserFoundException;
+import com.mftplus.letter.controller.validation.BeanValidator;
 import com.mftplus.letter.model.entity.Letter;
 import com.mftplus.letter.model.entity.Reference;
 import com.mftplus.letter.model.entity.User;
-import com.mftplus.letter.model.entity.enums.*;
+import com.mftplus.letter.model.entity.enums.ReferencePriority;
+import com.mftplus.letter.model.entity.enums.ReferenceType;
 import com.mftplus.letter.model.service.impl.LetterServiceImpl;
 import com.mftplus.letter.model.service.impl.ReferenceServiceImpl;
 import com.mftplus.letter.model.service.impl.UserServiceImpl;
@@ -42,7 +44,7 @@ public class ReferenceServlet extends HttpServlet {
             req.getSession().setAttribute("referenceList", referenceService.findAll());
             req.getSession().setAttribute("letterIdRef",req.getParameter("letterIdRef"));
             req.getSession().setAttribute("user",req.getUserPrincipal().getName());
-            req.getRequestDispatcher("/jsp/form/reference-form.jsp").forward(req, resp);
+            req.getRequestDispatcher("/jsp/form/save/reference-form.jsp").forward(req, resp);
         } catch (Exception e) {
             log.error(e.getMessage());
             throw new RuntimeException(e);
@@ -59,9 +61,9 @@ public class ReferenceServlet extends HttpServlet {
                 String faExpiration = req.getParameter("r_expiration");
                 String paraph = req.getParameter("paraph");
                 String explanation = req.getParameter("explanation");
-                String status = req.getParameter("status");
+//                String status = req.getParameter("status");
                 String referenceReceiver = req.getParameter("referenceReceiver");
-                boolean validate = req.getParameter("validate") != null && req.getParameter("validate").equals("on");
+//                boolean validate = req.getParameter("validate") != null && req.getParameter("validate").equals("on");
 
                 String username = req.getUserPrincipal().getName();
 
@@ -76,8 +78,9 @@ public class ReferenceServlet extends HttpServlet {
                     throw new NoUserFoundException("no user found for reference receiver !");
                 }
 
-            //todo : number format exception
             Optional<Letter> letter = letterService.findById(Long.valueOf(letterId));
+
+                //todo : how to show localDateTime.now in persian for display
 
                 if (letter.isPresent()){
                     Reference reference =
@@ -88,8 +91,6 @@ public class ReferenceServlet extends HttpServlet {
                                     .refDateAndTime(LocalDateTime.now())
                                     .paraph(paraph)
                                     .explanation(explanation)
-                                    .status(Boolean.parseBoolean(status))
-                                    .validate(validate)
                                     .priority(ReferencePriority.valueOf(priority))
                                     .refType(ReferenceType.valueOf(refType))
                                     .faExpiration(faExpiration)
@@ -97,9 +98,20 @@ public class ReferenceServlet extends HttpServlet {
                                     .referenceReceiverId(referenceReceiverId.get())
                                     .build();
                     reference.setFaExpiration(faExpiration);
+
+                    //validate
+                    BeanValidator<Reference> validator = new BeanValidator<>();
+
+                    if (validator.validate(reference) != null){
+                        resp.setStatus(500);
+                        resp.getWriter().write(validator.validate(reference).toString());
+                    }
+
                     referenceService.save(reference);
                     log.info("ReferenceServlet - Reference Saved");
-                resp.sendRedirect("/reference.do");
+                    resp.sendRedirect("/referenceDisplay.do?id=" + reference.getId());
+                    String msg = "ارجاع با موفقیت ثبت شد !";
+                    req.getSession().setAttribute("ok",msg);
                 }
         } catch (Exception e) {
             log.error(e.getMessage());

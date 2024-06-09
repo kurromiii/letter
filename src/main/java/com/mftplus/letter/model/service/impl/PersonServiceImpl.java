@@ -22,6 +22,7 @@ public class PersonServiceImpl implements PersonService, Serializable {
     @Transactional
     @Override
     public void save(Person person) throws Exception {
+        //todo : this check does not work, how to save person with unique username?
 //        if (findByUsername(person.getUser().getUsername().toString()).isPresent()){
 //            throw new PersonalInfoAlreadyExists();
 //        }
@@ -68,7 +69,7 @@ public class PersonServiceImpl implements PersonService, Serializable {
     public Optional<Person> findByUsername(String username) throws Exception {
         TypedQuery<Person> query = entityManager.createQuery("select p from personEntity p where p.user.username=:username", Person.class);
         query.setParameter("username", username);
-        return Optional.ofNullable(entityManager.find(Person.class, username));
+        return query.getResultList().stream().findFirst();
     }
 
     @Transactional
@@ -88,7 +89,6 @@ public class PersonServiceImpl implements PersonService, Serializable {
     @Transactional
     @Override
     public List<Person> findByNameAndFamily(String name, String family) throws Exception {
-//        List<Object[]> list = em.createQuery("SELECT p.field1, p.field2 FROM Entity p").getResultList();
         TypedQuery<Person> query = entityManager.createQuery("select oo from personEntity oo where oo.name=:name and oo.family=:family", Person.class);
         query.setParameter("name",name);
         query.setParameter("family",family);
