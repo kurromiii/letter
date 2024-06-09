@@ -7,11 +7,12 @@ function showLetter(id) {
 }
 
 async function removeReference(id) {
-    alert(id);
-    const response = await fetch("/api/reference/" + id, {
-        method: "DELETE"
-    });
-    document.location.replace("/letterBox.do")
+    if (confirm("آیا از حذف ارجاع " + id + " اطمینان دارید؟")) {
+        const response = await fetch("/api/reference/" + id, {
+            method: "DELETE"
+        });
+        document.location.replace("/letterBox.do")
+    }
 }
 
 function selectReference(id) {

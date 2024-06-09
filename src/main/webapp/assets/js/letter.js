@@ -3,12 +3,20 @@ function showEditLetter(id) {
 }
 
 async function removeLetter(id) {
-    alert(id);
-    const response = await fetch("/api/letter/" + id, {
-        method: "DELETE"
-    });
-    document.location.replace("/letterBox.do")
+    if (confirm("آیا از حذف نامه " + id + " اطمینان دارید؟")) {
+        const response = await fetch("/api/letter/" + id, {
+            method: "DELETE"
+        });
+        document.location.replace("/letterBox.do")
+    }
+
+    // alert(id);
+    // const response = await fetch("/api/letter/" + id, {
+    //     method: "DELETE"
+    // });
+
 }
+
 function reference(id) {
     document.location.replace("/reference.do?letterIdRef=" + id);
 }
