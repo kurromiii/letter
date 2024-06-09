@@ -23,7 +23,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://github.com/AhmadMessbah/JavaEE_Automation">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -73,7 +73,9 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-<img src="images/home.png" alt="Home">
+  <a href="https://github.com/AhmadMessbah/JavaEE_Automation">
+    <img src="images/home.png" alt="Home">
+  </a>
 
 [//]: # ([![]&#40;E:\JavaFinalProject\letter\docs\images\home.png&#41;]&#40;https://example.com&#41;)
 
@@ -99,6 +101,7 @@ What we used for building this project
 * TomEE 10.0.27
 * Jdk 11
 * Oracle Data Base
+* Hibernate Orm
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -200,9 +203,9 @@ Distributed under the MFT plus License. See <a href="https://mftplus.com/">mftpl
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Contact Us - ahadzadeparnian@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/AhmadMessbah/JavaEE_Automation](https://github.com/AhmadMessbah/JavaEE_Automation)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
