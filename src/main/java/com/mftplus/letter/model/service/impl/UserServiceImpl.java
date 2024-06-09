@@ -1,6 +1,6 @@
 package com.mftplus.letter.model.service.impl;
 
-import com.mftplus.letter.model.entity.Section;
+import com.mftplus.letter.model.entity.Department;
 import com.mftplus.letter.model.entity.User;
 import com.mftplus.letter.model.entity.enums.Role;
 import com.mftplus.letter.model.service.interfaces.UserService;
@@ -72,7 +72,6 @@ public class UserServiceImpl implements UserService, Serializable {
         return Optional.ofNullable(entityManager.find(User.class, username));
     }
 
-    //todo
     @Transactional
     @Override
     public Optional<User> findByUsernameAndPassword(String username, String password) throws Exception {
@@ -92,7 +91,7 @@ public class UserServiceImpl implements UserService, Serializable {
 
     @Transactional
     @Override
-    public List<User> findBySection(Section section) throws Exception {
+    public List<User> findByDepartment(Department department) throws Exception {
         TypedQuery<User> query = entityManager.createQuery("select u from userEntity u", User.class);
         return query.getResultList();
     }

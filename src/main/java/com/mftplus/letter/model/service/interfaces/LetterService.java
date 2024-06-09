@@ -25,8 +25,5 @@ public interface LetterService {
     List<Letter> findBySenderNameAndTitle(String senderName,String senderTitle) throws Exception;
 
     List<Letter> findByUser(String user) throws  Exception;
-    List<Letter> findByUserAndDeletedFalse(String user) throws Exception;
-
-
-
+    List<Letter> findByUserAndDeletedFalse(String user) throws  Exception;
 }

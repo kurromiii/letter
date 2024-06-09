@@ -10,7 +10,7 @@ import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -49,7 +49,6 @@ public class LetterServiceImpl implements LetterService, Serializable {
         entityManager.merge(letter);
     }
 
-    //todo : does not have id check, did not work here
     @Transactional
     @Override
     public void removeById(Long id) throws Exception {
@@ -65,7 +64,7 @@ public class LetterServiceImpl implements LetterService, Serializable {
         if (optional.isPresent()) {
             return optional;
         } else {
-            throw new NoContentException("Letter with id : " + id + " not found !");
+            throw new NoContentException("Letter with id : " + id + "not found !");
         }
     }
 

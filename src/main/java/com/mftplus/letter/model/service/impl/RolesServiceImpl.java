@@ -76,7 +76,6 @@ public class RolesServiceImpl implements RolesService, Serializable {
         return query.getResultList();
     }
 
-    //todo : is this supposed to be optional? did not work
     @Transactional
     @Override
     public List<Roles> findByUsernameAndRoleName(String username, String roleName) throws Exception {

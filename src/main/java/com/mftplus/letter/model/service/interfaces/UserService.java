@@ -1,6 +1,6 @@
 package com.mftplus.letter.model.service.interfaces;
 
-import com.mftplus.letter.model.entity.Section;
+import com.mftplus.letter.model.entity.Department;
 import com.mftplus.letter.model.entity.User;
 import com.mftplus.letter.model.entity.enums.Role;
 
@@ -19,7 +19,7 @@ public interface UserService {
     Optional<User> findByUsername(String username) throws Exception;
     Optional<User> findByUsernameAndPassword(String username, String password) throws Exception;
     List<User> findByRole(Role role) throws Exception;
-    List<User> findBySection(Section section) throws Exception;
+    List<User> findByDepartment(Department department) throws Exception;
     List<User> findByActive(Boolean active) throws Exception;
     List<User> findUserByUsernames(List<String> userList) throws Exception;
 }
