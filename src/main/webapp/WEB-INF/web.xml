@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
-    
+
   <!--  initial servlet  -->
     <welcome-file-list>
         <welcome-file>login.jsp</welcome-file>
@@ -37,11 +37,12 @@
 
     <!--end error pages-->
 
-   <!--roles-->
-    <!--admin-->
+    <!--    roles-->
+    <!--    admin-->
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>admin</web-resource-name>
+            <url-pattern>/test.do</url-pattern>
             <!--security for dashboard-->
             <url-pattern>/dashboard.do</url-pattern>
             <url-pattern>/userDashboard.do</url-pattern>
@@ -55,9 +56,12 @@
             <url-pattern>/letterTable.do</url-pattern>
             <!--end security for letter pages-->
 
-            <!--security for person pages-->
+            <!--security for person and user pages-->
             <url-pattern>/person.do</url-pattern>
+            <url-pattern>/profile.do</url-pattern>
             <url-pattern>/personTable.do</url-pattern>
+            <url-pattern>/user.do</url-pattern>
+            <url-pattern>/personEdit.do</url-pattern>
             <!--end security for person pages-->
 
             <!--security for reference pages-->
@@ -86,11 +90,6 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>manager</web-resource-name>
-            <!--security for dashboard-->
-            <url-pattern>/dashboard.do</url-pattern>
-            <url-pattern>/userDashboard.do</url-pattern>
-            <!--security for dashboard-->
-
             <!--security for letter pages-->
             <url-pattern>/letter.do</url-pattern>
             <url-pattern>/letterBox.do</url-pattern>
@@ -100,7 +99,9 @@
 
             <!--security for person pages-->
             <url-pattern>/person.do</url-pattern>
+            <url-pattern>/personEdit.do</url-pattern>
             <url-pattern>/personTable.do</url-pattern>
+            <url-pattern>/profile.do</url-pattern>
             <!--end security for person pages-->
 
             <!--security for reference pages-->
@@ -127,7 +128,7 @@
         <web-resource-collection>
             <web-resource-name>user</web-resource-name>
             <!--security for dashboard-->
-            <url-pattern>/userDashboard.do</url-pattern>
+            <url-pattern>/dashboard.do</url-pattern>
             <!--security for dashboard-->
 
             <!--security for letter pages-->
@@ -139,6 +140,8 @@
 
             <!--security for person pages-->
             <url-pattern>/person.do</url-pattern>
+            <url-pattern>/personEdit.do</url-pattern>
+            <url-pattern>/profile.do</url-pattern>
             <!--end security for person pages-->
 
             <!--security for reference pages-->
@@ -148,7 +151,6 @@
             <!--end security for reference pages-->
 
             <url-pattern>/home.do</url-pattern>
-            <url-pattern>/user.do</url-pattern>
 
             <http-method>GET</http-method>
             <http-method>POST</http-method>
