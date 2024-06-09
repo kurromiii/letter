@@ -37,5 +37,4 @@ public class Roles extends Base implements Serializable {
     @Size(min = 4, max = 10, message = "RoleName must be between 4 and 10 characters")
     @NotBlank(message = "Should Not Be Null")
     private String role;
-
 }
