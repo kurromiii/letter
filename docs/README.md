@@ -85,7 +85,6 @@ In this project we have provided features with regard to basic needs in an offic
 Here's why:
 * Login is required for all of our pages, a basic rule for an official automation
 * Having samples for lettering system and reference them to different users
-* Having samples for Bank and Storage management
 
 Of course, there is still room for improvement !
 
@@ -126,8 +125,8 @@ Add code below as required jdbc/JtaDataSource
     <Resource id = "jdbc/JtaDataSource" type = "javax.sql.DataSource">
         jdbcDriver = oracle.jdbc.driver.OracleDriver
         jdbcUrl = jdbc:oracle:thin:@localhost:1521:xe
-        username = mft
-        password = java123
+        username = yourDbUsername
+        password = yourDbPassword
         jtaManaged = true
         maxIdle = 20
         minIdle = 5
@@ -136,8 +135,8 @@ Add code below as required jdbc/JtaDataSource
     <Resource id = "jdbc/NonJtaDataSource" type = "javax.sql.DataSource">
         jdbcDriver = oracle.jdbc.driver.OracleDriver
         jdbcUrl = jdbc:oracle:thin:@localhost:1521:xe
-        username = mft
-        password = java123
+        username = yourDbUsername
+        password = yourDbPassword
         jtaManaged = false
         maxIdle = 20
         minIdle = 5
@@ -203,9 +202,9 @@ Distributed under the MFT plus License. See <a href="https://mftplus.com/">mftpl
 <!-- CONTACT -->
 ## Contact
 
-Contact Us - ahadzadeparnian@gmail.com
+Contact Me - ahadzadeparnian@gmail.com
 
-Project Link: [https://github.com/AhmadMessbah/JavaEE_Automation](https://github.com/AhmadMessbah/JavaEE_Automation)
+Project Link: [https://github.com/kurromiii/letter](https://github.com/kurromiii/letter)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
