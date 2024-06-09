@@ -7,7 +7,7 @@
 }
 @font-face {
     font-family: "vazir";
-    src: url("../../vazir-font-v29.1.0/Vazir-Medium.woff2");
+    src: url("/assets/vazir-font/Vazir-Medium.ttf");
 }
 img{
     width: 70%;
@@ -136,20 +136,6 @@ img{
     display: block;
     margin-bottom: 10px;
 }
-
-.formbold-btn {
-    text-align: center;
-    width: 100%;
-    font-size: 16px;
-    border-radius: 5px;
-    padding: 14px 25px!important;
-    border: none;
-    font-weight: 500;
-    background-color: #6a64f1;
-    color: white;
-    cursor: pointer;
-    margin-top: 25px;
-}
 .formbold-btn:hover {
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
 }
@@ -241,4 +227,9 @@ a{
 }
 .formbold-form-title h2:hover{
     text-shadow: 10px 10px 10px #444343;
+}
+.success {
+    color: #2cd07e;
+    font-size: 18px;
+    font-weight: bold;
 }

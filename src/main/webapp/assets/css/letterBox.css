@@ -4,7 +4,7 @@
 }
 @font-face {
     font-family: "vazir";
-    src: url("../../vazir-font-v29.1.0/Vazir-Medium.woff2");
+    src: url("/assets/vazir-font/Vazir-Medium.ttf");
 }
 body{
     background: #edf1f5;
@@ -30,7 +30,7 @@ a{
     border-radius: 0;
 }
 .card-color {
-    background-color: #6a64f1;
+    background-color: rgb(129 140 248 );
 }
 .mailbox-widget .custom-tab .nav-item .nav-link {
     border: 0;

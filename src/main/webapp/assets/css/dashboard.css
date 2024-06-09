@@ -7,7 +7,7 @@
 }
 @font-face {
     font-family: "vazir";
-    src: url("../../vazir-font-v29.1.0/Vazir-Medium.woff2");
+    src: url("/assets/vazir-font/Vazir-Medium.ttf");
 }
 :root {
     --white-color: #fff;
@@ -36,7 +36,7 @@ body.dark {
     width: 100%;
     right: 0;
     /*background-color: var(--white-color);*/
-    background-color: #4B6587;
+    background-color: rgb(226 232 240 );
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -51,7 +51,7 @@ body.dark {
     font-size: 22px;
     font-weight: 500;
     /*color: var(--blue-color);*/
-    color: #C8C6C6;
+    color: black;
 }
 .navbar img {
     width: 35px;
@@ -89,7 +89,7 @@ body.dark {
 /* sidebar */
 .sidebar {
     /*background-color: var(--white-color);*/
-    background-color: #e5dddd;
+    background-color: rgb(248 250 252 );
     width: 260px;
     position: fixed;
     top: 0;
@@ -100,6 +100,7 @@ body.dark {
     overflow-y: scroll;
     box-shadow: 0 0 1px var(--grey-color-light);
     transition: all 0.5s ease;
+    border-width: 2px;
 }
 .sidebar.close {
     padding: 60px 0;
@@ -231,7 +232,7 @@ body.dark {
     color: var(--grey-color);
     border-top: 1px solid var(--grey-color-light);
     /*background-color: var(--white-color);*/
-    background-color: #e5dddd;
+    background-color:  rgb(248 250 252 );
 }
 .bottom i {
     font-size: 20px;
@@ -269,4 +270,8 @@ body.dark {
     .sidebar.close .bottom_content {
         right: -100%;
     }
+}
+.profile {
+    font-size: 32px;
+    color: #4B6587;
 }

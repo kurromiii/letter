@@ -1,6 +1,6 @@
 @font-face {
     font-family: "vazir";
-    src: url("../../vazir-font-v29.1.0/Vazir-Medium.woff2");
+    src: url("/assets/vazir-font/Vazir-Medium.ttf");
 }
 *{
     overflow: hidden;

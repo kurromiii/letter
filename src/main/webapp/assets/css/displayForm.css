@@ -5,7 +5,7 @@
 }
 @font-face {
     font-family: "vazir";
-    src: url("../../vazir-font-v29.1.0/Vazir-Medium.woff2");
+    src: url("/assets/vazir-font/Vazir-Medium.ttf");
 }
 img{
     width: 70%;
@@ -135,4 +135,20 @@ a{
 }
 .danger{
     background-color:#dc3545;
+}
+.success {
+    color: #2cd07e;
+    font-size: 18px;
+    font-weight: bold;
+}
+.formbold-form-select {
+    width: 100%;
+    padding: 12px 22px!important;
+    border-radius: 5px;
+    border: 1px solid #dde3ec;
+    background: #ffffff;
+    font-size: 16px;
+    color: #536387;
+    outline: none;
+    resize: none;
 }
