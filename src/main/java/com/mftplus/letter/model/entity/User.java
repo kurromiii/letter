@@ -1,7 +1,7 @@
 package com.mftplus.letter.model.entity;
 
-import com.mftplus.letter.model.entity.enums.Role;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -33,24 +33,19 @@ public class User extends Base implements Serializable {
     @NotBlank(message = "Should Not Be Null")
     private String username;
 
+    @JsonbTransient
     @Column(name = "u_password", columnDefinition = "NVARCHAR2(20)", nullable = false)
     @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{5,20}$",message = "Minimum five characters, at least one letter and one number!")
     @Size(min = 5, max = 20, message = "Password must be between 3 and 20 characters")
     @NotBlank(message = "Should Not Be Null")
     private String password;
 
-    //todo : mapped by gives stack overflow error while saving reference receivers in letter
-    @OneToOne
-    private Person person;
-
-    @Enumerated(EnumType.ORDINAL)
-    private Role role;
-
     @Column(name="u_active")
     private boolean active;
 
     //realm roles
-    @OneToMany(fetch = FetchType.EAGER)
+    @JsonbTransient
+    @OneToMany(mappedBy = "user")
     private List<Roles> roleList;
 
     public void addRole(Roles role){
@@ -60,8 +55,12 @@ public class User extends Base implements Serializable {
         roleList.add(role);
     }
 
+    @JsonbTransient
+    @OneToOne(mappedBy = "user")
+    @JoinColumn(name = "person_id")
+    private Person person;
+
     @ManyToOne
-    private Section section;
-
-
+    @JoinColumn(name = "department_id")
+    private Department department;
 }

@@ -5,14 +5,13 @@ import com.mftplus.letter.model.entity.enums.LetterAccessLevel;
 import com.mftplus.letter.model.entity.enums.LetterType;
 import com.mftplus.letter.model.entity.enums.TransferMethod;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
-
-import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -51,12 +50,11 @@ public class Letter extends Base implements Serializable {
     private String letterNumber;
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
     //ref receivers
     @ManyToMany(fetch = FetchType.EAGER)
-    @ToString.Exclude
-    @NotNull(message = "Should Not Be Null")
     private List<User> userList;
 
     public void addUser(User user){
@@ -66,6 +64,7 @@ public class Letter extends Base implements Serializable {
         userList.add(user);
     }
 
+    //todo : why validation fails for persian value?
     @Column (name = "l_sender_name" , columnDefinition = "NVARCHAR2(20)")
     @Pattern(regexp = "^[a-zA-Zآ-ی\\s]{3,20}$", message = "Invalid SenderName")
     @Size(min = 3, max = 20, message = "SenderName must be between 3 and 20 characters")
@@ -125,7 +124,7 @@ public class Letter extends Base implements Serializable {
     @Size(min = 3,max = 250,message = "Context must be at least 3 characters")
     private String context;
 
-    //todo : does this need @futureOrPresent? I set is as localDateTime.now in servlet
+    //todo : does this need @futureOrPresent? I set it as localDateTime.now in servlet
     @Column(name = "register_date_and_time")
     private LocalDateTime registerDateAndTime;
 

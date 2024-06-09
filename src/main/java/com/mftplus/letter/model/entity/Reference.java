@@ -3,6 +3,7 @@ package com.mftplus.letter.model.entity;
 import com.github.mfathi91.time.PersianDateTime;
 import com.mftplus.letter.model.entity.enums.ReferencePriority;
 import com.mftplus.letter.model.entity.enums.ReferenceType;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -13,7 +14,6 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
-import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -27,16 +27,14 @@ import java.time.format.DateTimeFormatter;
 @Entity(name = "referenceEntity")
 @Table(name = "reference_tbl")
 public class Reference extends Base implements Serializable {
-    //todo : for all entities validation msg is in eng, we need to decide for the persian msg
-
     @Id
     @SequenceGenerator(name = "referenceSeq", sequenceName = "reference_seq",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "referenceSeq")
     @Column (name = "r_id")
     private long id;
 
-    @ManyToOne (fetch = FetchType.EAGER)
-    @ToString.Exclude
+    @ManyToOne
+    @JoinColumn(name = "letter_id")
     private Letter letterId;
 
     @Enumerated (EnumType.ORDINAL)
@@ -58,16 +56,16 @@ public class Reference extends Base implements Serializable {
     private LocalDateTime refDateAndTime;
 
     //todo : does not work
-    @Transient
-    private LocalDateTime faRefDateAndTime;
-
-    public String getFaRefDateAndTime() {
-        return PersianDateTime.fromGregorian(refDateAndTime).toString();
-    }
-
-    public void setFaRefDateAndTime(String faRefDateAndTime) {
-        this.refDateAndTime = PersianDateTime.parse(faRefDateAndTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")).toGregorian();
-    }
+//    @Transient
+//    private LocalDateTime faRefDateAndTime;
+//
+//    public String getFaRefDateAndTime() {
+//        return PersianDate.fromGregorian(LocalDate.from(refDateAndTime)).toString();
+//    }
+//
+//    public void setFaRefDateAndTime(String faRefDateAndTime) {
+//        this.refDateAndTime = LocalDateTime.from(PersianDate.parse(faRefDateAndTime).toGregorian());
+//    }
 
     @Column (name = "r_expiration")
     @Future(message = "Invalid reference expiration date")

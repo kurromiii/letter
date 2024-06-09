@@ -4,7 +4,6 @@ import com.mftplus.letter.model.entity.enums.Gender;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -26,6 +25,9 @@ import java.time.LocalDate;
 @RequestScoped
 @ToString
 public class Person extends Base implements Serializable {
+
+    //todo : for all entities validation msg is in eng, we need to decide for the persian msg
+
     @Id
     @SequenceGenerator(name = "personSeq", sequenceName = "person_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "personSeq")
@@ -54,12 +56,12 @@ public class Person extends Base implements Serializable {
     private Gender gender;
 
     @OneToOne
-    @JoinColumn(name = "p_username", nullable = false,unique = true)
+    @JoinColumn(name = "user_id", nullable = false,unique = true)
     private User user;
 
     //todo : has not been set in servlet or form
     @Column(name = "p_birthdate")
-    @Past(message = "Invalid Birthdate")
+//    @Past(message = "Invalid Birthdate")
     private LocalDate birthdate;
 
     //todo : attachment

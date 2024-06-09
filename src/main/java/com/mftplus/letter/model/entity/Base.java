@@ -7,17 +7,18 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+@NoArgsConstructor
 @Getter
 @Setter
-@MappedSuperclass
-@NoArgsConstructor
 @SuperBuilder
+
+@MappedSuperclass
 public class Base {
-    //todo : problem with version id when editing
+    //todo : version id creates new row for editing
 //    @Version
 //    @JsonbTransient
-//    private  Long versionId;
+//    private Long versionId;
+
     @JsonbTransient
     private Boolean deleted;
-
 }
