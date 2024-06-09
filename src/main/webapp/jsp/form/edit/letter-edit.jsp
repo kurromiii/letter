@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>ویرایش نامه</title>
+    <jsp:include page="../../css-import.jsp"></jsp:include>
     <link rel="stylesheet" href="../../../assets/css/form.css">
     <link rel="stylesheet" href="../../../assets/css/kamadatepicker.min.css">
     <meta charset="UTF-8">

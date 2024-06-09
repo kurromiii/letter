@@ -34,8 +34,8 @@
         <td>${reference.letterId.title}</td>
         <td>${reference.referenceSenderId.username}</td>
         <td>${reference.referenceReceiverId.username}</td>
-        <td>${reference.priority}</td>
-        <td>${reference.refType}</td>
+        <td>${reference.priority.title}</td>
+        <td>${reference.refType.title}</td>
         <td>${reference.paraph}</td>
         <td>${reference.explanation}</td>
         <td>${reference.refDateAndTime}</td>

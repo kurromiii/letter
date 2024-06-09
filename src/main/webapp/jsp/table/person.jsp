@@ -29,7 +29,7 @@
         <td>${person.name}</td>
         <td>${person.family}</td>
         <td>${person.nationalCode}</td>
-        <td>${person.gender}</td>
+        <td>${person.gender.title}</td>
         <td>
             <a href=""><i class="fas fa-eye show"></i></a>
             <a href=""><i class="fa fa-edit edit"></i></a>

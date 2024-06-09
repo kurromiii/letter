@@ -9,6 +9,7 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <jsp:include page="css-import.jsp"></jsp:include>
+  <link rel="stylesheet" href="../assets/css/all.css">
   <link rel="stylesheet" href="../assets/css/home.css">
 </head>
 <body>
@@ -20,11 +21,8 @@
     <section class="menu">
       <div class="right">
         <ul>
-          <li><a href="#" class="fa-solid fa-house"></a></li>
+          <li><a href="home.do" class="fa-solid fa-house"></a></li>
           <li><a href="#">سازمان</a>
-            <ul class="submenu">
-              <li><a href="#">چارت</a></li>
-            </ul>
           </li>
           <li><a href="letterBox.do">اداری </a>
             <ul class="submenu">
@@ -32,28 +30,24 @@
               <li><a href="reference.do">ارجاع</a></li>
             </ul>
           </li>
-          <li><a href="#">بانک </a></li>
-          <li><a href="">انبار </a>
-            <ul class="submenu">
-              <li><a href="#">کالا</a></li>
-            </ul>
-          </li>
 
-<%--          todo : how to get role instead of username , this is not dynamic.--%>
-          <c:set var="username" value="admin" />
-          <c:if test="${pageContext.request.userPrincipal.name.equals(username)}">
-            <li><a href="dashboardUtils.do">داشبورد </a></li>
-          </c:if>
+          <%--todo : how to get role instead of username , this is not dynamic.--%>
+<%--          <c:set var="username" value="admin" />--%>
+<%--          <c:if test="${pageContext.request.userPrincipal.name.equals(username)}">--%>
+            <li><a href="dashboard.do">داشبورد </a></li>
+<%--          </c:if>--%>
 
-          <c:if test="${not pageContext.request.userPrincipal.name.equals(username)}">
-            <li><a href="userDashboard.do">داشبورد </a></li>
-          </c:if>
+<%--          <c:if test="${not pageContext.request.userPrincipal.name.equals(username)}">--%>
+<%--            <li><a href="userDashboard.do">داشبورد </a></li>--%>
+<%--          </c:if>--%>
 
         </ul>
       </div>
       <div class="left">
         <ul>
-          <li><a href="person.do" class="fas fa-user-circle"></a></li>
+
+            <li><a href="person.do" class="fas fa-user-circle"></a></li>
+
           <li class="logOut"><a href="logout.do" class="fas fa-sign-out"></a></li>
         </ul>
       </div>

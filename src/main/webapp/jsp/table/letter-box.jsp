@@ -247,8 +247,9 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="../../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+<jsp:include page="../../jsp/js-import.jsp"></jsp:include>
+
 <script src="../../assets/js/letter.js"></script>
 <script src="../../assets/js/reference.js"></script>
 <script type="text/javascript"></script>

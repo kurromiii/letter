@@ -12,18 +12,19 @@
 
 <div class="formbold-main-wrapper">
     <div class="formbold-form-wrapper">
+        <p class="success">${sessionScope.ok}</p>
         <!--img-->
 <%--        <img src="../../../assets/image/lettering.jpg" alt="">--%>
 
         <div class="formbold-form-title">
-            <h2 class="">نامه</h2>
+<%--            <h2 class="">نامه</h2>--%>
             <a class="formbold-btn primary" href="#" onclick="reference(${sessionScope.letter.id})">ارجاع</a>
             <a class="formbold-btn warning" href="#" onclick="showEditLetter(${sessionScope.letter.id})">ویرایش</a>
             <a class="formbold-btn danger" href="#" onclick="removeLetter(${sessionScope.letter.id})">حذف</a>
         </div>
 
         <!--start form-->
-        <form id="letter-display" inert action="" method="POST">
+        <form id="letter-display" inert>
             <div class="formbold-input-flex">
                 <input class="form-control" type="text" name="id" value="${sessionScope.letter.id}" hidden="hidden">
 
@@ -66,19 +67,32 @@
                 </div>
                 <div>
                     <label for="accessLevel" class="formbold-form-label"> سطح دسترسی نامه : </label>
-                    <input type="text" name="accessLevel" id="accessLevel" class="formbold-form-input" value="${sessionScope.letter.accessLevel}"/>
+                    <input type="text" name="accessLevel" id="accessLevel" class="formbold-form-input" value="${sessionScope.letter.accessLevel.title}"/>
                 </div>
             </div>
 
             <div class="formbold-input-flex">
                 <div>
                     <label for="transferMethod" class="formbold-form-label"> روش فرستادن نامه : </label>
-                    <input type="text" name="transferMethod" id="transferMethod" class="formbold-form-input" value="${sessionScope.letter.transferMethod}"/>
+                    <input type="text" name="transferMethod" id="transferMethod" class="formbold-form-input" value="${sessionScope.letter.transferMethod.title}"/>
                 </div>
                 <div>
                     <label for="letterType" class="formbold-form-label"> نوع نامه : </label>
-                    <input type="text" name="letterType" id="letterType" class="formbold-form-input" value="${sessionScope.letter.letterType}"/>
+                    <input type="text" name="letterType" id="letterType" class="formbold-form-input" value="${sessionScope.letter.letterType.title}"/>
                 </div>
+            </div>
+
+            <div class="formbold-input-group">
+                <label for="refReceivers" class="formbold-form-label">
+                    ارجاع گیرندگان نامه :
+                </label>
+
+<%--                todo : does not work properly--%>
+                <select class="formbold-form-select" name="refReceivers" id="refReceivers">
+                    <c:forEach var="refReceivers" items="${sessionScope.letter.userList}">
+                        <option>${refReceivers.username}</option>
+                    </c:forEach>
+                </select>
             </div>
 
             <div>

@@ -3,9 +3,9 @@
 <html>
 <head>
     <title>نامه</title>
-    <jsp:include page="../css-import.jsp"></jsp:include>
-    <link rel="stylesheet" href="../../assets/css/kamadatepicker.min.css">
-    <link rel="stylesheet" href="../../assets/css/form.css">
+    <jsp:include page="../../css-import.jsp"></jsp:include>
+    <link rel="stylesheet" href="../../../assets/css/kamadatepicker.min.css">
+    <link rel="stylesheet" href="../../../assets/css/form.css">
     <meta charset="UTF-8" lang="fa">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -13,7 +13,7 @@
 </head>
 <body>
 <!--nav bar-->
-<jsp:include page="../../jsp/dashboard.jsp"></jsp:include>
+<jsp:include page="../../../jsp/dashboard.jsp"></jsp:include>
 
 <div class="formbold-main-wrapper">
     <div class="formbold-form-wrapper">
@@ -147,10 +147,10 @@
         <!--end form-->
     </div>
 </div>
-<script src="../../assets/js/jquery-3.7.1.min.js"></script>
-<script src="../../assets/js/kamadatepicker.holidays.js"></script>
-<script src="../../assets/js/kamadatepicker.min.js"></script>
-<script src="../../assets/js/referenceInput.js"></script>
+<script src="../../../assets/js/jquery-3.7.1.min.js"></script>
+<script src="../../../assets/js/kamadatepicker.holidays.js"></script>
+<script src="../../../assets/js/kamadatepicker.min.js"></script>
+<script src="../../../assets/js/referenceInput.js"></script>
 <script>
     let myElement = document.querySelector('#date');
     kamaDatepicker(myElement);

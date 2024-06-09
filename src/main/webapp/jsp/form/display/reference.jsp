@@ -12,16 +12,17 @@
 
 <div class="formbold-main-wrapper">
     <div class="formbold-form-wrapper">
+        <p class="success">${sessionScope.ok}</p>
 
         <div class="formbold-form-title">
-            <h2 class="">ارجاع</h2>
+<%--            <h2 class="">ارجاع</h2>--%>
             <a class="formbold-btn primary" href="#" onclick="showLetter(${sessionScope.reference.letterId.id})">مشاهده نامه</a>
             <a class="formbold-btn warning" href="#" onclick="showEditReference(${sessionScope.reference.id})">ویرایش</a>
             <a class="formbold-btn danger" href="#" onclick="removeReference(${sessionScope.reference.id})">حذف</a>
         </div>
 
         <!--start form-->
-        <form inert action="" method="POST">
+        <form inert>
             <div class="formbold-input-flex">
                 <div>
                     <label for="username" class="formbold-form-label"> ارجاع دهنده : </label>
@@ -37,11 +38,11 @@
             <div class="formbold-input-flex">
                 <div>
                     <label for="priority" class="formbold-form-label"> اولویت ارجاع : </label>
-                    <input type="text" name="priority" id="priority" class="formbold-form-input" value="${sessionScope.reference.priority}"/>
+                    <input type="text" name="priority" id="priority" class="formbold-form-input" value="${sessionScope.reference.priority.title}"/>
                 </div>
                 <div>
                     <label for="r_refType" class="formbold-form-label"> نوع ارجاع : </label>
-                    <input type="text" name="r_refType" id="r_refType" class="formbold-form-input" value="${sessionScope.reference.refType}"/>
+                    <input type="text" name="r_refType" id="r_refType" class="formbold-form-input" value="${sessionScope.reference.refType.title}"/>
                 </div>
             </div>
 

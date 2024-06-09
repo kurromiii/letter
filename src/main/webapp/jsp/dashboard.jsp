@@ -22,7 +22,8 @@
         <i class="bi bi-grid"></i>
         <i class='bx bx-sun' id="darkLight"></i>
         <i class='bx bx-bell' ></i>
-        <img src="../assets/image/profile.jpg" alt="" class="profile" />
+        <a href="person.do"><span class="fas fa-user-circle profile"></span></a>
+
     </div>
 </nav>
 
@@ -31,7 +32,7 @@
     <div class="menu_content">
         <ul class="menu_items">
             <li class="item">
-                <a href="dashboardUtils.do" class="nav_link">
+                <a href="dashboard.do" class="nav_link">
               <span class="navlink_icon">
                 <i class="fa-solid fa-dashboard"></i>
               </span>
@@ -65,7 +66,6 @@
                     <a href="#section1" class="nav_link sublink">اداری</a>
                     <a href="#section2" class="nav_link sublink">نامه نگاری</a>
                     <a href="#" class="nav_link sublink">مدیریت کارمندان</a>
-                    <a href="#" class="nav_link sublink">بانک</a>
                 </ul>
             </li>
             <!-- end -->
@@ -183,19 +183,11 @@
             <!-- End -->
 
             <li class="item">
-                <a href="#" class="nav_link">
+                <a href="user.do" class="nav_link">
               <span class="navlink_icon">
                 <i class="fas fa-user-circle"></i>
               </span>
                     <span class="navlink">کاربران</span>
-                </a>
-            </li>
-            <li class="item">
-                <a href="#" class="nav_link">
-              <span class="navlink_icon">
-                <i class="fas fa-user-lock"></i>
-              </span>
-                    <span class="navlink">سطوح دسترسی</span>
                 </a>
             </li>
             <li class="item">
@@ -207,87 +199,11 @@
                 </a>
             </li>
             <li class="item">
-                <a href="person.do" class="nav_link">
+                <a href="user.do" class="nav_link">
               <span class="navlink_icon">
                 <i class="fas fa-user-plus"></i>
               </span>
                     <span class="navlink">ایجاد کاربر جدید</span>
-                </a>
-            </li>
-            <li class="item">
-                <a href="roles.do" class="nav_link">
-              <span class="navlink_icon">
-                <i class="fas fa-user-check"></i>
-              </span>
-                    <span class="navlink">تعلق نقش</span>
-                </a>
-            </li>
-        </ul>
-
-        <ul class="menu_items">
-            <div class="menu_title">
-            <span>
-            <i class="fa fa-bank"></i>
-            </span>
-                <span class="navlink">بانک</span>
-                <i class="bx bx-chevron-right arrow-left"></i>
-            </div>
-            <li class="item">
-                <a href="#" class="nav_link">
-              <span class="navlink_icon">
-                <i class="bx bx-flag"></i>
-              </span>
-                    <span class="navlink">خالی</span>
-                </a>
-            </li>
-            <li class="item">
-                <a href="#" class="nav_link">
-              <span class="navlink_icon">
-                <i class="bx bx-medal"></i>
-              </span>
-                    <span class="navlink">خالی</span>
-                </a>
-            </li>
-            <li class="item">
-                <a href="#" class="nav_link">
-              <span class="navlink_icon">
-                <i class="bx bx-cog"></i>
-              </span>
-                    <span class="navlink">خالی</span>
-                </a>
-            </li>
-            <li class="item">
-                <a href="#" class="nav_link">
-              <span class="navlink_icon">
-                <i class="bx bx-layer"></i>
-              </span>
-                    <span class="navlink">خالی</span>
-                </a>
-            </li>
-        </ul>
-
-        <ul class="menu_items">
-            <div class="menu_title">
-            <span>
-            <i class="fa-solid fa-store"></i>
-            </span>
-                <span class="navlink">مدیریت انبار</span>
-                <i class="bx bx-chevron-right arrow-left"></i>
-            </div>
-            <li class="item">
-                <a href="#" class="nav_link">
-              <span class="navlink_icon">
-                <i class="bx bx-flag"></i>
-              </span>
-                    <span class="navlink">انبار</span>
-                </a>
-            </li>
-            <li class="item">
-                <a href="#" class="nav_link">
-              <span class="navlink_icon">
-                <i class="bx bx-medal"></i>
-              </span>
-                    <span class="navlink">کالا</span>
                 </a>
             </li>
         </ul>

@@ -22,10 +22,10 @@
         <th>عنوان فرستنده</th>
         <th>گیرنده</th>
         <th>عنوان گیرنده</th>
+        <th>تاریخ</th>
         <th>سطح دسترسی</th>
         <th>روش فرستادن</th>
-        <th>تاریخ</th>
-        <th>نوع</th>
+        <th>نوع نامه</th>
         <th class="btn"><i class="fa fa-gear"></i></th>
     </tr>
     </thead>
@@ -40,10 +40,10 @@
         <td>${letter.senderTitle}</td>
         <td>${letter.receiverName}</td>
         <td>${letter.receiverTitle}</td>
-        <td>${letter.accessLevel}</td>
-        <td>${letter.transferMethod}</td>
         <td>${letter.getFaDate()}</td>
-        <td>${letter.letterType}</td>
+        <td>${letter.accessLevel.title}</td>
+        <td>${letter.transferMethod.title}</td>
+        <td>${letter.letterType.title}</td>
         <td>
             <a href="#" onclick="selectLetter(${letter.id})"><i class="fas fa-eye show"></i></a>
             <a href="#" onclick="showEditLetter(${letter.id})"><i class="fa fa-edit edit"></i></a>

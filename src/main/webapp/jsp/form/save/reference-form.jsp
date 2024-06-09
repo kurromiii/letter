@@ -3,8 +3,8 @@
 <html>
 <head>
     <title>ارجاع</title>
-    <link rel="stylesheet" href="../../assets/css/form.css">
-    <link rel="stylesheet" href="../../assets/css/persian-datepicker.min.css">
+    <link rel="stylesheet" href="../../../assets/css/form.css">
+    <link rel="stylesheet" href="../../../assets/css/persian-datepicker.min.css">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -12,7 +12,7 @@
 </head>
 <body>
 <!--nav bar-->
-<jsp:include page="../../jsp/dashboard.jsp"></jsp:include>
+<jsp:include page="../../../jsp/dashboard.jsp"></jsp:include>
 
 <div class="formbold-main-wrapper">
     <div class="formbold-form-wrapper">
@@ -102,9 +102,9 @@
     </div>
 </div>
 
-<script src="../../assets/js/jquery-3.2.1.min.js"></script>
-<script src="../../assets/js/persian-date.min.js"></script>
-<script src="../../assets/js/persian-datepicker.min.js"></script>
-<script src="../../assets/js/app.js"></script>
+<script src="../../../assets/js/jquery-3.2.1.min.js"></script>
+<script src="../../../assets/js/persian-date.min.js"></script>
+<script src="../../../assets/js/persian-datepicker.min.js"></script>
+<script src="../../../assets/js/app.js"></script>
 </body>
 </html>
